@@ -1,0 +1,13 @@
+US 1:
+"As an aspiring entrepeneur, I want to be able to see what characteristics of a kickstarter project make it
+more likely to succeed in being funded, so that I can feel confident in creating my own successful project."
+
+US 2:
+"As a wealthy, generous individual who routinely donates to kickstarter projects that I find exciting, I want to
+learn what kickstarter project goals are realistically achievable, so that I can optimize my money to help
+projects that need it but are not overtly unlikely to succeed."
+
+US 3:
+"As a college student who has an interest in modern business, I want to learn more about the intricacies of mass
+funding so that I can better understand how new websites and technologies like kickstarter affect/promote business
+growth."
