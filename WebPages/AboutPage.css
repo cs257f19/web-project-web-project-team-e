@@ -8,3 +8,46 @@ ul.navigationbar {
 	text-decoration-color: brown
 	
 }
+
+body{
+	background-color: #ffffff;
+}
+
+.header{
+	overflow: hidden;
+	background-color: honeydew;
+	line-height: 10px;
+	padding-left: 5px;
+}
+
+.search-box{
+	position: absolute;
+	top: 17px;
+	right: 17px;
+}
+	
+ul{
+	list-style-type: none; 
+	margin: 0;
+	padding: 0px;
+	overflow: hidden;
+	background-color: #dddddd;		
+	}
+
+li{
+	display: inline-block;
+	padding: 10px;
+	float: left;
+	border-right: .1px solid #ffffff;
+	}
+
+li:hover{
+	background-color: #d6b6ff;
+	}
+		
+
+
+img { 
+  width: 50%;
+  height: auto;
+}
