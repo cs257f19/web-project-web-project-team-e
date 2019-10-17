@@ -1,0 +1,67 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body{
+	background-color: #ffffff;
+}
+
+.header{
+	overflow: hidden;
+	background-color: honeydew;
+	line-height: 10px;
+	padding-left: 5px;
+}
+
+.search-box{
+	position: absolute;
+	top: 17px;
+	right: 17px;
+}
+	
+ul{
+	list-style-type: none; 
+	margin: 0;
+	padding: 0px;
+	overflow: hidden;
+	background-color: #dddddd;		
+	}
+
+li{
+	display: inline-block;
+	padding: 10px;
+	float: left;
+	border-right: .1px solid #ffffff;
+	}
+
+li:hover{
+	background-color: #d6b6ff;
+	}
+		
+
+* {
+  	box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  	float: left;
+  	width: 30.33%;
+  	padding: 1px;
+	padding-left: 30px;
+  	height: 235px; 
+	margin: 10px;
+	background-color : #F6EFFF;
+	border-radius: 8px;
+}
+
+.column:hover{
+	background: #ECDDFF;
+	}
+
+/* Clear floats after the columns */
+.row:after {
+  	content: "";
+  	display: table;
+ 	clear: both;
+}
+
