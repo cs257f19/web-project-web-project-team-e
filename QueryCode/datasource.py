@@ -11,54 +11,135 @@ class DataSource:
     def __init__(self):
     	self.numberOfProjects = 378661
         pass
-        
-    #our methods/ideas 
-    
+
+    #our methods/ideas
+
     #maybe working implementation - Elisa
     def getRandomProject():
     	cursor = connection.cursor()
     	query = "SELECT ID FROM ksdata ORDER BY RAND() LIMIT 1"
     	cursor.execute(query)
 		return cursor.fetchall()
-    
+
     #ben - how many projects where there in the us
-    #IMPLEMENT   
-    def getCountofVariables(nameOfVariable, filter):
-    
+    #IMPLEMENT
+    def getCountofCategory(categoryName, filterAttribute):
+        '''
+        Returns the count (an integer) of all of projects of one variable grouped by another variable (filter)
+
+        PARAMETERS:
+            nameOfVariable - the main variable we are counting from, these are typically the names of the columns (i.e category, country ).
+            filter - an attribute of the main variable (i.e 'Film & Video' for 'category' or 'US' for 'country')
+
+        RETURN:
+            an integer that is a total of all the projects in the database that fit these two variables (the count of successful Film & Video Projects)
+
+        '''
+		try:
+			cursor = connection.cursor()
+			query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata WHERE  " + str(magnitude) + " ORDER BY mag DESC"
+			cursor.execute(query)
+			return cursor.fetchall()
+
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return None
+
     #Kenyon IMPLEMENT
     def getMinimumValueOfVariable(nameOfVariable):
-    
+
     #Kenyon IMPLEMENT
     def getMaximumValueOfVariable(nameOfVariable):
-    
+
     #Ben
     def getAverageOfVariable(nameOfVariable):
-    
+        '''
+        Returns an average of all the entries for one variable in the data set.
+
+        PARAMETERS:
+		nameOfVariable - the name of the variable we wish to calculate the average of.
+
+
+        RETURN:
+            an integer that is the average of the provided parameter
+
+		RAISES:
+			NeedQuantitaveVariableError - If parameter entered is a categorical variable
+
+		'''
+
     #Elisa
     #IMPLEMENT
     def getProportionOfSuccess(nameOfVariable, filter):
-    
-    #Ben  - median for a variable  
+
+    #Ben  - median for a variable
     def getMedianOfEntireColumn(nameOfVariable):
-    
-    #Ben - median success rate for poetry projects. Median of one variable grouped by another
-    def getMedianOfFilteredColumn(nameOfVariable, filter,???):
-    
+		'''
+        Returns the median of a quantitave variable.
+
+        PARAMETERS:
+            nameOfVariable - the name of the variable we wish to calculate the median of.
+
+        RETURN:
+            a integer that is the median of the provided parameter
+
+		RAISES:
+			NeedQuantitaveVariableError - If parameter entered is a categorical variable
+        '''
+
+    #Ben - median success rate for poetry projects. Median of one variable grouped by another ie. median of Food Project USD goal
+    def getMedianOfFilteredCategory(filter, category):
+		'''
+		Returns the median of a selected 'category' that is grouped by a quantitave variable.
+
+        PARAMETERS
+            category - a selected category of projects (i.e Design)
+			filter - a filter that highlights one specific part of the category. This is typically the name ofa another category (i.e backers or USD goal).
+
+
+
+        RETURN:
+            a integer that is the median of the provided parameter grouped by the filter (i.e the median USD goal for Design projects)
+
+		RAISES:
+			NeedQuantitaveVariableError - If the filter parameter entered is a categorical variable
+
+		'''
+
     #Elisa
     def calculateProbabilityOfSuccess(tbd after analysis):
-    
+
     #Elisa
     def calculateSuccessScore(tbd):
-    
+
     #Elisa
     def createRGraph(tbd):
-    
+
     #Kenyon - Uses calculated success score and give a list based on user input of most successful projects
     def mostSuccessfulProjects(listLength, nameOfVariable, filter):
-    
-    #Kenyon - creates a list of all projects of one category  
+
+    #Kenyon - creates a list of all projects of one category
     def getListOfAllProjectsOfOneCatergory(category):
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     def getMagnitudesInRange(self, start, end=10.0):
         '''
@@ -78,8 +159,8 @@ class DataSource:
         Returns a list of all of the earthquakes that occurred on the specified continent.
 
         PARAMETERS:
-            continent 
-        
+            continent
+
         RETURN:
             a list of all of the earthquake events that occurred on this continent
         '''
@@ -97,4 +178,3 @@ class DataSource:
             a list of all of the earthquake events that occurred within this date range.
         '''
         return []
-
