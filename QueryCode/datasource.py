@@ -160,13 +160,55 @@ class DataSource:
 		'''
 
     #Elisa
-    def calculateProbabilityOfSuccess(tbd after analysis):
-
+    def calculateProbabilityOfSuccess(connection, tbd after analysis):
+        '''
+        Returns the probability of success for a project given inputed values for their 
+        project. R software will be used to generate the formula
+        
+        PARAMETERS:
+            connection - the connection to the database
+            str and int variables that are shown to be statistically significant to determining
+            success of a project
+            
+        RETURN:
+            a probability of success between 0 and 1 inclusive
+        '''
+        
+        return []
+    
     #Elisa
-    def calculateSuccessScore(tbd):
-
+    def calculateSuccessScore(connection, goalFundsRaised, actualFundsRaised):
+        '''
+        Returns a 'success score', the way in which it will be calculated has yet to be determined
+    
+        PARAMETERS:
+            goalFundsRaised - int amount of money a project set out to make
+            actualFundsRaised - int amount of money a project actually made
+            fundingTimeFrame - int amount of time it took the project to collect their money
+            
+        RETURN:
+            An int 'success score'
+        '''
+        
+        return []
+    
     #Elisa
-    def createRGraph(tbd):
+    def createRGraph(connection, typeOfGraph, tbdFilters):
+        '''
+        Creates a graph and return the graph onto the website given certain selected 
+        filters and the type of graph chosen
+    
+        PARAMETERS:
+            connection - the connection to the database
+            typeOfGraph - selected to be either a graph of counts or proportions
+            We have yet to determine how varying number of filters can be added
+            
+        RETURN:
+            a graph
+        '''
+        
+        return []
+    
 
     #Kenyon - Uses calculated success score and give a list based on user input of most successful projects
     def mostSuccessfulProjects(listLength, nameOfVariable, filter):
