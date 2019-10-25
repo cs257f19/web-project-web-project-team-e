@@ -39,7 +39,7 @@ class DataSource:
         '''
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata WHERE  " + str(variableCondition) + "=" + str(varibaleConditionToMeet) + ";"
+			query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata WHERE '" + str(variableCondition) + "' = '" + str(varibaleConditionToMeet) + "';"
 			cursor.execute(query)
 			return cursor.fetchall()
 
