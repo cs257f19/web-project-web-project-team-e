@@ -23,13 +23,15 @@ class DataSource:
 
     #ben - how many projects where there in the us
     #IMPLEMENT
-    def getCountofCategory(categoryName, filterAttribute):
+    def getCountofFilteredCategory(nameOfVariable, variableCondition, varibaleConditionToMeet):
         '''
         Returns the count (an integer) of all of projects of one variable grouped by another variable (filter)
 
         PARAMETERS:
-            nameOfVariable - the main variable we are counting from, these are typically the names of the columns (i.e category, country ).
-            filter - an attribute of the main variable (i.e 'Film & Video' for 'category' or 'US' for 'country')
+            nameOfVariable - the variable of the project we are counting from.
+            variableCondition - an attribute of the main variable (i.e category, country, currency)
+			varibaleConditionToMeet - the condition that needs to be met for the project to be counted
+
 
         RETURN:
             an integer that is a total of all the projects in the database that fit these two variables (the count of successful Film & Video Projects)
@@ -37,7 +39,7 @@ class DataSource:
         '''
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata WHERE  " + str(magnitude) + " ORDER BY mag DESC"
+			query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata WHERE  " + str(variableCondition) + "=" + str(varibaleConditionToMeet) + ";"
 			cursor.execute(query)
 			return cursor.fetchall()
 
