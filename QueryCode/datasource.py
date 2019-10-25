@@ -38,7 +38,7 @@ class DataSource:
             connection - the connection to the database
             
         RETURNS:
-            the ID of a random project, once the data is clean, we will produce the name of the project
+            int ID of a random project, once the data is clean, we will produce the str name of the project
         '''
         
         try:
@@ -101,8 +101,29 @@ class DataSource:
 		'''
 
     #Elisa
-    #IMPLEMENT
-    def getProportionOfSuccess(nameOfVariable, filter):
+    def getProportionOfSuccess(connection, nameOfVariable, variableCondition):
+        '''
+        Calculates the proportion of successful projects based on the name of
+        a column and the filter of that column. 
+        
+        PARAMETERS:
+            connection - the connection to the database
+            nameOfVariable - the str variable of the project we are creating a proportion for
+            variableCondition - a str attribute of the main variable (i.e category, country, currency)
+            
+        RETURNS:
+            an int proportion between 0 and 1 inclusive
+        '''
+        try:
+            cursor = connection.cursor()
+            query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND" +
+             str(nameOfVariable) + "=" + str(filterName)
+            
+            return cursor.execute(query)/self.numberOfProjects
+
+        except Exception as e:
+            print ("Something went wrong when executing the query: ", e)
+            return Nonecursor = connection.cursor()
 
     #Ben  - median for a variable
     def getMedianOfEntireColumn(nameOfVariable):
