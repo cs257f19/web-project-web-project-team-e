@@ -23,8 +23,8 @@ class DataSource:
     def connect(user, password):
 	'''
 	Establishes a connection to the database with the following credentials:
-	
-	PARAMETERS:	
+
+	PARAMETERS:
 		user - username, which is also the name of the database
 		password - the password for this database on perlman
 
@@ -173,7 +173,7 @@ class DataSource:
 			NeedQuantitaveVariableError - If parameter entered is a categorical variable
 
 		'''
-	return []
+		return []
 
     def getProportionOfSuccess(connection, nameOfVariable, variableCondition):
         '''
@@ -198,7 +198,7 @@ class DataSource:
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
             return Nonecursor = connection.cursor()
-	
+
     def getMedianOfEntireColumn(connection, nameOfVariable):
 		'''
         Returns the median of a quantitave variable.
@@ -213,26 +213,26 @@ class DataSource:
 		RAISES:
 			NeedQuantitaveVariableError - If parameter entered is a categorical variable
         '''
-	return []
+		return []
 
     def getMedianOfFilteredCategory(connection, filter, category):
-	'''
-	Returns the median of a selected 'category' that is grouped by a quantitave variable.
+		'''
+		Returns the median of a selected 'category' that is grouped by a quantitave variable.
 
         PARAMETERS
-		connection - the connection to the database
-		category - a selected category of projects (i.e Design)
-		filter - a filter that highlights one specific part of the category. This is typically the name ofa another category (i.e backers or USD goal).
+			connection - the connection to the database
+			category - a selected category of projects (i.e Design)
+			filter - a filter that highlights one specific part of the category. This is typically the name ofa another category (i.e backers or USD goal).
 
 
 
         RETURN:
-		a integer that is the median of the provided parameter grouped by the filter (i.e the median USD goal for Design projects)
+			a integer that is the median of the provided parameter grouped by the filter (i.e the median USD goal for Design projects)
 
-	RAISES:
-		NeedQuantitaveVariableError - If the filter parameter entered is a categorical variable
-	'''
-	return []
+		RAISES:
+			NeedQuantitaveVariableError - If the filter parameter entered is a categorical variable
+		'''
+		return []
 
     def calculateProbabilityOfSuccess(connection, tbd after analysis):
         '''
@@ -291,8 +291,8 @@ class DataSource:
         RETURN:
             A list of the most successful projects with the given length
         '''
-	return []
-		
+		return []
+
     def getListOfAllProjectsOfOneCatergory(connection, category):
 		'''
         Returns a list of every project for a given category
@@ -303,4 +303,4 @@ class DataSource:
         RETURN:
             A list of each project for the user chosen category
         '''
-	return []
+		return []
