@@ -43,7 +43,7 @@ def getNumberOfProjects(connection):
 		cursor = connection.cursor()
 		query = "SELECT COUNT(ID) FROM ksdata"
 		cursor.execute(query)
-		return cursor.execute(query)
+		return cursor.fetchall(query)
 
 	except Exception as e:
 		print ("Something went wrong when executing the query: ", e)
