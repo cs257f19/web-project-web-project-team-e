@@ -29,50 +29,30 @@ def connect(user, password):
 		exit()
 	return connection
 
-def getCountofFilteredCategory(nameOfVariable, variableCondition, varibaleConditionToMeet):
+def getProportionOfSuccess(connection, nameOfVariable, variableCondition):
 	'''
-	Returns the count (an integer) of all of projects of one variable grouped by another variable (filter)
-
-	PARAMETERS:
-		nameOfVariable - the variable of the project we are counting from.
-		variableCondition - an attribute of the main variable (i.e category, country, currency)
-		varibaleConditionToMeet - the condition that needs to be met for the project to be counted
-
-
-	RETURN:
-		an integer that is a total of all the projects in the database that fit these two variables (the count of successful Film & Video Projects)
-
-	'''
-	try:
-		cursor = connection.cursor()
-		query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata WHERE '" + str(variableCondition) + "' = '" + str(varibaleConditionToMeet) + "';"
-		cursor.execute(query)
-		return cursor.fetchall()
-
-	except Exception as e:
-		print ("Something went wrong when executing the query: ", e)
-		return None
-
-def getRandomProject(connection):
-	'''
-	Gives the name of a random project in the kickstarter dataset
+	Calculates the proportion of successful projects based on the name of
+	a column and the filter of that column.
 
 	PARAMETERS:
 		connection - the connection to the database
+		nameOfVariable - the str variable of the project we are creating a proportion for
+		variableCondition - a str attribute of the main variable (i.e category, country, currency)
 
 	RETURNS:
-		int ID of a random project, once the data is clean, we will produce the str name of the project
+		an int proportion between 0 and 1 inclusive
 	'''
-
 	try:
 		cursor = connection.cursor()
-		query = "SELECT * FROM ksdata"
-		cursor.execute(query)
-		return cursor.fetchall()
+		query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND" +
+		 str(nameOfVariable) + "=" + str(filterName)
+
+		return cursor.execute(query)/self.numberOfProjects
 
 	except Exception as e:
 		print ("Something went wrong when executing the query: ", e)
-		return connection.cursor()
+		return Nonecursor = connection.cursor()
+
 
 
 def main():
@@ -86,7 +66,7 @@ def main():
 
 	# Execute a simple query: how many earthquakes above the specified magnitude are there in the data?
 	#results = getCountofFilteredCategory(connection, category, state, successful)
-	results = getRandomProject(connection)
+	results = getProportionOfSuccess(connection, category, Dance)
 
 	if results is not None:
 		print("Query results: ")
