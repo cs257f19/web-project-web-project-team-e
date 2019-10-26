@@ -1,6 +1,14 @@
 import psycopg2
 import getpass
 
+'''
+AMY
+Some of these implementations are works in progress, so please grade
+getNumberOfProjects
+getMinimumValueOfVariable
+getMaximumValueOfVariable
+'''
+
 class DataSource:
 	'''
 	DataSource executes all of the queries on the database.
@@ -272,11 +280,29 @@ class DataSource:
 
 
     #Kenyon - Uses calculated success score and gives a list based on user input of most successful projects
-    def mostSuccessfulProjects(listLength, nameOfVariable, filter):
+    def mostSuccessfulProjects(listLength, nameOfVariable, variableCondition):
+		'''
+        Returns a list of the given length of the most successful projects by success score
 
+        PARAMETERS:
+            listLength - int length of list the user wants
+			nameOfVariable - the str variable of the project we are creating a proportion for
+			variableCondition - a str attribute of the main variable (i.e category, country, currency)
+
+        RETURN:
+            A list of the most successful projects with the given length
+        '''
     #Kenyon - creates a list of all projects of one category
     def getListOfAllProjectsOfOneCatergory(category):
+		'''
+        Returns a list of every project for a given category
 
+        PARAMETERS:
+            category - str of the chosen category in the dataset
+
+        RETURN:
+            A list of each project for the user chosen category
+        '''
 
 
 
