@@ -2,7 +2,8 @@
 /* CSS Document */
 
 body{
-	background-color: #ffffff;
+	background-color: white;
+	margin: 0;
 }
 
 .header{
@@ -17,13 +18,13 @@ body{
 	top: 17px;
 	right: 17px;
 }
-	
+
 ul{
-	list-style-type: none; 
+	list-style-type: none;
 	margin: 0;
 	padding: 0px;
 	overflow: hidden;
-	background-color: #dddddd;		
+	background-color: #dddddd;
 	}
 
 li{
@@ -36,26 +37,34 @@ li{
 li:hover{
 	background-color: #d6b6ff;
 	}
-		
+
 
 * {
   	box-sizing: border-box;
 }
 
-/* Create three equal columns that floats next to each other */
+/* Create three equal columns that float next to each other */
 .column {
-  	float: left;
-  	width: 30.33%;
-  	padding: 1px;
+	float: left;
+	width: 33%;
+	padding: 10px;
 	padding-left: 30px;
-  	height: 235px; 
-	margin: 10px;
-	background-color : #F6EFFF;
-	border-radius: 8px;
+	padding-right: 30px;
+	height: 400px;
+	margin: 1px;
+	background-color : #d45555;
+	color: white;
+	border-radius: 3px;
+	border: #ff9d00;
+	border-style: solid;
+	border-color: #ffffff #ff9d00;
+	transition: 0s background-color;
 }
 
 .column:hover{
-	background: #ECDDFF;
+	background: #FFFFFF;
+	color: #540c87;
+	transition: 0.5s;
 	}
 
 /* Clear floats after the columns */
@@ -64,4 +73,3 @@ li:hover{
   	display: table;
  	clear: both;
 }
-

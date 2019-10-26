@@ -47,9 +47,41 @@ class DataSource:
 
     #Kenyon IMPLEMENT
     def getMinimumValueOfVariable(nameOfVariable):
+		'''
+		Returns the smallest value (a float) in the dataset for a given variable (filter)
+
+		PARAMETERS:
+			nameOfVariable - the major variable from which the minimum value is being taken
+
+		RETURN:
+			a float that is the smallest value in the dataset for the variable provided
+
+		'''
+
+		try:
+			cursor = connection.cursor()
+			query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata ORDER BY DESC"
+			cursor.execute(query)
+			return cursor.fetch()
 
     #Kenyon IMPLEMENT
     def getMaximumValueOfVariable(nameOfVariable):
+		'''
+		Returns the largest value (a float) in the dataset for a given variable (filter)
+
+		PARAMETERS:
+			nameOfVariable - the major variable from which the maximum value is being taken
+
+		RETURN:
+			a float that is the largest value in the dataset for the variable provided
+
+		'''
+
+		try:
+			cursor = connection.cursor()
+			query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata ORDER BY DESC"
+			cursor.execute(query)
+			return cursor.fetch()
 
     #Ben
     def getAverageOfVariable(nameOfVariable):
@@ -115,7 +147,7 @@ class DataSource:
     #Elisa
     def createRGraph(tbd):
 
-    #Kenyon - Uses calculated success score and give a list based on user input of most successful projects
+    #Kenyon - Uses calculated success score and gives a list based on user input of most successful projects
     def mostSuccessfulProjects(listLength, nameOfVariable, filter):
 
     #Kenyon - creates a list of all projects of one category
