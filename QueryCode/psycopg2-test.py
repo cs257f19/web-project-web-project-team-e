@@ -80,9 +80,9 @@ def main():
 	# Connect to the database
 	connection = connect(user, password)
 
-	# Execute a simple query: how many earthquakes above the specified magnitude are there in the data?
-	#results = getCountofFilteredCategory(connection, category, state, successful)
+
 	results = getNumberOfProjects(connection)
+	minVariable = getMinimumValueOfVariable('backers')
 
 	if results is not None:
 		print("Query results: ")
