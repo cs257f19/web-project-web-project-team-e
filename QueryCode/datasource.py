@@ -53,29 +53,29 @@ class DataSource:
 
     #ben - how many projects where there in the us
     #IMPLEMENT
-    def getCountofFilteredCategory(nameOfVariable, variableCondition, varibaleConditionToMeet):
+    def getCountofCategorySuccess(connection, nameOfVariable, varibaleConditionToMeet):
         '''
         Returns the count (an integer) of all of projects of one variable grouped by another variable (filter)
 
         PARAMETERS:
             nameOfVariable - the variable of the project we are counting from.
-            variableCondition - an attribute of the main variable (i.e category, country, currency)
-	    varibaleConditionToMeet - the condition that needs to be met for the project to be counted
+	    	variableConditionToMeet - the condition that needs to be met for the project to be counted
 
 
         RETURN:
             an integer that is a total of all the projects in the database that fit these two variables (the count of successful Film & Video Projects)
 
-        '''
+		#work in progress - DO NOT GRADE
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata WHERE '" + str(variableCondition) + "' = '" + str(varibaleConditionToMeet) + "';"
+			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND WHERE" '" + str(nameOfVariable) + "' = '" + str(varibaleConditionToMeet) + "'
 			cursor.execute(query)
 			return cursor.fetchall()
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
 			return None
+			'''
 
     #Kenyon IMPLEMENT
     def getMinimumValueOfVariable(nameOfVariable):

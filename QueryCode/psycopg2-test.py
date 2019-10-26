@@ -12,7 +12,6 @@ import getpass
 import psycopg2
 
 
-
 def connect(user, password):
 	'''
 	Establishes a connection to the database with the following credentials:
@@ -30,31 +29,33 @@ def connect(user, password):
 		exit()
 	return connection
 
-def getCountofFilteredCategory(nameOfVariable, variableCondition, varibaleConditionToMeet):
+def getProportionOfSuccess(connection, nameOfVariable, variableCondition):
 	'''
-	Returns the count (an integer) of all of projects of one variable grouped by another variable (filter)
+	Calculates the proportion of successful projects based on the name of
+	a column and the filter of that column.
 
 	PARAMETERS:
-		nameOfVariable - the variable of the project we are counting from.
-		variableCondition - an attribute of the main variable (i.e category, country, currency)
-		varibaleConditionToMeet - the condition that needs to be met for the project to be counted
+		connection - the connection to the database
+		nameOfVariable - the str variable of the project we are creating a proportion for
+		variableCondition - a str attribute of the main variable (i.e category, country, currency)
 
-
-	RETURN:
-		an integer that is a total of all the projects in the database that fit these two variables (the count of successful Film & Video Projects)
-
+	RETURNS:
+		an int proportion between 0 and 1 inclusive
 	'''
 	try:
 		cursor = connection.cursor()
-		query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata WHERE '" + str(variableCondition) + "' = '" + str(varibaleConditionToMeet) + "';"
+		query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + "='" + str(variableCondition) +"'"
 		cursor.execute(query)
 		return cursor.fetchall()
 
 	except Exception as e:
 		print ("Something went wrong when executing the query: ", e)
-		return None
+		return connection.cursor()
+
+
 
 def main():
+
 	# Replace these credentials with your own
 	user = 'santosb'
 	password = 'books347winter'
@@ -63,7 +64,8 @@ def main():
 	connection = connect(user, password)
 
 	# Execute a simple query: how many earthquakes above the specified magnitude are there in the data?
-	results = getCountofFilteredCategory(main_category, state, successful)
+	#results = getCountofFilteredCategory(connection, category, state, successful)
+	results = getProportionOfSuccess(connection, 'category', 'Dance')
 
 	if results is not None:
 		print("Query results: ")
