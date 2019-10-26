@@ -53,7 +53,7 @@ class DataSource:
 
     #ben - how many projects where there in the us
     #IMPLEMENT
-    def getCountofFilteredCategory(nameOfVariable, variableCondition, varibaleConditionToMeet):
+    def getCountofFilteredCategory(connection, nameOfVariable, variableCondition, varibaleConditionToMeet):
         '''
         Returns the count (an integer) of all of projects of one variable grouped by another variable (filter)
 
