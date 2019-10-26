@@ -12,6 +12,7 @@ class DataSource:
     	self.numberOfProjects = 378661
         pass
 
+
     def connect(user, password):
 	'''
 	Establishes a connection to the database with the following credentials:
@@ -42,14 +43,15 @@ class DataSource:
 			an int that is the total number of entries
 		'''
 		try:
-            cursor = connection.cursor()
-            query = "SELECT COUNT(ID) FROM ksdata"
-            cursor.execute(query)
-            return cursor.executequery()
+			cursor = connection.cursor()
+			query = "SELECT COUNT(ID) FROM ksdata"
+			cursor.execute(query)
+			numberOfProjects = int(cursor.fetchall()[0][0])
+			return numberOfProjects
 
-        except Exception as e:
-            print ("Something went wrong when executing the query: ", e)
-            return connection.cursor()
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
 
 
     def getRandomProject(connection):
@@ -99,7 +101,7 @@ class DataSource:
 			'''
 
     #Kenyon IMPLEMENT
-    def getMinimumValueOfVariable(nameOfVariable):
+    def getMinimumValueOfVariable(connection, nameOfVariable):
 		'''
 		Returns the smallest value (a float) in the dataset for a given variable (filter)
 
@@ -113,9 +115,10 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT MIN(str(nameOfVariable)) FROM ksdata"
+			query = "SELECT MIN(" + str(nameOfVariable) + ") FROM ksdata"
 			cursor.execute(query)
-			return cursor.fetchall()
+			smallestValue = float(cursor.fetchall()[0][0])
+			return smallestValue
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
