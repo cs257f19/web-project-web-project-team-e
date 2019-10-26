@@ -54,6 +54,7 @@ def getCountofFilteredCategory(nameOfVariable, variableCondition, varibaleCondit
 		return None
 
 def main():
+
 	# Replace these credentials with your own
 	user = 'santosb'
 	password = 'books347winter'
@@ -62,7 +63,8 @@ def main():
 	connection = connect(user, password)
 
 	# Execute a simple query: how many earthquakes above the specified magnitude are there in the data?
-	results = getCountofFilteredCategory(connection, category, state, successful)
+	#results = getCountofFilteredCategory(connection, category, state, successful)
+	results = getRandomProject(connection)
 
 	if results is not None:
 		print("Query results: ")
