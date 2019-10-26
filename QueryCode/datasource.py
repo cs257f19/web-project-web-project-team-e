@@ -23,10 +23,12 @@ class DataSource:
     def connect(user, password):
 	'''
 	Establishes a connection to the database with the following credentials:
+	
+	PARAMETERS:	
 		user - username, which is also the name of the database
 		password - the password for this database on perlman
 
-	Returns: a database connection.
+	RETURNS: a database connection.
 
 	Note: exits if a connection cannot be established.
 	Note: Code written by Amy Csizmar Dalal
@@ -39,37 +41,36 @@ class DataSource:
 	return connection
 
 
-	def getNumberOfProjects(connection):
-		'''
-		Gives the total number of projects(entries) in the datatable. This is done to avoid having a 'magic number'
+    def getNumberOfProjects(connection):
+	'''
+	Gives the total number of projects(entries) in the datatable. This is done to avoid having a 'magic number'
 
-		PARAMETERS:
-			connection - the connection to the database
+	PARAMETERS:
+		connection - the connection to the database
 
-		RETURNS:
-			an int that is the total number of entries
-		'''
-		try:
-			cursor = connection.cursor()
-			query = "SELECT COUNT(ID) FROM ksdata"
-			cursor.execute(query)
-			numberOfProjects = int(cursor.fetchall()[0][0])
-			return numberOfProjects
+	RETURNS:
+		an int that is the total number of entries
+	'''
+	try:
+		cursor = connection.cursor()
+		query = "SELECT COUNT(ID) FROM ksdata"
+		cursor.execute(query)
+		numberOfProjects = int(cursor.fetchall()[0][0])
+		return numberOfProjects
 
-		except Exception as e:
-			print ("Something went wrong when executing the query: ", e)
-			return connection.cursor()
+	except Exception as e:
+		print ("Something went wrong when executing the query: ", e)
+		return connection.cursor()
 
 
     def getRandomProject(connection):
         '''
-        Gives the name of a random project in the kickstarter dataset
-
+        Returns entire information in list form for a random project in the kickstarter dataset
         PARAMETERS:
             connection - the connection to the database
 
         RETURNS:
-            int ID of a random project, once the data is clean, we will produce the str name of the project
+            list of variables for a project, once the data is clean, we will produce the str name of the project
         '''
 
         try:
@@ -82,7 +83,6 @@ class DataSource:
             print ("Something went wrong when executing the query: ", e)
             return connection.cursor()
 
-    #ben - how many projects where there in the us
     def getCountofCategorySuccess(connection, nameOfVariable, varibaleConditionToMeet):
         '''
         Returns the count (an integer) of all of projects of one variable grouped by another variable (filter)
@@ -107,8 +107,8 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 			'''
+		return []
 
-    #Kenyon IMPLEMENT
     def getMinimumValueOfVariable(connection, nameOfVariable):
 		'''
 		Returns the smallest value (a float) in the dataset for a given variable (filter)
@@ -133,7 +133,6 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
-    #Kenyon IMPLEMENT
     def getMaximumValueOfVariable(connection, nameOfVariable):
 		'''
 		Returns the largest value (a float) in the dataset for a given variable (filter)
@@ -158,7 +157,6 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
-    #Ben
     def getAverageOfVariable(connection, nameOfVariable):
         '''
         Returns an average of all the entries for one variable in the data set.
@@ -175,8 +173,8 @@ class DataSource:
 			NeedQuantitaveVariableError - If parameter entered is a categorical variable
 
 		'''
+	return []
 
-    #Elisa
     def getProportionOfSuccess(connection, nameOfVariable, variableCondition):
         '''
         Calculates the proportion of successful projects based on the name of
@@ -200,8 +198,7 @@ class DataSource:
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
             return Nonecursor = connection.cursor()
-
-    #Ben  - median for a variable
+	
     def getMedianOfEntireColumn(connection, nameOfVariable):
 		'''
         Returns the median of a quantitave variable.
@@ -216,28 +213,27 @@ class DataSource:
 		RAISES:
 			NeedQuantitaveVariableError - If parameter entered is a categorical variable
         '''
+	return []
 
-    #Ben - median success rate for poetry projects. Median of one variable grouped by another ie. median of Food Project USD goal
     def getMedianOfFilteredCategory(connection, filter, category):
-		'''
-		Returns the median of a selected 'category' that is grouped by a quantitave variable.
+	'''
+	Returns the median of a selected 'category' that is grouped by a quantitave variable.
 
         PARAMETERS
-			connection - the connection to the database
-            category - a selected category of projects (i.e Design)
-			filter - a filter that highlights one specific part of the category. This is typically the name ofa another category (i.e backers or USD goal).
+		connection - the connection to the database
+		category - a selected category of projects (i.e Design)
+		filter - a filter that highlights one specific part of the category. This is typically the name ofa another category (i.e backers or USD goal).
 
 
 
         RETURN:
-            a integer that is the median of the provided parameter grouped by the filter (i.e the median USD goal for Design projects)
+		a integer that is the median of the provided parameter grouped by the filter (i.e the median USD goal for Design projects)
 
-		RAISES:
-			NeedQuantitaveVariableError - If the filter parameter entered is a categorical variable
+	RAISES:
+		NeedQuantitaveVariableError - If the filter parameter entered is a categorical variable
+	'''
+	return []
 
-		'''
-
-    #Elisa
     def calculateProbabilityOfSuccess(connection, tbd after analysis):
         '''
         Returns the probability of success for a project given inputed values for their
@@ -251,10 +247,8 @@ class DataSource:
         RETURN:
             a probability of success between 0 and 1 inclusive
         '''
-
         return []
 
-    #Elisa
     def calculateSuccessScore(connection, goalFundsRaised, actualFundsRaised):
         '''
         Returns a 'success score', the way in which it will be calculated has yet to be determined
@@ -267,10 +261,8 @@ class DataSource:
         RETURN:
             An int 'success score'
         '''
-
         return []
 
-    #Elisa
     def createRGraph(connection, typeOfGraph, tbdFilters):
         '''
         Creates a graph and return the graph onto the website given certain selected
@@ -284,11 +276,9 @@ class DataSource:
         RETURN:
             a graph
         '''
-
         return []
 
 
-    #Kenyon - Uses calculated success score and gives a list based on user input of most successful projects
     def mostSuccessfulProjects(connection, listLength, nameOfVariable, variableCondition):
 		'''
         Returns a list of the given length of the most successful projects by success score
@@ -301,7 +291,8 @@ class DataSource:
         RETURN:
             A list of the most successful projects with the given length
         '''
-    #Kenyon - creates a list of all projects of one category
+	return []
+		
     def getListOfAllProjectsOfOneCatergory(connection, category):
 		'''
         Returns a list of every project for a given category
@@ -312,60 +303,4 @@ class DataSource:
         RETURN:
             A list of each project for the user chosen category
         '''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    def getMagnitudesInRange(self, start, end=10.0):
-        '''
-        Returns a list of all of the magnitudes from the specified starting magnitude until the specified ending magnitude.
-
-        PARAMETERS:
-            start - the low end of the magnitude range
-            end - the high end of the magnitude range (default: 10.0)
-
-        RETURN:
-            a list of all of the earthquake events with magnitudes in the specified range
-        '''
-        return []
-
-    def getQuakesOnContinent(self, continent):
-        '''
-        Returns a list of all of the earthquakes that occurred on the specified continent.
-
-        PARAMETERS:
-            continent
-
-        RETURN:
-            a list of all of the earthquake events that occurred on this continent
-        '''
-        return []
-
-    def getQuakesInDateRange(self, start, end):
-        '''
-        Returns a list of all of the earthquakes that occurred within the range of specified dates.
-
-        PARAMETERS:
-            start - the starting date of the range
-            end - the ending date of the range
-
-        RETURN:
-            a list of all of the earthquake events that occurred within this date range.
-        '''
-        return []
+	return []
