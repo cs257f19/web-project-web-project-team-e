@@ -53,13 +53,12 @@ class DataSource:
 
     #ben - how many projects where there in the us
     #IMPLEMENT
-    def getCountofFilteredCategory(connection, nameOfVariable, variableCondition, varibaleConditionToMeet):
+    def getCountofCategorySuccess(connection, nameOfVariable, varibaleConditionToMeet):
         '''
         Returns the count (an integer) of all of projects of one variable grouped by another variable (filter)
 
         PARAMETERS:
             nameOfVariable - the variable of the project we are counting from.
-            variableCondition - an attribute of the main variable (i.e category, country, currency)
 	    	variableConditionToMeet - the condition that needs to be met for the project to be counted
 
 
@@ -69,7 +68,7 @@ class DataSource:
         '''
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata WHERE '" + str(variableCondition) + "' = '" + str(varibaleConditionToMeet) + "';"
+			query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata WHERE '" + str(nameOfVariable) + "' = '" + str(varibaleConditionToMeet) + "' and WHERE 'state' = 'successful';"
 			cursor.execute(query)
 			return cursor.fetchall()
 
