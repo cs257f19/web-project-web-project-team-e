@@ -64,11 +64,16 @@ def main():
 	# Execute a simple query: how many earthquakes above the specified magnitude are there in the data?
 	#results = getCountofFilteredCategory(connection, category, state, successful)
 	results = getRandomProject(connection)
+	#minimum_variable = getMinimumValueOfVariable(variable)
+	minimum_variable = getMinimumValueOfVariable("backers")
 
 	if results is not None:
 		print("Query results: ")
 		for item in results:
 			print(item)
+
+	if minVariable is not None:
+		print("The smallest number of backers was " + minVariable)
 
 	# Disconnect from database
 	connection.close()
