@@ -47,7 +47,7 @@ def getNumberOfProjects(connection):
 
 	except Exception as e:
 		print ("Something went wrong when executing the query: ", e)
-		return connection.cursor()
+		return int(connection.cursor())
 
 def getMinimumValueOfVariable(connection, nameOfVariable):
 	'''
@@ -65,7 +65,7 @@ def getMinimumValueOfVariable(connection, nameOfVariable):
 		cursor = connection.cursor()
 		query = "SELECT MIN(" + str(nameOfVariable) + ") FROM ksdata"
 		cursor.execute(query)
-		return cursor.fetchall()[0][0]
+		return int(cursor.fetchall()[0][0])
 
 	except Exception as e:
 		print ("Something went wrong when executing the query: ", e)
