@@ -8,9 +8,10 @@ author: Amy Csizmar Dalal
 date: 22 October 2019
 Adapted from code originally written by Jeff Ondich
 '''
-
-import psycopg2
 import getpass
+import psycopg2
+
+
 
 def connect(user, password):
 	'''
@@ -29,20 +30,23 @@ def connect(user, password):
 		exit()
 	return connection
 
-def getQuakesAboveMagnitude(connection, magnitude):
+def getCountofFilteredCategory(nameOfVariable, variableCondition, varibaleConditionToMeet):
 	'''
-	Retrieves all earthquakes with a magnitude greater than the specified magnitude		
+	Returns the count (an integer) of all of projects of one variable grouped by another variable (filter)
 
-	Parameters:
-		connection - the connection to the database
-		magnitude - retrieve all earthquakes above this magnitude from the data
+	PARAMETERS:
+		nameOfVariable - the variable of the project we are counting from.
+		variableCondition - an attribute of the main variable (i.e category, country, currency)
+		varibaleConditionToMeet - the condition that needs to be met for the project to be counted
 
-	Returns:
-		a collection of all earthquakes above this magnitude, or None if the query fails.
+
+	RETURN:
+		an integer that is a total of all the projects in the database that fit these two variables (the count of successful Film & Video Projects)
+
 	'''
 	try:
 		cursor = connection.cursor()
-		query = "SELECT	* FROM earthquakes WHERE mag > " + str(magnitude) + " ORDER BY mag DESC"
+		query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata WHERE '" + str(variableCondition) + "' = '" + str(varibaleConditionToMeet) + "';"
 		cursor.execute(query)
 		return cursor.fetchall()
 
@@ -52,15 +56,15 @@ def getQuakesAboveMagnitude(connection, magnitude):
 
 def main():
 	# Replace these credentials with your own
-	user = 'adalal'
-	password = getpass.getpass()
+	user = 'santosb'
+	password = 'books347winter'
 
 	# Connect to the database
 	connection = connect(user, password)
 
 	# Execute a simple query: how many earthquakes above the specified magnitude are there in the data?
-	results = getQuakesAboveMagnitude(connection, 5)
-	
+	results = getCountofFilteredCategory(main_category, state, successful)
+
 	if results is not None:
 		print("Query results: ")
 		for item in results:
