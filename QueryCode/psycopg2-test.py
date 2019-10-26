@@ -63,7 +63,7 @@ def main():
 
 	# Execute a simple query: how many earthquakes above the specified magnitude are there in the data?
 	#results = getCountofFilteredCategory(connection, category, state, successful)
-	results = def getRandomProject(connection)
+	results = getRandomProject(connection)
 
 	if results is not None:
 		print("Query results: ")
