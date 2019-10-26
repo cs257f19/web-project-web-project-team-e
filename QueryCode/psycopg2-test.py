@@ -65,7 +65,7 @@ def main():
 
 	# Execute a simple query: how many earthquakes above the specified magnitude are there in the data?
 	#results = getCountofFilteredCategory(connection, category, state, successful)
-	results = getProportionOfSuccess(connection, 'category', 'Dance')
+	results = getProportionOfSuccess(connection, category, Dance)
 
 	if results is not None:
 		print("Query results: ")
