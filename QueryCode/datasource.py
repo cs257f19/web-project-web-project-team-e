@@ -30,6 +30,8 @@ class DataSource:
 		exit()
 	return connection
 
+	def getNumberOfProjects():
+
     def getRandomProject(connection):
         '''
         Gives the name of a random project in the kickstarter dataset
@@ -52,7 +54,6 @@ class DataSource:
             return Nonecursor = connection.cursor()
 
     #ben - how many projects where there in the us
-    #IMPLEMENT
     def getCountofCategorySuccess(connection, nameOfVariable, varibaleConditionToMeet):
         '''
         Returns the count (an integer) of all of projects of one variable grouped by another variable (filter)
