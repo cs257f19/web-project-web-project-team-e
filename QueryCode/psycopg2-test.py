@@ -44,8 +44,7 @@ def getProportionOfSuccess(connection, nameOfVariable, variableCondition):
 	'''
 	try:
 		cursor = connection.cursor()
-		query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND" +
-		 str(nameOfVariable) + "=" + str(filterName)
+		query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND" + str(nameOfVariable) + "=" + str(filterName)
 
 		return cursor.execute(query)/self.numberOfProjects
 
