@@ -65,7 +65,7 @@ def getMinimumValueOfVariable(connection, nameOfVariable):
 		cursor = connection.cursor()
 		query = "SELECT MIN(" + str(nameOfVariable) + ") FROM ksdata"
 		cursor.execute(query)
-		return cursor.fetchall()[1]
+		return cursor.fetchall()[0]
 
 	except Exception as e:
 		print ("Something went wrong when executing the query: ", e)
