@@ -49,6 +49,27 @@ def getNumberOfProjects(connection):
 		print ("Something went wrong when executing the query: ", e)
 		return connection.cursor()
 
+def getMinimumValueOfVariable(nameOfVariable):
+	'''
+	Returns the smallest value (a float) in the dataset for a given variable (filter)
+
+	PARAMETERS:
+		nameOfVariable - the major variable from which the minimum value is being taken
+
+	RETURN:
+		a float that is the smallest value in the dataset for the variable provided
+
+	'''
+
+	try:
+		cursor = connection.cursor()
+		query = "SELECT MIN(str(nameOfVariable)) FROM ksdata"
+		cursor.execute(query)
+		return cursor.fetchall()
+
+	except Exception as e:
+		print ("Something went wrong when executing the query: ", e)
+		return None
 
 def main():
 
@@ -67,6 +88,9 @@ def main():
 		print("Query results: ")
 		for item in results:
 			print(item)
+
+	if minVariable is not None:
+		print("The smallest number of backers was " + minVariable)
 
 	# Disconnect from database
 	connection.close()
