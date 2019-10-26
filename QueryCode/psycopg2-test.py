@@ -53,6 +53,28 @@ def getCountofFilteredCategory(nameOfVariable, variableCondition, varibaleCondit
 		print ("Something went wrong when executing the query: ", e)
 		return None
 
+def getRandomProject(connection):
+	'''
+	Gives the name of a random project in the kickstarter dataset
+
+	PARAMETERS:
+		connection - the connection to the database
+
+	RETURNS:
+		int ID of a random project, once the data is clean, we will produce the str name of the project
+	'''
+
+	try:
+		cursor = connection.cursor()
+		query = "SELECT ID FROM ksdata ORDER BY RAND() LIMIT 1"
+		cursor.execute(query)
+		return cursor.fetchall()
+
+	except Exception as e:
+		print ("Something went wrong when executing the query: ", e)
+		return Nonecursor = connection.cursor()
+
+		
 def main():
 
 	# Replace these credentials with your own
