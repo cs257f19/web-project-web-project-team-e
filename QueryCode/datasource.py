@@ -5,8 +5,8 @@ import getpass
 AMY
 Some of these implementations are works in progress, so please grade
 getNumberOfProjects
+getRandomProject
 getMinimumValueOfVariable
-getMaximumValueOfVariable
 '''
 
 class DataSource:
@@ -74,7 +74,7 @@ class DataSource:
 
         try:
             cursor = connection.cursor()
-            query = "SELECT ID FROM ksdata ORDER BY RANDOM() LIMIT 1"
+            query = "SELECT * FROM ksdata ORDER BY RANDOM() LIMIT 1"
             cursor.execute(query)
             return cursor.fetchall()
 

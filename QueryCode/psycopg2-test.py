@@ -117,7 +117,7 @@ def main():
 		print(minVariable)
 
 	if randomProject is not None:
-		print("Random project ID: ")
+		print("Random project: ")
 		print(randomProject)
 
 	# Disconnect from database
