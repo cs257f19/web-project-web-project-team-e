@@ -9,7 +9,6 @@ class DataSource:
 	'''
 
     def __init__(self):
-    	self.numberOfProjects = 378661
         pass
 
 
