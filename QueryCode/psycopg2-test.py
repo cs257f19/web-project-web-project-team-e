@@ -29,27 +29,25 @@ def connect(user, password):
 		exit()
 	return connection
 
-def getRandomProject(connection):
+def getNumberOfProjects(connection):
 	'''
-	Gives the name of a random project in the kickstarter dataset
+	Gives the total number of projects(entries) in the datatable. This is done to avoid having a 'magic number'
 
 	PARAMETERS:
 		connection - the connection to the database
 
 	RETURNS:
-		int ID of a random project, once the data is clean, we will produce the str name of the project
+		an int that is the total number of entries
 	'''
-
 	try:
 		cursor = connection.cursor()
-		query = "SELECT ID FROM ksdata ORDER BY RANDOM() LIMIT 1"
+		query = "SELECT COUNT(ID) FROM ksdata"
 		cursor.execute(query)
-		return cursor.fetchall()
+		return cursor.ex()
 
 	except Exception as e:
 		print ("Something went wrong when executing the query: ", e)
-		return connection.cursor()
-
+		return Nonecursor = connection.cursor()
 
 
 def main():
@@ -63,7 +61,7 @@ def main():
 
 	# Execute a simple query: how many earthquakes above the specified magnitude are there in the data?
 	#results = getCountofFilteredCategory(connection, category, state, successful)
-	results = getRandomProject(connection)
+	results = getNumberOfProjects(connection)
 
 	if results is not None:
 		print("Query results: ")

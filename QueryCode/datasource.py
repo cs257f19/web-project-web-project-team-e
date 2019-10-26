@@ -35,8 +35,21 @@ class DataSource:
 		'''
 		Gives the total number of projects(entries) in the datatable. This is done to avoid having a 'magic number'
 
-		
+		PARAMETERS:
+			connection - the connection to the database
+
+		RETURNS:
+			an int that is the total number of entries
 		'''
+		try:
+            cursor = connection.cursor()
+            query = "SELECT COUNT(ID) FROM ksdata"
+            cursor.execute(query)
+            return cursor.executequery()
+
+        except Exception as e:
+            print ("Something went wrong when executing the query: ", e)
+            return connection.cursor()
 
 
     def getRandomProject(connection):
@@ -58,7 +71,7 @@ class DataSource:
 
         except Exception as e:
             print ("Something went wrong when executing the query: ", e)
-            return Nonecursor = connection.cursor()
+            return connection.cursor()
 
     #ben - how many projects where there in the us
     def getCountofCategorySuccess(connection, nameOfVariable, varibaleConditionToMeet):
