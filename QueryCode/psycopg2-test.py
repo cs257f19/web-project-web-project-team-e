@@ -42,7 +42,7 @@ def getRandomProject(connection):
 
 	try:
 		cursor = connection.cursor()
-		query = "SELECT ID FROM ksdata ORDER BY RAND() LIMIT 1"
+		query = "SELECT ID FROM ksdata ORDER BY RANDOM() LIMIT 1"
 		cursor.execute(query)
 		return cursor.fetchall()
 
