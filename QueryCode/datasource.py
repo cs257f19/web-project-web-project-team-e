@@ -45,7 +45,7 @@ class DataSource:
 
         try:
             cursor = connection.cursor()
-            query = "SELECT ID FROM ksdata ORDER BY RAND() LIMIT 1"
+            query = "SELECT ID FROM ksdata ORDER BY RANDOM() LIMIT 1"
             cursor.execute(query)
             return cursor.fetchall()
 
@@ -93,9 +93,9 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata ORDER BY DESC"
+			query = "SELECT MIN(str(nameOfVariable)) FROM ksdata"
 			cursor.execute(query)
-			return cursor.fetchone()
+			return cursor.fetchall()
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -116,7 +116,7 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(" + str(nameOfVariable) + ")  FROM ksdata ORDER BY ASC"
+			query = "SELECT MAX(str(nameOfVariable)) FROM ksdata"
 			cursor.execute(query)
 			return cursor.fetchone()
 
