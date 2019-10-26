@@ -49,7 +49,7 @@ def getNumberOfProjects(connection):
 		print ("Something went wrong when executing the query: ", e)
 		return connection.cursor()
 
-def getMinimumValueOfVariable(nameOfVariable):
+def getMinimumValueOfVariable(connection, nameOfVariable):
 	'''
 	Returns the smallest value (a float) in the dataset for a given variable (filter)
 
@@ -82,7 +82,7 @@ def main():
 
 
 	results = getNumberOfProjects(connection)
-	minVariable = getMinimumValueOfVariable('backers')
+	minVariable = getMinimumValueOfVariable(connection, 'backers')
 
 	if results is not None:
 		print("Query results: ")
