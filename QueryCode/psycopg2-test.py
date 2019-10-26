@@ -72,9 +72,9 @@ def getRandomProject(connection):
 
 	except Exception as e:
 		print ("Something went wrong when executing the query: ", e)
-		return Nonecursor = connection.cursor()
+		return Nonecursor == connection.cursor()
 
-		
+
 def main():
 
 	# Replace these credentials with your own
