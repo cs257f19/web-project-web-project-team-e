@@ -87,8 +87,7 @@ def main():
 
 	if results is not None:
 		print("Query results: ")
-		for item in results:
-			print(item)
+		print(results)
 
 	if minVariable is not None:
 		print("The smallest number of backers was ")
