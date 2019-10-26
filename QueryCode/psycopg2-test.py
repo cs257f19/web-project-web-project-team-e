@@ -90,7 +90,8 @@ def main():
 			print(item)
 
 	if minVariable is not None:
-		print("The smallest number of backers was " + minVariable)
+		print("The smallest number of backers was ")
+		print(minVariable)
 
 	# Disconnect from database
 	connection.close()
