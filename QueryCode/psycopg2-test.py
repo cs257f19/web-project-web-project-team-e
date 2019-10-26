@@ -73,11 +73,32 @@ def getMinimumValueOfVariable(connection, nameOfVariable):
 		print ("Something went wrong when executing the query: ", e)
 		return None
 
+def getRandomProject(connection):
+	'''
+	Gives the name of a random project in the kickstarter dataset
+
+	PARAMETERS:
+		connection - the connection to the database
+
+	RETURNS:
+		int ID of a random project, once the data is clean, we will produce the str name of the project
+	'''
+
+	try:
+		cursor = connection.cursor()
+		query = "SELECT * FROM ksdata ORDER BY RANDOM() LIMIT 1"
+		cursor.execute(query)
+		return cursor.fetchall()
+
+	except Exception as e:
+		print ("Something went wrong when executing the query: ", e)
+		return connection.cursor()
+
 def main():
 
 	# Replace these credentials with your own
-	user = 'santosb'
-	password = 'books347winter'
+	user = 'nystromk'
+	password = 'Yoelilegacy2000!'
 
 	# Connect to the database
 	connection = connect(user, password)
@@ -85,6 +106,7 @@ def main():
 
 	results = getNumberOfProjects(connection)
 	minVariable = getMinimumValueOfVariable(connection, 'backers')
+	randomProject = getRandomProject(connection)
 
 	if results is not None:
 		print("Query results: ")
@@ -93,6 +115,10 @@ def main():
 	if minVariable is not None:
 		print("The smallest number of backers was ")
 		print(minVariable)
+
+	if randomProject is not None:
+		print("Random project ID: ")
+		print(randomProject)
 
 	# Disconnect from database
 	connection.close()
