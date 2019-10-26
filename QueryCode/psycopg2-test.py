@@ -63,7 +63,7 @@ def getMinimumValueOfVariable(connection, nameOfVariable):
 
 	try:
 		cursor = connection.cursor()
-		query = "SELECT MIN(str(nameOfVariable)) FROM ksdata"
+		query = "SELECT MIN(" + str(nameOfVariable) + ") FROM ksdata"
 		cursor.execute(query)
 		return cursor.fetchall()
 
