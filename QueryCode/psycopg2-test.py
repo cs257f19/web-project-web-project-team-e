@@ -50,7 +50,7 @@ def getProportionOfSuccess(connection, nameOfVariable, variableCondition):
 
 	except Exception as e:
 		print ("Something went wrong when executing the query: ", e)
-		return Nonecursor = connection.cursor()
+		return connection.cursor()
 
 
 
