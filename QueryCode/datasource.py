@@ -99,7 +99,7 @@ class DataSource:
 		#work in progress - DO NOT GRADE
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND WHERE" '" + str(nameOfVariable) + "' = '" + str(varibaleConditionToMeet) + "'
+			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(varibaleConditionToMeet) + "'
 			cursor.execute(query)
 			return cursor.fetchall()
 
