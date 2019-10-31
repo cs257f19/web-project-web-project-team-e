@@ -16,7 +16,7 @@ class DataSource:
 	or some other collection or object.
 	'''
 
-    def __init__(self):
+	def __init__(self):
         pass
 
 
