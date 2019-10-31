@@ -31,9 +31,13 @@ class DataSourceTester(unittest.TestCase):
         nameOfVariable = 2
         variableConditionToMeet = 'US'
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
-        #self.assertFalse(input)
-        self.assertNotEqual(type(input), type(nameOfVariable))
+        self.assertFalse(input)
 
+    def test_if_condition_is_in_column(self):
+        nameOfVariable = 'country'
+        variableConditionToMeet = 'Dance'
+        input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
+        self.assertFalse(input)
 
 if __name__ == '__main__':
     unittest.main()
