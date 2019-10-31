@@ -146,7 +146,7 @@ def main():
 		print("Random project: ")
 		print(randomProject)
 
-	if countofVariableSuccess is not None:
+	if count is not None:
 		print("Count of successes:")
 		print(count)
 	# Disconnect from database
