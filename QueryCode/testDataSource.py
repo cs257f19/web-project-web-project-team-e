@@ -3,8 +3,8 @@ from datasource import *
 
 class DataSourceTester(unittest.TestCase):
     def setUp(self):
-        user = 'santosb'
-        password = 'books347winter'
+        user = 'loye'
+        password = 'tablet984spring'
         self.ds = DataSource()
         self.connection = self.ds.connect()
 
