@@ -11,7 +11,7 @@ class DataSourceTester(unittest.TestCase):
     def test_correct_parameters(self):
         nameOfVariable = 'country'
         variableConditionToMeet = 'US'
-        self.assertGreaterEqual(self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet),0)
+        self.assertGreater(self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet),0)
 
 
 if __name__ == '__main__':
