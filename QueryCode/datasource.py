@@ -20,7 +20,7 @@ class DataSource:
 		self.user = 'santosb'
 		self.password = 'books347winter'
 
-	def connect(self):
+	def connect(selfß):
 		'''
 		Establishes a connection to the database with the following credentials:
 
@@ -34,7 +34,7 @@ class DataSource:
 		Note: Code written by Amy Csizmar Dalal
 		'''
 		try:
-			connection = psycopg2.connect(database=user, user=user, password=password)
+			connection = psycopg2.connect(database=self.user, user=self.user, password= self.password)
 		except Exception as e:
 			print("Connection error: ", e)
 			exit()
