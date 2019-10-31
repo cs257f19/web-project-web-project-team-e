@@ -101,7 +101,7 @@ class DataSource:
 			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(varibaleConditionToMeet) + "'"
 			cursor.execute(query)
 			count = cursor.fetchall()[0][0]
-			count = 4
+			count ='potato'
 			return count
 
 		except Exception as e:
