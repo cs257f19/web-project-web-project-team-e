@@ -21,42 +21,42 @@ class DataSource:
 
 
     def connect(user, password):
-	'''
-	Establishes a connection to the database with the following credentials:
+		'''
+		Establishes a connection to the database with the following credentials:
 
-	PARAMETERS:
-		user - username, which is also the name of the database
-		password - the password for this database on perlman
+		PARAMETERS:
+			user - username, which is also the name of the database
+			password - the password for this database on perlman
 
-	RETURNS: a database connection.
+		RETURNS: a database connection.
 
-	Note: exits if a connection cannot be established.
-	Note: Code written by Amy Csizmar Dalal
-	'''
-	try:
-		connection = psycopg2.connect(database=user, user=user, password=password)
-	except Exception as e:
-		print("Connection error: ", e)
-		exit()
-	return connection
+		Note: exits if a connection cannot be established.
+		Note: Code written by Amy Csizmar Dalal
+		'''
+		try:
+			connection = psycopg2.connect(database=user, user=user, password=password)
+		except Exception as e:
+			print("Connection error: ", e)
+			exit()
+		return connection
 
 
     def getNumberOfProjects(connection):
-	'''
-	Gives the total number of projects(entries) in the datatable. This is done to avoid having a 'magic number'
+		'''
+		Gives the total number of projects(entries) in the datatable. This is done to avoid having a 'magic number'
 
-	PARAMETERS:
-		connection - the connection to the database
+		PARAMETERS:
+			connection - the connection to the database
 
-	RETURNS:
-		an int that is the total number of entries
-	'''
-	try:
-		cursor = connection.cursor()
-		query = "SELECT COUNT(ID) FROM ksdata"
-		cursor.execute(query)
-		numberOfProjects = int(cursor.fetchall()[0][0])
-		return numberOfProjects
+		RETURNS:
+			an int that is the total number of entries
+		'''
+		try:
+			cursor = connection.cursor()
+			query = "SELECT COUNT(ID) FROM ksdata"
+			cursor.execute(query)
+			numberOfProjects = int(cursor.fetchall()[0][0])
+			return numberOfProjects
 
 	except Exception as e:
 		print ("Something went wrong when executing the query: ", e)

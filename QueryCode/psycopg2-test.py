@@ -98,7 +98,7 @@ def main():
 
 	# Replace these credentials with your own
 	user = 'nystromk'
-	password = 'Yoelilegacy2000!'
+	password = 'Java692spam'
 
 	# Connect to the database
 	connection = connect(user, password)
