@@ -6,7 +6,7 @@ class DataSourceTester(unittest.TestCase):
         user = 'santosb'
         password = 'books347winter'
         self.ds = DataSource()
-        self.connection = ds.connect()
+        self.connection = self.ds.connect(self)
 
     def test_correct_parameters(self):
         nameOfVariable = 'country'
