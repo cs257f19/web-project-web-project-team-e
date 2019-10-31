@@ -27,6 +27,13 @@ class DataSourceTester(unittest.TestCase):
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
         self.assertEqual(input, 0)
 
+    def test_is_parameter_not_a_number(self):
+        nameOfVariable = 2
+        variableConditionToMeet = 'US'
+        input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
+        self.assertFalse(input)
+        #self.assertNotEqual(type(input), type(nameOfVariable))
+
 
 if __name__ == '__main__':
     unittest.main()
