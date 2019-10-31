@@ -39,7 +39,7 @@ class DataSourceTester(unittest.TestCase):
         # zero projects and total number of projects
         self.assertGreaterEqual(input, 0) and self.assertLessEqual(input, 378661)
 
-    def test_is_parameter_not_a_string(self):
+    def test_if_parameter_not_a_string(self):
         nameOfVariable = 2
         variableConditionToMeet = 'US'
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)

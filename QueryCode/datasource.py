@@ -40,7 +40,6 @@ class DataSource:
 			exit()
 		return connection
 
-
 	def getNumberOfProjects(connection):
 		'''
 		Gives the total number of projects(entries) in the datatable. This is done to avoid having a 'magic number'
@@ -107,9 +106,7 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
-
-
-	def getMinimumValueOfVariable(connection, nameOfVariable):
+	def getMinimumValueOfVariable(self, connection, nameOfVariable):
 		'''
 		Returns the smallest value (a float) in the dataset for a given variable (filter)
 
@@ -133,7 +130,7 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
-	def getMaximumValueOfVariable(connection, nameOfVariable):
+	def getMaximumValueOfVariable(self, connection, nameOfVariable):
 		'''
 		Returns the largest value (a float) in the dataset for a given variable (filter)
 
@@ -157,7 +154,7 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
-	def getAverageOfVariable(connection, nameOfVariable):
+	def getAverageOfVariable(self, connection, nameOfVariable):
 		'''
         Returns an average of all the entries for one variable in the data set.
 
@@ -175,7 +172,7 @@ class DataSource:
 		'''
 		return []
 
-	def getProportionOfSuccess(connection, nameOfVariable, variableCondition):
+	def getProportionOfSuccess(self, connection, nameOfVariable, variableCondition):
 		'''
         Calculates the proportion of successful projects based on the name of
         a column and the filter of that column.
@@ -197,7 +194,7 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
-	def getMedianOfEntireColumn(connection, nameOfVariable):
+	def getMedianOfEntireColumn(self, connection, nameOfVariable):
 		'''
         Returns the median of a quantitave variable.
 
@@ -213,7 +210,7 @@ class DataSource:
         '''
 		return []
 
-	def getMedianOfFilteredCategory(connection, filter, category):
+	def getMedianOfFilteredCategory(self, connection, filter, category):
 		'''
 		Returns the median of a selected 'category' that is grouped by a quantitave variable.
 
@@ -232,7 +229,7 @@ class DataSource:
 		'''
 		return []
 
-	def calculateProbabilityOfSuccess(connection):
+	def calculateProbabilityOfSuccess(self, connection):
 		'''
         Returns the probability of success for a project given inputed values for their
         project. R software will be used to generate the formula
@@ -247,7 +244,7 @@ class DataSource:
         '''
 		return []
 
-	def calculateSuccessScore(connection, goalFundsRaised, actualFundsRaised):
+	def calculateSuccessScore(self, connection, goalFundsRaised, actualFundsRaised):
 		'''
         Returns a 'success score', the way in which it will be calculated has yet to be determined
 
@@ -261,7 +258,7 @@ class DataSource:
         '''
 		return []
 
-	def createRGraph(connection, typeOfGraph, tbdFilters):
+	def createRGraph(self, connection, typeOfGraph, tbdFilters):
 		'''
         Creates a graph and return the graph onto the website given certain selected
         filters and the type of graph chosen
@@ -276,7 +273,7 @@ class DataSource:
         '''
 		return []
 
-	def mostSuccessfulProjects(connection, listLength, nameOfVariable, variableCondition):
+	def mostSuccessfulProjects(self, connection, listLength, nameOfVariable, variableCondition):
 		'''
         Returns a list of the given length of the most successful projects by success score
 
@@ -288,10 +285,9 @@ class DataSource:
         RETURN:
             A list of the most successful projects with the given length
         '''
-		return []
+		return
 
-
-	def getListOfAllProjectsOfOneCatergory(connection, category):
+	def getListOfAllProjectsOfOneCatergory(self, connection, category):
 		'''
         Returns a list of every project for a given category
 
