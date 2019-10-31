@@ -100,7 +100,7 @@ class DataSource:
 			cursor = connection.cursor()
 			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(varibaleConditionToMeet) + "'"
 			cursor.execute(query)
-			count = cursor.fetchall()
+			count = cursor.fetchall()[0][0]
 			return count
 
 		except Exception as e:
