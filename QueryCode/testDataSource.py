@@ -23,11 +23,17 @@ class DataSourceTester(unittest.TestCase):
 
     def test_if_condition_exists_in_table(self):
         nameOfVariable = 'country'
+        variableConditionToMeet = 'US'
+        input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
+        self.assertTrue(input)
+
+    def test_if_condition_does_not_exist_in_table(self):
+        nameOfVariable = 'country'
         variableConditionToMeet = 'potato'
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
-        self.assertEqual(input, 0)
+        self.assertFalse(input)
 
-    def test_is_parameter_not_a_number(self):
+    def test_is_parameter_not_a_string(self):
         nameOfVariable = 2
         variableConditionToMeet = 'US'
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
