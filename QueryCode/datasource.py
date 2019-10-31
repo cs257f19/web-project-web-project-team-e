@@ -94,19 +94,19 @@ class DataSource:
 
         RETURN:
             an integer that is a total of all the projects in the database that fit these two variables AND is sucessful (the count of successful Film & Video Projects)
-
+		'''
 		#work in progress - DO NOT GRADE
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(varibaleConditionToMeet) + "'
+			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(varibaleConditionToMeet) + "'"
 			cursor.execute(query)
 			return cursor.fetchall()
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
 			return None
-			'''
-		return []
+
+
 
 	def getMinimumValueOfVariable(connection, nameOfVariable):
 		'''
