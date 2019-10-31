@@ -16,11 +16,12 @@ class DataSource:
 	or some other collection or object.
 	'''
 
-	def __init__():
-		pass
+    def __init__(self):
+        self.user = user
+		self.password = password
 
 
-	def connect(user, password):
+   def connect(user, password):
 	'''
 	Establishes a connection to the database with the following credentials:
 
