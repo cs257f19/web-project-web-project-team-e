@@ -85,7 +85,7 @@ class DataSource:
 
     def getCountofCategorySuccess(connection, nameOfVariable, varibaleConditionToMeet):
         '''
-        Returns the count (an integer) of all of projects of one variable grouped by another variable (filter)
+        Returns the count (an integer) of all projects of one variable that meet a certain condition AND were sucessful.
 
         PARAMETERS:
 			connection - the connection to the database
@@ -94,7 +94,7 @@ class DataSource:
 
 
         RETURN:
-            an integer that is a total of all the projects in the database that fit these two variables (the count of successful Film & Video Projects)
+            an integer that is a total of all the projects in the database that fit these two variables AND is sucessful (the count of successful Film & Video Projects)
 
 		#work in progress - DO NOT GRADE
 		try:
