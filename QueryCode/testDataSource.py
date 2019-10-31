@@ -21,6 +21,12 @@ class DataSourceTester(unittest.TestCase):
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
         self.assertFalse(input)
 
+    def test_if_condition_exists_in_table(self):
+        nameOfVariable = 'country'
+        variableConditionToMeet = 'potato'
+        input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
+        self.assertFalse(input)
+
 
 if __name__ == '__main__':
     unittest.main()
