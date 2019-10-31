@@ -132,7 +132,7 @@ def main():
 	results = getNumberOfProjects(connection)
 	minVariable = getMinimumValueOfVariable(connection, 'backers')
 	randomProject = getRandomProject(connection)
-	countOfVariableSuccess = getCountofVariableSuccess(connection, 'country', 'US')
+	count = getCountofVariableSuccess(connection, 'country', 'US')
 
 	if results is not None:
 		print("Query results: ")
@@ -148,7 +148,7 @@ def main():
 
 	if countofVariableSuccess is not None:
 		print("Count of successes:")
-		print(countofVariableSuccess)
+		print(count)
 	# Disconnect from database
 	connection.close()
 
