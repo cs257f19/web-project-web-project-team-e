@@ -25,7 +25,7 @@ class DataSourceTester(unittest.TestCase):
         nameOfVariable = 'country'
         variableConditionToMeet = 'potato'
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
-        self.assertEqual(input == 0)
+        self.assertEqual(input, 0)
 
 
 if __name__ == '__main__':
