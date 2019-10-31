@@ -131,7 +131,7 @@ def main():
 	results = getNumberOfProjects(connection)
 	minVariable = getMinimumValueOfVariable(connection, 'backers')
 	randomProject = getRandomProject(connection)
-	countofVariableSuccess = getCountofVariableSuccess(connection, country, 'US')
+	countofVariableSuccess = getCountofVariableSuccess(connection, 'country', 'US')
 
 	if results is not None:
 		print("Query results: ")
