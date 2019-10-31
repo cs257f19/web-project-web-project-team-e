@@ -20,7 +20,7 @@ class DataSource:
 		self.user = 'santosb'
 		self.password = 'books347winter'
 
-	def connect():
+	def connect(self):
 		'''
 		Establishes a connection to the database with the following credentials:
 
