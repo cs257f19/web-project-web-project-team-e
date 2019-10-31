@@ -44,6 +44,7 @@
     </option>
   </component>
   <component name="RunManager">
+<<<<<<< HEAD
     <configuration name="testDataSource" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="TDD" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -51,11 +52,18 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
+=======
+    <configuration name="Unittests for testDataSource.DataSourceTester" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="TDD" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+>>>>>>> 77fe59ef7dc2fa9e79b1567e7e6cdb3c79176d18
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+<<<<<<< HEAD
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testDataSource.py" />
       <option name="PARAMETERS" value="" />
@@ -64,11 +72,20 @@
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
+=======
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;testDataSource.DataSourceTester&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+>>>>>>> 77fe59ef7dc2fa9e79b1567e7e6cdb3c79176d18
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+<<<<<<< HEAD
         <item itemvalue="Python.testDataSource" />
+=======
+        <item itemvalue="Python tests.Unittests for testDataSource.DataSourceTester" />
+>>>>>>> 77fe59ef7dc2fa9e79b1567e7e6cdb3c79176d18
       </list>
     </recent_temporary>
   </component>
