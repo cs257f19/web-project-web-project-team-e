@@ -83,7 +83,7 @@ class DataSource:
             print ("Something went wrong when executing the query: ", e)
             return connection.cursor()
 
-    def getCountofCategorySuccess(connection, nameOfVariable, varibaleConditionToMeet):
+    def getCountofVariableSuccess(connection, nameOfVariable, varibaleConditionToMeet):
         '''
         Returns the count (an integer) of all projects of one variable that meet a certain condition AND were sucessful.
 
