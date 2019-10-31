@@ -15,7 +15,14 @@ class DataSourceTester(unittest.TestCase):
         #zero projects and total number of projects
         self.assertGreaterEqual(input,0) and self.assertLessEqual(input, 378661)
 
+
     def test_if_parameter_exists_in_table(self):
+        nameOfVariable = 'category'
+        variableConditionToMeet = 'Dance'
+        input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
+        self.assertTrue(input)
+
+    def test_if_parameter_does_not_exist_in_table(self):
         nameOfVariable = 'potato'
         variableConditionToMeet = 'US'
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
