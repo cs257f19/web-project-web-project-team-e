@@ -8,14 +8,6 @@ class DataSourceTester(unittest.TestCase):
         self.ds = DataSource()
         self.connection = self.ds.connect()
 
-    def test_number_within_possible_range(self):
-        nameOfVariable = 'country'
-        variableConditionToMeet = 'US'
-        input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
-        #zero projects and total number of projects
-        self.assertGreaterEqual(input,0) and self.assertLessEqual(input, 378661)
-
-
     def test_if_parameter_exists_in_table(self):
         nameOfVariable = 'category'
         variableConditionToMeet = 'Dance'
@@ -24,7 +16,7 @@ class DataSourceTester(unittest.TestCase):
 
     def test_if_parameter_does_not_exist_in_table(self):
         nameOfVariable = 'potato'
-        variableConditionToMeet = 'US'
+        variableConditionToMeet = 'Dance'
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
         self.assertFalse(input)
 
@@ -39,6 +31,13 @@ class DataSourceTester(unittest.TestCase):
         variableConditionToMeet = 'potato'
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
         self.assertFalse(input)
+
+    def test_number_within_possible_range(self):
+        nameOfVariable = 'country'
+        variableConditionToMeet = 'US'
+        input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
+        # zero projects and total number of projects
+        self.assertGreaterEqual(input, 0) and self.assertLessEqual(input, 378661)
 
     def test_is_parameter_not_a_string(self):
         nameOfVariable = 2
