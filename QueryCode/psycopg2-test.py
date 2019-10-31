@@ -112,7 +112,8 @@ def getCountofVariableSuccess(connection, nameOfVariable, varibaleConditionToMee
 		cursor = connection.cursor()
 		query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(varibaleConditionToMeet) + "'"
 		cursor.execute(query)
-		return cursor.fetchall()
+		countOfVariableSuccess = int(cursor.fetchall()[0][0])
+		return countOfVariableSuccess
 
 	except Exception as e:
 		print ("Something went wrong when executing the query: ", e)
@@ -131,7 +132,7 @@ def main():
 	results = getNumberOfProjects(connection)
 	minVariable = getMinimumValueOfVariable(connection, 'backers')
 	randomProject = getRandomProject(connection)
-	countofVariableSuccess = getCountofVariableSuccess(connection, 'country', 'US')
+	countOfVariableSuccess = getCountofVariableSuccess(connection, 'country', 'US')
 
 	if results is not None:
 		print("Query results: ")
