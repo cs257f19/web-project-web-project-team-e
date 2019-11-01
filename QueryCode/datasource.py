@@ -17,8 +17,8 @@ class DataSource:
 	'''
 
 	def __init__(self):
-		self.user = 'santosb'
-		self.password = 'books347winter '
+		self.user = user
+		self.password = password
 
 	def connect(self):
 		'''
@@ -81,6 +81,7 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
+	#the method implemented via test cases
 	def getCountOfVariableSuccess(self, connection, nameOfVariable, varibaleConditionToMeet):
 		'''
         Returns the count (an integer) of all projects of one variable that meet a certain condition AND were sucessful.
