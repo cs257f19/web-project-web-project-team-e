@@ -8,13 +8,13 @@ class DataSourceTester(unittest.TestCase):
         self.ds = DataSource()
         self.connection = self.ds.connect()
 
-    def test_if_parameter_exists_in_table(self):
+    def test_if_column_name_exists_in_table(self):
         nameOfVariable = 'category'
         variableConditionToMeet = 'Dance'
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
         self.assertTrue(input)
 
-    def test_if_parameter_does_not_exist_in_table(self):
+    def test_if_column_name_does_not_exist_in_table(self):
         nameOfVariable = 'potato'
         variableConditionToMeet = 'Dance'
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
