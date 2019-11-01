@@ -17,8 +17,7 @@ class DataSource:
 	'''
 
 	def __init__(self):
-		self.user = 'santosb'
-		self.password = 'books347winter'
+	 pass
 
 	def connect(self):
 		'''
