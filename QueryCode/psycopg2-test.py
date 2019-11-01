@@ -94,6 +94,31 @@ def getRandomProject(connection):
 		print ("Something went wrong when executing the query: ", e)
 		return connection.cursor()
 
+def getCountofVariableSuccess(connection, nameOfVariable, varibaleConditionToMeet):
+	'''
+	Returns the count (an integer) of all projects of one variable that meet a certain condition AND were sucessful.
+
+	PARAMETERS:
+		connection - the connection to the database
+		nameOfVariable - the variable of the project we are counting from.
+		variableConditionToMeet - the condition that needs to be met for the project to be counted
+
+
+	RETURN:
+		an integer that is a total of all the projects in the database that fit these two variables AND is sucessful (the count of successful Film & Video Projects)
+'''
+	#work in progress - DO NOT GRADE
+	try:
+		cursor = connection.cursor()
+		query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(varibaleConditionToMeet) + "'"
+		cursor.execute(query)
+		countOfVariableSuccess = int(cursor.fetchall()[0][0])
+		return countOfVariableSuccess
+
+	except Exception as e:
+		print ("Something went wrong when executing the query: ", e)
+		return None
+
 def main():
 
 	# Replace these credentials with your own
@@ -107,6 +132,7 @@ def main():
 	results = getNumberOfProjects(connection)
 	minVariable = getMinimumValueOfVariable(connection, 'backers')
 	randomProject = getRandomProject(connection)
+	count = getCountofVariableSuccess(connection, 'potato', 'US')
 
 	if results is not None:
 		print("Query results: ")
@@ -120,6 +146,9 @@ def main():
 		print("Random project: ")
 		print(randomProject)
 
+	if count is not None:
+		print("Count of successes:")
+		print(count)
 	# Disconnect from database
 	connection.close()
 

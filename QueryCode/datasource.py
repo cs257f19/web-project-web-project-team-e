@@ -16,9 +16,13 @@ class DataSource:
 	or some other collection or object.
 	'''
 
-    def __init__(self):
-        pass
+	def __init__(self):
+		self.user = 'santosb'
+		self.password = 'books347winter'
 
+	def connect(self):
+		'''
+		Establishes a connection to the database with the following credentials:
 
     def connect(user, password):
 		'''
@@ -40,6 +44,15 @@ class DataSource:
 			exit()
 		return connection
 
+		Note: exits if a connection cannot be established.
+		Note: Code written by Amy Csizmar Dalal
+		'''
+		try:
+			connection = psycopg2.connect(database=self.user, user=self.user, password= self.password)
+		except Exception as e:
+			print("Connection error: ", e)
+			exit()
+		return connection
 
     def getNumberOfProjects(connection):
 		'''
@@ -62,9 +75,12 @@ class DataSource:
 		print ("Something went wrong when executing the query: ", e)
 		return connection.cursor()
 
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
 
-    def getRandomProject(connection):
-        '''
+	def getRandomProject(connection):
+		'''
         Returns entire information in list form for a random project in the kickstarter dataset
         PARAMETERS:
             connection - the connection to the database
@@ -73,19 +89,20 @@ class DataSource:
             list of variables for a project, once the data is clean, we will produce the str name of the project
         '''
 
-        try:
-            cursor = connection.cursor()
-            query = "SELECT * FROM ksdata ORDER BY RANDOM() LIMIT 1"
-            cursor.execute(query)
-            return cursor.fetchall()
+		try:
+			cursor = connection.cursor()
+			query = "SELECT * FROM ksdata ORDER BY RANDOM() LIMIT 1"
+			cursor.execute(query)
+			return cursor.fetchall()
 
-        except Exception as e:
-            print ("Something went wrong when executing the query: ", e)
-            return connection.cursor()
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
 
-    def getCountofCategorySuccess(connection, nameOfVariable, varibaleConditionToMeet):
-        '''
-        Returns the count (an integer) of all of projects of one variable grouped by another variable (filter)
+	#the method implemented via test cases
+	def getCountOfVariableSuccess(self, connection, nameOfVariable, varibaleConditionToMeet):
+		'''
+        Returns the count (an integer) of all projects of one variable that meet a certain condition AND were sucessful.
 
         PARAMETERS:
 			connection - the connection to the database
@@ -94,22 +111,21 @@ class DataSource:
 
 
         RETURN:
-            an integer that is a total of all the projects in the database that fit these two variables (the count of successful Film & Video Projects)
-
+            an integer that is a total of all the projects in the database that fit these two variables AND is sucessful (the count of successful Film & Video Projects)
+		'''
 		#work in progress - DO NOT GRADE
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND WHERE" '" + str(nameOfVariable) + "' = '" + str(varibaleConditionToMeet) + "'
+			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(varibaleConditionToMeet) + "'"
 			cursor.execute(query)
-			return cursor.fetchall()
+			count = int(cursor.fetchall()[0][0])
+			return count
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
 			return None
-			'''
-		return []
 
-    def getMinimumValueOfVariable(connection, nameOfVariable):
+	def getMinimumValueOfVariable(self, connection, nameOfVariable):
 		'''
 		Returns the smallest value (a float) in the dataset for a given variable (filter)
 
@@ -133,7 +149,7 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
-    def getMaximumValueOfVariable(connection, nameOfVariable):
+	def getMaximumValueOfVariable(self, connection, nameOfVariable):
 		'''
 		Returns the largest value (a float) in the dataset for a given variable (filter)
 
@@ -157,8 +173,8 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
-    def getAverageOfVariable(connection, nameOfVariable):
-        '''
+	def getAverageOfVariable(self, connection, nameOfVariable):
+		'''
         Returns an average of all the entries for one variable in the data set.
 
         PARAMETERS:
@@ -175,8 +191,8 @@ class DataSource:
 		'''
 		return []
 
-    def getProportionOfSuccess(connection, nameOfVariable, variableCondition):
-        '''
+	def getProportionOfSuccess(self, connection, nameOfVariable, variableCondition):
+		'''
         Calculates the proportion of successful projects based on the name of
         a column and the filter of that column.
 
@@ -188,18 +204,16 @@ class DataSource:
         RETURNS:
             an int proportion between 0 and 1 inclusive
         '''
-        try:
-            cursor = connection.cursor()
-            query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND" +
-             str(nameOfVariable) + "=" + str(filterName)
+		try:
+			cursor = connection.cursor()
+			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND" + str(nameOfVariable) + "=" + str(filterName)
+			return cursor.execute(query)/self.numberOfProjects
 
-            return cursor.execute(query)/self.numberOfProjects
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
 
-        except Exception as e:
-            print ("Something went wrong when executing the query: ", e)
-            return Nonecursor = connection.cursor()
-
-    def getMedianOfEntireColumn(connection, nameOfVariable):
+	def getMedianOfEntireColumn(self, connection, nameOfVariable):
 		'''
         Returns the median of a quantitave variable.
 
@@ -215,7 +229,7 @@ class DataSource:
         '''
 		return []
 
-    def getMedianOfFilteredCategory(connection, filter, category):
+	def getMedianOfFilteredCategory(self, connection, filter, category):
 		'''
 		Returns the median of a selected 'category' that is grouped by a quantitave variable.
 
@@ -234,8 +248,8 @@ class DataSource:
 		'''
 		return []
 
-    def calculateProbabilityOfSuccess(connection, tbd after analysis):
-        '''
+	def calculateProbabilityOfSuccess(self, connection):
+		'''
         Returns the probability of success for a project given inputed values for their
         project. R software will be used to generate the formula
 
@@ -247,10 +261,10 @@ class DataSource:
         RETURN:
             a probability of success between 0 and 1 inclusive
         '''
-        return []
+		return []
 
-    def calculateSuccessScore(connection, goalFundsRaised, actualFundsRaised):
-        '''
+	def calculateSuccessScore(self, connection, goalFundsRaised, actualFundsRaised):
+		'''
         Returns a 'success score', the way in which it will be calculated has yet to be determined
 
         PARAMETERS:
@@ -261,10 +275,10 @@ class DataSource:
         RETURN:
             An int 'success score'
         '''
-        return []
+		return []
 
-    def createRGraph(connection, typeOfGraph, tbdFilters):
-        '''
+	def createRGraph(self, connection, typeOfGraph, tbdFilters):
+		'''
         Creates a graph and return the graph onto the website given certain selected
         filters and the type of graph chosen
 
@@ -276,10 +290,9 @@ class DataSource:
         RETURN:
             a graph
         '''
-        return []
+		return []
 
-
-    def mostSuccessfulProjects(connection, listLength, nameOfVariable, variableCondition):
+	def mostSuccessfulProjects(self, connection, listLength, nameOfVariable, variableCondition):
 		'''
         Returns a list of the given length of the most successful projects by success score
 
@@ -291,9 +304,9 @@ class DataSource:
         RETURN:
             A list of the most successful projects with the given length
         '''
-		return []
+		return
 
-    def getListOfAllProjectsOfOneCatergory(connection, category):
+	def getListOfAllProjectsOfOneCatergory(self, connection, category):
 		'''
         Returns a list of every project for a given category
 
