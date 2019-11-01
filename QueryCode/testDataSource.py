@@ -30,7 +30,7 @@ class DataSourceTester(unittest.TestCase):
         nameOfVariable = 'country'
         variableConditionToMeet = 'potato'
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
-        self.assertEqual(input, None)
+        self.assertEqual(input, 0)
 
     def test_number_within_possible_range(self):
         nameOfVariable = 'country'
@@ -43,7 +43,7 @@ class DataSourceTester(unittest.TestCase):
         nameOfVariable = 2
         variableConditionToMeet = 'US'
         input = self.ds.getCountOfVariableSuccess(self.connection, nameOfVariable, variableConditionToMeet)
-        self.assertFalse(input)
+        self.assertEqual(input, None)
 
     def test_if_condition_is_in_column(self):
         nameOfVariable = 'country'
