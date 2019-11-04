@@ -40,7 +40,7 @@ class DataSource:
 			exit()
 		return connection
 
-	def getNumberOfProjects(connection):
+	def getNumberOfProjects(self, connection):
 		'''
 		Gives the total number of projects(entries) in the datatable. This is done to avoid having a 'magic number'
 
@@ -303,5 +303,5 @@ class DataSource:
 def main():
 	ds = DataSource()
 	ds.connect()
-	ds.getRandomProject()
+	ds.getRandomProject(connection)
 main()
