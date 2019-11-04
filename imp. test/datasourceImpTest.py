@@ -61,7 +61,7 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
-	def getRandomProject(connection):
+	def getRandomProject(self, connection):
 		'''
         Returns entire information in list form for a random project in the kickstarter dataset
         PARAMETERS:
