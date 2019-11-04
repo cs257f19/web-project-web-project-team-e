@@ -302,5 +302,6 @@ class DataSource:
 
 def main():
 	ds = DataSource()
+	ds.connect()
 	ds.getRandomProject()
 main()
