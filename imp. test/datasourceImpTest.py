@@ -301,9 +301,6 @@ class DataSource:
 		return []
 
 def main():
-	user = 'santosb'
-    password = 'books347winter'
-    ds = DataSource()
+	ds = DataSource()
 	ds.getRandomProject()
-	
 main()
