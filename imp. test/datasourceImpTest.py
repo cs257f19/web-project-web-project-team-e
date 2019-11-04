@@ -302,6 +302,6 @@ class DataSource:
 
 def main():
 	ds = DataSource()
-	ds.connect()
+	connection = ds.connect()
 	ds.getNumberOfProjects(connection)
 main()
