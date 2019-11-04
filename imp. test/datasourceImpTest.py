@@ -303,5 +303,5 @@ class DataSource:
 def main():
 	ds = DataSource()
 	ds.connect()
-	ds.getRandomProject(connection)
+	ds.getNumberOfProjects(connection)
 main()
