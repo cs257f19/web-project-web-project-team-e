@@ -40,7 +40,7 @@ class DataSource:
 			exit()
 		return connection
 
-	def getNumberOfProjects(connection):
+	def getNumberOfProjects(self, connection):
 		'''
 		Gives the total number of projects(entries) in the datatable. This is done to avoid having a 'magic number'
 
@@ -61,7 +61,7 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
-	def getRandomProject(connection):
+	def getRandomProject(self, connection):
 		'''
         Returns entire information in list form for a random project in the kickstarter dataset
         PARAMETERS:
