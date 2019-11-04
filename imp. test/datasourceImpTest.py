@@ -303,5 +303,8 @@ class DataSource:
 def main():
 	ds = DataSource()
 	connection = ds.connect()
-	print(ds.getNumberOfProjects(connection))
+	print("The total number of projects is:" + ds.getNumberOfProjects(connection))
+	print("A random project ID is:" + ds.getRandomProject(connection))
+	print("The minimum value of the 'backers' is:" + ds.getRandomProject(connection,'backers'))
+
 main()
