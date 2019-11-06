@@ -175,7 +175,7 @@ class DataSource:
 			cursor = connection.cursor()
 			query = "SELECT AVG(" + str(nameOfVariable) + ") FROM ksdata"
 			cursor.execute(query)
-			averageValue = float(cursor.fetchall()[0][0])
+			averagetValue = float(cursor.fetchall()[0][0])
 			return averageValue
 
 		except Exception as e:
