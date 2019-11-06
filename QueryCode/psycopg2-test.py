@@ -122,8 +122,8 @@ def getCountofVariableSuccess(connection, nameOfVariable, varibaleConditionToMee
 def main():
 
 	# Replace these credentials with your own
-	user = 'santosb'
-	password = 'books347winter'
+	user = 'nystromk'
+	password = 'Java692spam'
 
 	# Connect to the database
 	connection = connect(user, password)
