@@ -2,6 +2,10 @@ import psycopg2
 import getpass
 
 '''
+Data and Code Description
+Our code used data from the website Kickstarter. Their goal is to give a platform to aspiring entrepreneurs so that they can raise funds and gain support for their ideas. The dataset contains information on a project’s country of origin, currency, number of backers, money asked for, money raised, etc. This python file manipulates the data in various ways and provides a way to explore the data.
+
+
 AMY
 Some of these implementations are works in progress, so please grade
 getNumberOfProjects
@@ -42,7 +46,8 @@ class DataSource:
 
 	def getNumberOfProjects(self, connection):
 		'''
-		Gives the total number of projects(entries) in the data table. This is done to avoid having a 'magic number'
+		Gives the total number of projects(entries) in the data table. This is done to avoid having 
+        a 'magic number'
 
 		PARAMETERS:
 		connection - the connection to the database
@@ -68,7 +73,8 @@ class DataSource:
             connection - the connection to the database
 
         RETURNS:
-            list of variables for a project, once the data is clean, we will produce the str name of the project
+            list of variables for a project, once the data is clean, we will produce the str name 
+            of the project
         '''
 
 		try:
@@ -89,12 +95,14 @@ class DataSource:
         PARAMETERS:
 			connection - the connection to the database
             nameOfVariable - the variable of the project we are counting from.
-	    	variableCondition - the condition that needs to be met for the project to be counted. For example, if the name of variable is 'country',
-			a condition to meet could be 'USA' or 'GB'
+	    	variableCondition - the condition that needs to be met for the project to be counted. 
+            For example, if the name of variable is 'country', a condition to meet could be 'USA' 
+            or 'GB'
 
 
         RETURN:
-            an integer that is a total of all the projects in the database that fit these two variables AND is successful (the count of successful Film & Video Projects)
+            an integer that is a total of all the projects in the database that fit these two 
+            variables AND is successful (the count of successful Film & Video Projects)
 		'''
 		#work in progress - DO NOT GRADE
 		try:
@@ -114,7 +122,9 @@ class DataSource:
 
 		PARAMETERS:
 			connection - the connection to the database
-			nameOfVariable - the major variable from which the minimum value is being taken
+			nameOfVariable - the major variable from which the minimum value is being taken. 
+            For example, the variable name would be 'goal', which is the amount of money a project 
+            asks for.
 
 		RETURN:
 			a float that is the smallest value in the dataset for the variable provided
@@ -138,7 +148,9 @@ class DataSource:
 
 		PARAMETERS:
 			connection - the connection to the database
-			nameOfVariable - the major variable from which the maximum value is being taken
+			nameOfVariable - the major variable from which the maximum value is being taken. 
+            For example, the variable name would be 'goal', which is the amount of money a project 
+            asks for.
 
 		RETURN:
 			a float that is the largest value in the dataset for the variable provided
@@ -163,6 +175,8 @@ class DataSource:
         PARAMETERS:
 		connection - the connection to the database
 		nameOfVariable - the name of the variable we wish to calculate the average of.
+        For example, the variable name would be 'goal', which is the amount of money a project asks 
+        for.
 
 
         RETURN:
@@ -185,7 +199,7 @@ class DataSource:
 
 		return []
 
-	def getProportionOfSuccess(self, connection, nameOfVariable, variableCondition):
+	def getProportionOfSuccess(self, connection, nameOfVariable):
 		'''
         Calculates the proportion of successful projects based on the name of
         a column and the filter of that column.
@@ -193,7 +207,7 @@ class DataSource:
         PARAMETERS:
             connection - the connection to the database
             nameOfVariable - the str variable of the project we are creating a proportion for
-            variableCondition - a str attribute of the main variable (i.e category, country, currency)
+            For example, the nameofVariable would be 'country'
 
         RETURNS:
             an int proportion between 0 and 1 inclusive
@@ -214,6 +228,8 @@ class DataSource:
         PARAMETERS:
 			connection - the connection to the database
             nameOfVariable - the name of the variable we wish to calculate the median of.
+            For example, nameOfVariable might be 'goal_USD', which is the amount of money a
+            project asks for converted into USD 
 
         RETURN:
             a integer that is the median of the provided parameter
@@ -223,16 +239,15 @@ class DataSource:
         '''
 		return []
 
-	def getMedianOfFilteredCategory(self, connection, filter, category):
+	def getMedianOfFilteredCategory(self, connection, nameOfVariable, variableCondition):
 		'''
 		Returns the median of a selected 'category' that is grouped by a quantitative variable.
 
         PARAMETERS
 			connection - the connection to the database
-			category - a selected category of projects (i.e Design)
-			filter - a filter that highlights one specific part of the category. This is typically the name ofa another category (i.e backers or USD goal).
-
-
+			nameOfVariable - a selected category of projects
+			variableCondition - a filter that highlights one specific part of the category. 
+            For example nameOfVariable might be 'country' and variableCondition would be 'US'
 
         RETURN:
 			an integer that is the median of the provided parameter grouped by the filter (i.e the median USD goal for Design projects)
@@ -257,7 +272,7 @@ class DataSource:
         '''
 		return []
 
-	def calculateSuccessScore(self, connection, goalFundsRaised, actualFundsRaised):
+	def calculateSuccessScore(self, connection, goalFundsRaised, actualFundsRaised,, fundingTimeFrame):
 		'''
         Returns a 'success score', the way in which it will be calculated has yet to be determined
 
@@ -291,21 +306,25 @@ class DataSource:
         Returns a list of the given length of the most successful projects by success score
 
         PARAMETERS:
+            connection - the connection to the database
             listLength - int length of list the user wants
 			nameOfVariable - the str variable of the project we are creating a proportion for
-			variableCondition - a str attribute of the main variable (i.e category, country, currency)
+			variableCondition - a str attribute of the main variable 
+            For example, listLength is 10, nameOfVariable could be 'country' and the variableCondition would be 'US'
 
         RETURN:
             A list of the most successful projects with the given length
         '''
 		return
 
-	def getListOfAllProjectsOfOneCategory(self, connection, category):
+	def getListOfAllProjectsOfOneCategory(self, connection, nameOfVariable):
 		'''
         Returns a list of every project for a given category
 
         PARAMETERS:
-            category - str of the chosen category in the dataset
+            connection - the connection to the database
+            nameOfVariable - str of the chosen category in the dataset
+            For example, nameOfVariable could be 'country'
 
         RETURN:
             A list of each project for the user chosen category
