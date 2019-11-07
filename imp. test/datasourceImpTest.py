@@ -48,7 +48,7 @@ class DataSource:
 		connection - the connection to the database
 
 		RETURNS:
-		an int that is the total number of entries
+		an int that is the total number of entries in the datatable.
 		'''
 		try:
 			cursor = connection.cursor()
@@ -63,7 +63,7 @@ class DataSource:
 
 	def getRandomProject(self, connection):
 		'''
-        Returns entire information in list form for a random project in the Kickstarter dataset
+        Returns all the information of a random project in list form from the Kickstarter dataset
         PARAMETERS:
             connection - the connection to the database
 
@@ -89,7 +89,8 @@ class DataSource:
         PARAMETERS:
 			connection - the connection to the database
             nameOfVariable - the variable of the project we are counting from.
-	    	variableCondition - the condition that needs to be met for the project to be counted
+	    	variableCondition - the condition that needs to be met for the project to be counted. For example, if the name of variable is 'country',
+			a condition to meet could be 'USA' or 'GB'
 
 
         RETURN:
