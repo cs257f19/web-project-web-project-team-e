@@ -206,6 +206,8 @@ class DataSource:
 			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + "= '" + str(variableCondition) +"'"
 			cursor.execute(query)
 			successCount = float(cursor.fetchall()[0][0])
+			print(totalCount)
+			print(successCount)
 
 			proportionOfSuccess = successCount/totalCount
 			return proportionOfSuccess
