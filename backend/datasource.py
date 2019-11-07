@@ -42,13 +42,13 @@ class DataSource:
 
 	def getNumberOfProjects(self, connection):
 		'''
-		Gives the total number of projects(entries) in the datatable. This is done to avoid having a 'magic number'
+		Gives the total number of projects(entries) in the data table. This is done to avoid having a 'magic number'
 
 		PARAMETERS:
 		connection - the connection to the database
 
 		RETURNS:
-		an int that is the total number of entries
+		an int that is the total number of entries in the datatable.
 		'''
 		try:
 			cursor = connection.cursor()
@@ -63,7 +63,7 @@ class DataSource:
 
 	def getRandomProject(self, connection):
 		'''
-        Returns entire information in list form for a random project in the kickstarter dataset
+        Returns all the information of a random project in list form from the Kickstarter dataset
         PARAMETERS:
             connection - the connection to the database
 
@@ -82,23 +82,24 @@ class DataSource:
 			return connection.cursor()
 
 	#the method implemented via test cases
-	def getCountOfVariableSuccess(self, connection, nameOfVariable, varibaleConditionToMeet):
+	def getCountOfVariableSuccess(self, connection, nameOfVariable, variableCondition):
 		'''
-        Returns the count (an integer) of all projects of one variable that meet a certain condition AND were sucessful.
+        Returns the count (an integer) of all projects of one variable that meet a certain condition AND were successful.
 
         PARAMETERS:
 			connection - the connection to the database
             nameOfVariable - the variable of the project we are counting from.
-	    	variableConditionToMeet - the condition that needs to be met for the project to be counted
+	    	variableCondition - the condition that needs to be met for the project to be counted. For example, if the name of variable is 'country',
+			a condition to meet could be 'USA' or 'GB'
 
 
         RETURN:
-            an integer that is a total of all the projects in the database that fit these two variables AND is sucessful (the count of successful Film & Video Projects)
+            an integer that is a total of all the projects in the database that fit these two variables AND is successful (the count of successful Film & Video Projects)
 		'''
 		#work in progress - DO NOT GRADE
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(varibaleConditionToMeet) + "'"
+			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(variableCondition) + "'"
 			cursor.execute(query)
 			count = int(cursor.fetchall()[0][0])
 			return count
@@ -171,6 +172,17 @@ class DataSource:
 			NeedQuantitaveVariableError - If parameter entered is a categorical variable
 
 		'''
+		try:
+			cursor = connection.cursor()
+			query = "SELECT AVG(" + str(nameOfVariable) + ") FROM ksdata"
+			cursor.execute(query)
+			averageValue = float(cursor.fetchall()[0][0])
+			return averageValue
+
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return None
+
 		return []
 
 	def getProportionOfSuccess(self, connection, nameOfVariable, variableCondition):
@@ -197,7 +209,7 @@ class DataSource:
 
 	def getMedianOfEntireColumn(self, connection, nameOfVariable):
 		'''
-        Returns the median of a quantitave variable.
+        Returns the median of a quantitative variable.
 
         PARAMETERS:
 			connection - the connection to the database
@@ -207,13 +219,13 @@ class DataSource:
             a integer that is the median of the provided parameter
 
 		RAISES:
-			NeedQuantitaveVariableError - If parameter entered is a categorical variable
+			NeedQuantitativeVariableError - If parameter entered is a categorical variable
         '''
 		return []
 
 	def getMedianOfFilteredCategory(self, connection, filter, category):
 		'''
-		Returns the median of a selected 'category' that is grouped by a quantitave variable.
+		Returns the median of a selected 'category' that is grouped by a quantitative variable.
 
         PARAMETERS
 			connection - the connection to the database
@@ -223,17 +235,17 @@ class DataSource:
 
 
         RETURN:
-			a integer that is the median of the provided parameter grouped by the filter (i.e the median USD goal for Design projects)
+			an integer that is the median of the provided parameter grouped by the filter (i.e the median USD goal for Design projects)
 
 		RAISES:
-			NeedQuantitaveVariableError - If the filter parameter entered is a categorical variable
+			NeedQuantitativeVariableError - If the filter parameter entered is a categorical variable
 		'''
 		return []
 
 	def calculateProbabilityOfSuccess(self, connection):
 		'''
-        Returns the probability of success for a project given inputed values for their
-        project. R software will be used to generate the formula
+        Returns the probability of success for a project given input values for the user's
+        project idea. R software will be used to generate the formula
 
         PARAMETERS:
             connection - the connection to the database
@@ -288,7 +300,7 @@ class DataSource:
         '''
 		return
 
-	def getListOfAllProjectsOfOneCatergory(self, connection, category):
+	def getListOfAllProjectsOfOneCategory(self, connection, category):
 		'''
         Returns a list of every project for a given category
 
@@ -299,3 +311,15 @@ class DataSource:
             A list of each project for the user chosen category
         '''
 		return []
+
+def main():
+	ds = DataSource()
+	connection = ds.connect()
+	print("The total number of projects is:" + str(ds.getNumberOfProjects(connection)))
+	print("A random project is:" + str(ds.getRandomProject(connection)))
+	print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
+	print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
+
+	connection.close()
+
+main()

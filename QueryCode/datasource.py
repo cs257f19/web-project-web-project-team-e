@@ -36,7 +36,7 @@ class DataSource:
 
 		Note: exits if a connection cannot be established.
 		Note: Code written by Amy Csizmar Dalal
-		'''
+
 		try:
 			connection = psycopg2.connect(database=user, user=user, password=password)
 		except Exception as e:
@@ -46,7 +46,7 @@ class DataSource:
 
 		Note: exits if a connection cannot be established.
 		Note: Code written by Amy Csizmar Dalal
-		'''
+
 		try:
 			connection = psycopg2.connect(database=self.user, user=self.user, password= self.password)
 		except Exception as e:
@@ -56,7 +56,7 @@ class DataSource:
 
     def getNumberOfProjects(connection):
 		'''
-		Gives the total number of projects(entries) in the datatable. This is done to avoid having a 'magic number'
+		Gives the total number of projects(entries) in the datatable. This is done to avoid having a "magic number"
 
 		PARAMETERS:
 			connection - the connection to the database
@@ -70,10 +70,6 @@ class DataSource:
 			cursor.execute(query)
 			numberOfProjects = int(cursor.fetchall()[0][0])
 			return numberOfProjects
-
-	except Exception as e:
-		print ("Something went wrong when executing the query: ", e)
-		return connection.cursor()
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
