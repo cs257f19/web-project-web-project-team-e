@@ -89,7 +89,8 @@ class DataSource:
         PARAMETERS:
 			connection - the connection to the database
             nameOfVariable - the variable of the project we are counting from.
-	    	variableConditionToMeet - the condition that needs to be met for the project to be counted
+	    	variableConditionToMeet - the condition that needs to be met for the project to be counted. For example, if the name of variable is 'country',
+			a condition to meet could be 'USA' or 'GB'
 
 
         RETURN:
