@@ -1,0 +1,19 @@
+The main changes we made to our code were to make the Data Source file run
+correctly. Our shadow implementation worked correctly, but we did not completely
+transfer everything we did from that file to datasource.py. Specifically, we
+forgot to pass self into each of the methods. It was a minor mistake, but it
+meant quite a bit. Also, we added a main method for Data Source, as a way to
+test our implementations and now the file can run on its own.
+
+Additional minor changes were also made to our code. We correct all the spelling
+ mistakes that occurred in our code and comments. We also removed the Carleton
+ password and added a little more detail to the file description about the data
+ used and the purpose of the file. Finally, we gave better descriptions to some
+ of our more confusing parameter names since there was no way to make those
+ names completely self-descriptive.
+
+We considered adding a Project class, which would create Project objects that
+would store and return the various attributes of a given project in the data
+table. We determined, however, that its utility would not extend beyond one or
+two methods, and the extra steps that it would create for all of the other
+methods would make things more difficult than necessary. 
