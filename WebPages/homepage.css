@@ -108,10 +108,15 @@ ul > li > a {
 }
 
 .column:hover{
+	/**change background of column when hovered**/
 	background: #d45555;
+
+	/** change color of text when hovered**/
 	color: #ffffff;
-	height: 350px;
-	transition: 0.3s;
+
+	/**what length bars change to**/
+	height: 300px;
+	transition: .3s;
 	}
 
 /* Clear floats after the columns */
