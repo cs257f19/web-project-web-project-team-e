@@ -200,7 +200,7 @@ class DataSource:
         '''
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata"
+			query = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata WHERE "  + str(nameOfVariable) + " '" + str(variableCondition) +"'"
 			cursor.execute(query)
 			totalCount = float(float(cursor.fetchall()[0][0]))
 			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + "= '" + str(variableCondition) +"'"
