@@ -200,16 +200,14 @@ class DataSource:
         '''
 		try:
 			cursor = connection.cursor()
+			
 			query = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata WHERE "  + str(nameOfVariable) + "= '" + str(variableCondition) +"'"
-			print(query)
 			cursor.execute(query)
 			totalCount = float(float(cursor.fetchall()[0][0]))
+
 			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + "= '" + str(variableCondition) +"'"
-			print(query)
 			cursor.execute(query)
 			successCount = float(cursor.fetchall()[0][0])
-			print(totalCount)
-			print(successCount)
 
 			proportionOfSuccess = successCount/totalCount
 			return proportionOfSuccess
