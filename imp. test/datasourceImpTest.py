@@ -200,8 +200,16 @@ class DataSource:
         '''
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND" + str(nameOfVariable) + "=" + str(filterName)
-			return cursor.execute(query)/self.numberOfProjects
+			query = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata"
+			cursor.execute(query)
+			totalCount = float(float(cursor.fetchall()[0][0]))
+			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND" + str(nameOfVariable) + "=" + str(variableCondition)
+			cursor.execute(query)
+			successCount = float(cursor.fetchall()[0][0])
+
+			proportionOfSuccess = successCount/totalCount
+			return proportionOfSuccess
+
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -319,7 +327,8 @@ def main():
 	print("A random project is:" + str(ds.getRandomProject(connection)))
 	print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
 	print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
-
+	print("The proportion of Music projects that were succesful is: " + str(ds.getProportionOfSuccess(connection, main_category, 'Music')))
+	
 	connection.close()
 
 main()
