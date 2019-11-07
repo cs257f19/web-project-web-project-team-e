@@ -203,7 +203,7 @@ class DataSource:
 			query = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata"
 			cursor.execute(query)
 			totalCount = float(float(cursor.fetchall()[0][0]))
-			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + "=" + str(variableCondition)
+			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + "= '" + str(variableCondition) +"'"
 			cursor.execute(query)
 			successCount = float(cursor.fetchall()[0][0])
 
