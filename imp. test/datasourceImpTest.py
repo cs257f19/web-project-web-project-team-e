@@ -267,7 +267,7 @@ class DataSource:
         '''
 		return []
 
-	def calculateSuccessScore(self, connection, goalFundsRaised, actualFundsRaised):
+	#def calculateSuccessScore(self, connection, goalFundsRaised, actualFundsRaised):
 		'''
         Returns a 'success score', the way in which it will be calculated has yet to be determined
 
@@ -279,7 +279,7 @@ class DataSource:
         RETURN:
             An int 'success score'
         '''
-		return []
+		#return []
 
 	def createRGraph(self, connection, typeOfGraph, tbdFilters):
 		'''
@@ -308,19 +308,36 @@ class DataSource:
         RETURN:
             A list of the most successful projects with the given length
         '''
-		return
+		try:
+			cursor = connection.cursor()
+			query = "SELECT * FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(variableCondition) + "' ORDER BY successScore DESC LIMIT" + str(listLength)
+			cursor.execute(query)
+			return cursor.fetchall()
 
-	def getListOfAllProjectsOfOneCategory(self, connection, category):
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
+
+	def getListOfAllProjectsOfOneCategory(self, connection, nameOfVariable):
 		'''
         Returns a list of every project for a given category
 
         PARAMETERS:
-            category - str of the chosen category in the dataset
+            nameOfVariable - str of the chosen category in the dataset
+            variableCondition - a str attribute of the main variable (i.e category, country, currency)
 
         RETURN:
             A list of each project for the user chosen category
         '''
-		return []
+		try:
+			cursor = connection.cursor()
+			query = "SELECT * FROM ksdata WHERE" + str(nameOfVariable) + " = '" + str(variableCondition) + "'"
+			cursor.execute(query)
+			return cursor.fetchall()
+
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
 
 def main():
 	ds = DataSource()
