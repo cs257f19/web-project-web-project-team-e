@@ -348,7 +348,6 @@ def main():
 	#print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
 	#print("The proportion of Music projects that were succesful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
     print(str(ds.getListOfAllProjectsOfOneCategory(connection, 'Crafts', 'Printing'))
-
-	connection.close()
+    connection.close()
 
 main()
