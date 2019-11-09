@@ -310,7 +310,7 @@ class DataSource:
         '''
 		try:
 			cursor = connection.cursor()
-			query = "SELECT * FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(variableCondition) + "' ORDER BY successScore DESC LIMIT" + str(listLength)
+			query = "SELECT * FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(variableCondition) + "' ORDER BY successScore DESC LIMIT " + str(listLength)
 			cursor.execute(query)
 			return cursor.fetchall()
 
