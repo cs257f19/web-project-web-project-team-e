@@ -233,14 +233,14 @@ class DataSource:
         '''
 		return []
 
-	def getMedianOfFilteredCategory(self, connection, filter, category):
+	def getMedianOfFilteredCategory(self, connection, nameOfVariable, variableCondition):
 		'''
 		Returns the median of a selected 'category' that is grouped by a quantitative variable.
 
         PARAMETERS
 			connection - the connection to the database
-			category - a selected category of projects (i.e Design)
-			filter - a filter that highlights one specific part of the category. This is typically the name ofa another category (i.e backers or USD goal).
+			nameOfVariable - a selected category of projects (i.e Design)
+			variableCondition - a filter that highlights one specific part of the category. This is typically the name ofa another category (i.e backers or USD goal).
 
 
 
@@ -318,7 +318,7 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
-	def getListOfAllProjectsOfOneCategory(self, connection, nameOfVariable):
+	def getListOfAllProjectsOfOneCategory(self, connection, nameOfVariable, variableCondition):
 		'''
         Returns a list of every project for a given category
 
@@ -342,11 +342,12 @@ class DataSource:
 def main():
 	ds = DataSource()
 	connection = ds.connect()
-	print("The total number of projects is:" + str(ds.getNumberOfProjects(connection)))
-	print("A random project is:" + str(ds.getRandomProject(connection)))
-	print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
-	print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
-	print("The proportion of Music projects that were succesful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
+	#print("The total number of projects is:" + str(ds.getNumberOfProjects(connection)))
+	#print("A random project is:" + str(ds.getRandomProject(connection)))
+	#print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
+	#print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
+	#print("The proportion of Music projects that were succesful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
+    print(ds.getListOfAllProjectsOfOneCategory(connection, 'Crafts', 'Printing'))
 
 	connection.close()
 
