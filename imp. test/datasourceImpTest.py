@@ -331,7 +331,7 @@ class DataSource:
         '''
 		try:
 			cursor = connection.cursor()
-			query = "SELECT * FROM ksdata WHERE" + str(nameOfVariable) + " = '" + str(variableCondition) + "'"
+			query = "SELECT * FROM ksdata WHERE " + str(nameOfVariable) + " = '" + str(variableCondition) + "'"
 			cursor.execute(query)
 			return cursor.fetchall()
 
