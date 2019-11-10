@@ -328,10 +328,10 @@ class DataSource:
         RETURN:
             a probability of success between 0 and 1 inclusive
         '''
-		mainCategory = self.mainCategoryCoefficient(nameOfVariable)
+		categoryCoefficient = self.mainCategoryCoefficient(nameOfVariable)
 		currencyCoefficient = self.currencyCoefficient(currency)
 		if categoryCoefficient != 0 and currencyCoefficient != 0:
-			probabilityOfSuccess = -0.4214 + mainCategory + currencyCoefficient + (-0.00001562)*float(usd_goal)
+			probabilityOfSuccess = -0.4214 + categoryCoefficient + currencyCoefficient + (-0.00001562)*float(usd_goal)
 			if probabilityOfSuccess > 1:
 				return 1
 			elif probabilityOfSuccess < 0:
