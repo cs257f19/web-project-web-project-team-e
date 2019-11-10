@@ -330,8 +330,6 @@ class DataSource:
         '''
 		categoryCoefficient = self.mainCategoryCoefficient(nameOfVariable)
 		currencyCoefficient = self.currencyCoefficient(currency)
-		print(categoryCoefficient)
-		print(currencyCoefficient)
 		if categoryCoefficient != 0 and currencyCoefficient != 0:
 			probabilityOfSuccess = -0.4214 + categoryCoefficient + currencyCoefficient + (-0.00001562)*float(usd_goal)
 			if probabilityOfSuccess > 1:
@@ -419,7 +417,8 @@ class DataSource:
 def main():
 	ds = DataSource()
 	#connection = ds.connect()
-	print(str(ds.calculateProbabilityOfSuccess('Dance', 'USD', 500)))
+	print(str(ds.calculateProbabilityOfSuccess('Comics', 'USD', 5000)))
+	print(str(ds.calculateProbabilityOfSuccess('Music', 'MXN', 10000)))
 	print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
 	#print("The total number of projects is:" + str(ds.getNumberOfProjects(connection)))
