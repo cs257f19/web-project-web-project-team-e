@@ -252,6 +252,7 @@ class DataSource:
 		'''
 		return []
     
+    
     def mainCategoryCoefficient(self,nameOfVariable):
         if str(nameOfVariable) == 'Comics':
             return 0.5624
