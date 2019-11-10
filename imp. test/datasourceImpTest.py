@@ -424,5 +424,5 @@ def main():
     #print("A random project is:" + str(ds.getRandomProject(connection)))
     #print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
     #print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
-    #print("The proportion of Music projects that were succesful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
+    #print("The proportion of Music projects that were successful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
 	#connection.close()
