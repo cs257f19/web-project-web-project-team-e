@@ -330,6 +330,8 @@ class DataSource:
         '''
 		categoryCoefficient = self.mainCategoryCoefficient(nameOfVariable)
 		currencyCoefficient = self.currencyCoefficient(currency)
+		print(categoryCoefficient)
+		print(currencyCoefficient)
 		if categoryCoefficient != 0 and currencyCoefficient != 0:
 			probabilityOfSuccess = -0.4214 + categoryCoefficient + currencyCoefficient + (-0.00001562)*float(usd_goal)
 			if probabilityOfSuccess > 1:
