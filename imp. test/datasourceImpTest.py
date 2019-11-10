@@ -417,7 +417,7 @@ class DataSource:
 
 def main():
 	ds = DataSource()
-	connection = ds.connect()
+	#connection = ds.connect()
 	print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500))
     #print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
     #print("The total number of projects is:" + str(ds.getNumberOfProjects(connection)))
@@ -426,6 +426,3 @@ def main():
     #print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
     #print("The proportion of Music projects that were succesful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
 	#connection.close()
-
-
-main()
