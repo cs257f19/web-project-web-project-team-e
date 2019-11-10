@@ -339,7 +339,7 @@ class DataSource:
 			elif probabilityOfSuccess < 0:
 				return '0%'
 			else:
-				return str(round(probabilityOfSuccess,2)*100)
+				return str(round(probabilityOfSuccess,2)*100)+'%'
 		else:
 			return 'Please Enter a Valid Parameters'
             
