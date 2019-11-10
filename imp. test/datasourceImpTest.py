@@ -251,9 +251,8 @@ class DataSource:
 			NeedQuantitativeVariableError - If the filter parameter entered is a categorical variable
 		'''
 		return []
-    
-    
-    def mainCategoryCoefficient(self,nameOfVariable):
+
+	def mainCategoryCoefficient(self,nameOfVariable):
         if str(nameOfVariable) == 'Comics':
             return 0.5624
         elif str(nameOfVariable) == 'Crafts':
