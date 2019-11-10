@@ -418,7 +418,7 @@ class DataSource:
 def main():
 	ds = DataSource()
 	#connection = ds.connect()
-	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
+	print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
 	#print("The total number of projects is:" + str(ds.getNumberOfProjects(connection)))
 	#print("A random project is:" + str(ds.getRandomProject(connection)))
