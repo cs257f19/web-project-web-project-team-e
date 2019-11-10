@@ -339,7 +339,7 @@ class DataSource:
 			elif probabilityOfSuccess < 0:
 				return '0%'
 			else:
-				return str(round(probabilityOfSuccess,2)*100)+'%'
+				return str(round(probabilityOfSuccess*100,2))+'%'
 		else:
 			return 'Please Enter a Valid Parameters'
             
@@ -420,6 +420,7 @@ def main():
 	ds = DataSource()
 	#connection = ds.connect()
 	print(str(ds.calculateProbabilityOfSuccess('Dance', 'USD', 500)))
+	print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
 	#print("The total number of projects is:" + str(ds.getNumberOfProjects(connection)))
 	#print("A random project is:" + str(ds.getRandomProject(connection)))
