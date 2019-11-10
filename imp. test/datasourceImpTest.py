@@ -328,19 +328,19 @@ class DataSource:
         RETURN:
             a probability of success between 0 and 1 inclusive
         '''
-        mainCategory = self.mainCategoryCoefficient(nameOfVariable)
-        currencyCoefficient = self.currencyCoefficient(currency)
-        if categoryCoefficient != 0 and currencyCoefficient != 0:
-            probabilityOfSuccess = -0.4214 + mainCategory + currencyCoefficient + (-0.00001562)*float(usd_goal)
-            if probabilityOfSuccess > 1:
-                return 1
-            elif probabilityOfSuccess < 0:
-                return 0
-            else:
-                return probabilityOfSuccess
-        else:
-            print("Enter Valid Parameters")
-            return 0
+		mainCategory = self.mainCategoryCoefficient(nameOfVariable)
+		currencyCoefficient = self.currencyCoefficient(currency)
+		if categoryCoefficient != 0 and currencyCoefficient != 0:
+			probabilityOfSuccess = -0.4214 + mainCategory + currencyCoefficient + (-0.00001562)*float(usd_goal)
+			if probabilityOfSuccess > 1:
+				return 1
+			elif probabilityOfSuccess < 0:
+				return 0
+			else:
+				return probabilityOfSuccess
+		else:
+			print("Enter Valid Parameters")
+			return 0
             
 
 	#def calculateSuccessScore(self, connection, goalFundsRaised, actualFundsRaised):
@@ -416,17 +416,16 @@ class DataSource:
 			return connection.cursor()
 
 def main():
-    ds = DataSource()
-    connection = ds.connect()
-    print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500))
+	ds = DataSource()
+	connection = ds.connect()
+	print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500))
     #print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
     #print("The total number of projects is:" + str(ds.getNumberOfProjects(connection)))
     #print("A random project is:" + str(ds.getRandomProject(connection)))
     #print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
     #print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
     #print("The proportion of Music projects that were succesful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
-    connection.close()
-    
-    
-    
+	connection.close()
+
+
 main()
