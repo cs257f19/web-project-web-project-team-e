@@ -342,20 +342,6 @@ class DataSource:
 			return 'Please Enter a Valid Parameters'
 
 
-	#def calculateSuccessScore(self, connection, goalFundsRaised, actualFundsRaised):
-		'''
-        Returns a 'success score', the way in which it will be calculated has yet to be determined
-
-        PARAMETERS:
-            goalFundsRaised - int amount of money a project set out to make
-            actualFundsRaised - int amount of money a project actually made
-            fundingTimeFrame - int amount of time it took the project to collect their money
-
-        RETURN:
-            An int 'success score'
-        '''
-		#return []
-
 	def createRGraph(self, connection, typeOfGraph, tbdFilters):
 		'''
         Creates a graph and return the graph onto the website given certain selected
@@ -385,7 +371,7 @@ class DataSource:
         '''
 		try:
 			cursor = connection.cursor()
-			query = "SELECT * FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(variableCondition) + "' ORDER BY successScore DESC LIMIT " + str(listLength)
+			query = "SELECT * FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(variableCondition) + "' ORDER BY success_score DESC LIMIT " + str(listLength)
 			cursor.execute(query)
 			return cursor.fetchall()
 
@@ -427,5 +413,6 @@ def main():
 	#print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
 	#print("The proportion of Music projects that were successful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
 	print(ds.getListOfAllProjectsOfOneCategory(connection, 'country', 'HK'))
+	print(ds.mostSuccessfulProjects(connection, 3, 'category', 'Technology'))
 
 main()
