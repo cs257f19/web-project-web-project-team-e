@@ -315,7 +315,7 @@ class DataSource:
 			return 0
         
 
-	def calculateProbabilityOfSuccess(self, connection, nameOfVariable, currency, usd_goal):
+	def calculateProbabilityOfSuccess(self, nameOfVariable, currency, usd_goal):
 		'''
         Returns the probability of success for a project given input values for the user's
         project idea. R software will be used to generate the formula
