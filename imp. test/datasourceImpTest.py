@@ -335,14 +335,13 @@ class DataSource:
 		if categoryCoefficient != 0 and currencyCoefficient != 0:
 			probabilityOfSuccess = -0.4214 + categoryCoefficient + currencyCoefficient + (-0.00001562)*float(usd_goal)
 			if probabilityOfSuccess > 1:
-				return 1
+				return '100%'
 			elif probabilityOfSuccess < 0:
-				return 0
+				return '0%'
 			else:
-				return probabilityOfSuccess
+				return str(round(probabilityOfSuccess,2)*100)
 		else:
-			print("Please Enter Valid Parameters")
-			return 0
+			return 'Please Enter a Valid Parameters'
             
 
 	#def calculateSuccessScore(self, connection, goalFundsRaised, actualFundsRaised):
