@@ -17,8 +17,8 @@ class DataSource:
 	'''
 
 	def __init__(self):
-		self.user = 'loye'
-		self.password = 'tablet984spring'
+		self.user = 'santosb'
+		self.password = 'book347winter'
 
 	def connect(self):
 		'''
@@ -313,7 +313,7 @@ class DataSource:
 			return 0.3836
 		else:
 			return 0
-        
+
 
 	def calculateProbabilityOfSuccess(self, nameOfVariable, currency, usd_goal):
 		'''
@@ -340,7 +340,7 @@ class DataSource:
 				return str(round(probabilityOfSuccess*100,2))+'%'
 		else:
 			return 'Please Enter a Valid Parameters'
-            
+
 
 	#def calculateSuccessScore(self, connection, goalFundsRaised, actualFundsRaised):
 		'''
@@ -416,16 +416,16 @@ class DataSource:
 
 def main():
 	ds = DataSource()
-	#connection = ds.connect()
-	print(str(ds.calculateProbabilityOfSuccess('Comics', 'USD', 10000)))
-	print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
-	print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
+	connection = ds.connect()
+	#print(str(ds.calculateProbabilityOfSuccess('Comics', 'USD', 10000)))
+	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
+	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
 	#print("The total number of projects is:" + str(ds.getNumberOfProjects(connection)))
 	#print("A random project is:" + str(ds.getRandomProject(connection)))
 	#print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
 	#print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
 	#print("The proportion of Music projects that were successful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
+	print(ds.getListOfAllProjectsOfOneCategory(connection, 'country', 'HK'))
 
 main()
-
