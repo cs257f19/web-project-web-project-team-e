@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Will it Fund?|Home</title>
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "Create.css" />
+</head>
+
+<body>
+	<div class="header">
+
+		<h1>Will it Fund?</h1>
+		<h3>Kickstarting Your Kickstarter</h3>
+
+		<div class = "search-box">
+			<input type = "text" class = "input" placeholder= "Search...">
+			</div>
+
+		<div class="tabs">
+			<ul id="nav">
+				<li><b><a href="homepage.html">Home</a></b></li>
+				<li><a href="analyze.html">Analyze the Data</a></li>
+				<li><a href="homepage.html">Create and Compare Your Kickstarter</a></li>
+				<li><a href="homepage.html">Explore Curated Project Data</a></li>
+        <li><a href="aboutpage.html">About</a></li>
+			</ul>
+		</div>
+		<!--menu-->
+	</div>
+	<!--header-->
+
+    <!--The form code-->
+    <form action="/results-page" method="post">
+    <!--The box where you select main_category-->
+    <div>
+      <label for="category">Category:</label>
+      <select id="category" name="category">
+        <option value="Comics">Comics</option>
+        <option value="Crafts">Crafts</option>
+        <option value="Dance">Dance</option>
+        <option value="Design">Design</option>
+      </select>
+    </div>
+
+    <br>
+
+    <!--The box where you select main_category-->
+    <div>
+      <label for="currency">Currency:</label>
+      <select id="currency" name="currency">
+        <option value="USD">USD</option>
+        <option value="MXN">MXN</option>
+        <option value="CAD">CAD</option>
+        <option value="UKP">UKP</option>
+      </select>
+    </div>
+
+    <br>
+
+    <div>
+      <label for="goal">Goal:</label>
+      <input type="number" id="goal" name="goal">
+    </div>
+
+    <br>
+    <div class="button">
+      <button type="submit">Send your message</button>
+    </div>
+
+  </form>
+
+
+</body>
+
+
+</html>

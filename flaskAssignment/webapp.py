@@ -8,7 +8,7 @@ app = flask.Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def form():
-    return render_template('form.html')
+    return render_template('Create.html')
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
