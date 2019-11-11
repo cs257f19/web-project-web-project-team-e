@@ -11,7 +11,7 @@ def hello():
     return 'Test, Citizen of CS257.'
 
 @app.route('/render/')
-def hello():
+def renderTest():
     return render_template('Create.html')
 
 @app.route('/i', methods=['GET', 'POST'])
