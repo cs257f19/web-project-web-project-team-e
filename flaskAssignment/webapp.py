@@ -8,7 +8,7 @@ app = flask.Flask(__name__)
 
 @app.route('/')
 def hello():
-    return 'Hello, Citizen of CS257.'
+    return 'Test, Citizen of CS257.'
 
 @app.route('/i', methods=['GET', 'POST'])
 def form():
