@@ -403,7 +403,7 @@ class DataSource:
 def main():
 	ds = DataSource()
 	connection = ds.connect()
-	print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 150 )))
+	print(str(ds.calculateProbabilityOfSuccess('Comics', 'USD', 10000 )))
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
