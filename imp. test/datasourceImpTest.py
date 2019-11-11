@@ -403,7 +403,7 @@ class DataSource:
 def main():
 	ds = DataSource()
 	connection = ds.connect()
-	#print(str(ds.calculateProbabilityOfSuccess('Comics', 'USD', 10000)))
+	print(str(ds.calculateProbabilityOfSuccess('Theater', 'CAD', 30000000000 )))
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
@@ -412,6 +412,6 @@ def main():
 	#print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
 	#print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
 	#print("The proportion of Music projects that were successful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
-	print(ds.mostSuccessfulProjects(connection, 3, 'category', 'Music'))
+	#print(ds.mostSuccessfulProjects(connection, 3, 'category', 'Music'))
 
 main()
