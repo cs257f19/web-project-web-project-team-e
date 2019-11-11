@@ -52,3 +52,26 @@ ul > li{
 	background-color: #ffffff;
 	color: #2f3b78;
 	}
+
+  form{
+		width: 550px;
+ 		height: 450px;
+ 		margin: 0 auto;
+ 		position: relative;
+  	padding: 10px;
+	}
+	input {
+	 width: 375px;
+	 height: 25px;
+	}
+
+	label {
+  /* Uniform size & alignment */
+  display: inline-block;
+  width: 90px;
+  text-align: right;
+}
+
+.button{
+	padding-left: 90px;
+}
