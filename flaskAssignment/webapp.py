@@ -10,7 +10,7 @@ app = flask.Flask(__name__)
 def hello():
     return 'Test, Citizen of CS257.'
 
-@app.route('/render')
+@app.route('/render/')
 def hello():
     return render_template('Create.html')'
 
