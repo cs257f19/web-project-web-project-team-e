@@ -6,7 +6,11 @@ import sys
 
 app = flask.Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
+def hello():
+    return 'Hello, Citizen of CS257.'
+
+@app.route('/i', methods=['GET', 'POST'])
 def form():
     return render_template('Create.html')
 
