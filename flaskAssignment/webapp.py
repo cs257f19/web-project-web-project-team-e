@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+import flask
+from flask import render_template
 import json
 import sys
 
