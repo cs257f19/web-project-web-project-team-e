@@ -10,6 +10,10 @@ app = flask.Flask(__name__)
 def hello():
     return 'Test, Citizen of CS257.'
 
+@app.route('/render')
+def hello():
+    return render_template('Create.html')'
+
 @app.route('/i', methods=['GET', 'POST'])
 def form():
     return render_template('Create.html')
