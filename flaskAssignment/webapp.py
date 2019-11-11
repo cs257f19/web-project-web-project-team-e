@@ -12,7 +12,7 @@ def hello():
 
 @app.route('/render/')
 def hello():
-    return render_template('Create.html')'
+    return render_template('Create.html')
 
 @app.route('/i', methods=['GET', 'POST'])
 def form():
