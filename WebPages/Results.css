@@ -80,6 +80,10 @@ form{
 	background-color: #d45555;
 }
 
+form > i{
+	color: #ffc849;
+}
+
 form > h1{
 	text-align: center;
 	font-size: 100px;
