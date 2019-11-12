@@ -17,7 +17,7 @@ def renderCreatePage():
     return render_template('Create.html')
 
 @app.route('/analyze/')
-def renderCreatePage():
+def renderAnalyzePage():
     return render_template('Analyze.html')
 
 @app.route('/results', methods=['GET', 'POST'])
