@@ -14,7 +14,7 @@ def hello():
 def renderTest():
     return render_template('Create.html')
 
-@app.route('/results', methods=['GET', 'POST'])
+@app.route('results/', methods=['GET', 'POST'])
 def form():
     return render_template('Results.html', category = request.form['category'], currency = request.form['currency'], goal = request.form['goal'])
 
