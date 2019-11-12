@@ -115,7 +115,7 @@ ul > li > a {
 	color: #ffffff;
 
 	/**what length bars change to**/
-	height: 500px;
+	height: 400px;
 	transition: .3s;
 	}
 
