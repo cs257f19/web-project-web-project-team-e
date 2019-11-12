@@ -9,16 +9,15 @@ import sys
 app = flask.Flask(__name__)
 
 @app.route('/')
-def homepage():
+def renderHomepage():
     return render_template('Homepage.html')
 
 @app.route('/create/')
-def renderTest():
+def renderCreatePage():
     return render_template('Create.html')
 
 @app.route('/results', methods=['GET', 'POST'])
-def form():
-
+def displayProbabilityOfSuccess():
     category = request.form['category']
     currency = request.form['currency']
     goal = request.form['goal']
