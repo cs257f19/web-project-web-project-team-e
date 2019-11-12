@@ -29,17 +29,14 @@
 	</div>
 	<!--header-->
 
+	<div class = "results">
 
-
-
-	<form action="/results-page" method="post">
-
-	  <p>Based on our data, with your choices of a <i>{{category}}</i> project,
-			looking for a USD cash value of <i>{{goal}}</i>, raised in
-			<i>{{currency}}</i>,</p>
+	  <p>Based on our data, with your choices of a project in the category of
+			<i>{{category}}</i>, looking for a USD cash value of <i>${{goal}}</i>,
+			raised in the currency <i>{{currency}}</i>,</p>
 		<p>Your project has a</p>
 		<h1>{{probabilityOfSuccess}}</h1>
 		<p>chance of successfully meeting your goal</p>
 
-	</form>
+	</div>
 </html>

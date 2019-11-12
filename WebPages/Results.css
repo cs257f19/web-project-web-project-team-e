@@ -65,12 +65,12 @@ ul > li > a {
 	height: 100%;
 }
 
-form{
+.results{
 	width: 1250px;
 	height: 600px;
 	margin: 20px auto;
-	padding: 40px;
-	font-family: fantasy;
+	padding: 5px 40px;
+	font-family: "trebuchet ms";
 	font-size: 35px;
 	color: #ffffff;
 	border-style: solid;
@@ -80,11 +80,11 @@ form{
 	background-color: #d45555;
 }
 
-form > i{
+.results > i{
 	color: #ffc849;
 }
 
-form > h1{
+.results > h1{
 	text-align: center;
-	font-size: 100px;
+	font-size: 125px;
 }

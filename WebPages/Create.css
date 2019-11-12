@@ -70,7 +70,7 @@ form{
 	height: 450px;
 	margin: 20px auto;
 	padding: 40px;
-	font-family: fantasy;
+	font-family: "trebuchet ms";
 	font-size: 35px;
 	color: #ffffff;
 	border-style: solid;
@@ -83,7 +83,7 @@ form{
 select{
 	width: 250px;
 	height: 50px;
-	font-family: fantasy;
+	font-family: "trebuchet ms";
 	font-size: 25px;
 	color: #e49f00;
 }
@@ -91,7 +91,7 @@ select{
 #goal{
 	width: 250px;
   height: 50px;
-  font-family: fantasy;
+  font-family: "trebuchet ms";
   font-size: 25px;
   color: #e49f00;
 }
