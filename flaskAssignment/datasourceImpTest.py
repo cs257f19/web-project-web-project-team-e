@@ -254,7 +254,9 @@ class DataSource:
 		return []
 
 	def mainCategoryCoefficient(self,nameOfVariable):
-		if str(nameOfVariable) == 'Comics':
+		if str(nameOfVariable) == 'Arts':
+            return 0
+        elif str(nameOfVariable) == 'Comics':
 			return 0.6494
 		elif str(nameOfVariable) == 'Crafts':
 			return -0.8739
@@ -283,10 +285,12 @@ class DataSource:
 		elif str(nameOfVariable) == 'Theater':
 			return 0.8702
 		else:
-			return 0
+			return -1
 
 	def currencyCoefficient(self, currency):
-		if str(currency) == 'CAD':
+		if str(currency) == 'AUD':
+            return 0
+        elif str(currency) == 'CAD':
 			return 0.0995
 		elif str(currency) == 'CHF':
 			return 0.2178
@@ -313,7 +317,7 @@ class DataSource:
 		elif str(currency) == 'USD':
 			return 0.4391
 		else:
-			return 0
+			return -1
 
 
 	def calculateProbabilityOfSuccess(self, nameOfVariable, currency, usd_goal):
@@ -331,7 +335,7 @@ class DataSource:
         '''
 		categoryCoefficient = self.mainCategoryCoefficient(nameOfVariable)
 		currencyCoefficient = self.currencyCoefficient(currency)
-		if categoryCoefficient != 0 and currencyCoefficient != 0:
+		if categoryCoefficient != -1 and currencyCoefficient != -1:
 			probabilityOfSuccess = 1.652 + categoryCoefficient + currencyCoefficient + (-0.2872) * math.log(float(usd_goal))
 			if probabilityOfSuccess > 1:
 				return '100%'
