@@ -67,7 +67,7 @@ ul > li > a {
 
 .results{
 	width: 1250px;
-	height: 600px;
+	height: 700px;
 	margin: 20px auto;
 	padding: 5px 40px;
 	font-family: "trebuchet ms";
@@ -87,4 +87,25 @@ ul > li > a {
 .results > h1{
 	text-align: center;
 	font-size: 125px;
+}
+
+#button{
+	display: inline-grid;
+	position: relative;
+	top: -13%;
+	left: 63%;
+	padding: 0px 10px;
+	margin-right: 10px;
+	align-content: center;
+	border-radius: 10px;
+	border-style: double;
+	border-width: 10px;
+	border-color: #ffc849;
+	background-color: #ffffff;
+	color: #d45555;
+	font-size: 25px;
+}
+
+#button:hover{
+	background-color: #ffc849;
 }
