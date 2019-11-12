@@ -16,6 +16,10 @@ def renderHomepage():
 def renderCreatePage():
     return render_template('Create.html')
 
+@app.route('/analyze/')
+def renderCreatePage():
+    return render_template('Analyze.html')
+
 @app.route('/results', methods=['GET', 'POST'])
 def displayProbabilityOfSuccess():
     category = request.form['category']
@@ -24,6 +28,7 @@ def displayProbabilityOfSuccess():
     ds = DataSource()
     probabilityOfSuccess = ds.calculateProbabilityOfSuccess(category, currency, goal)
     return render_template('Results.html', category = category, currency = currency, goal = goal, probabilityOfSuccess = probabilityOfSuccess)
+
 
 
 if __name__ == "__main__":
