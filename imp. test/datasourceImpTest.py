@@ -255,8 +255,8 @@ class DataSource:
 
 	def mainCategoryCoefficient(self,nameOfVariable):
 		if str(nameOfVariable) == 'Arts':
-            return 0
-        elif str(nameOfVariable) == 'Comics':
+			return 0
+		elif str(nameOfVariable) == 'Comics':
 			return 0.6494
 		elif str(nameOfVariable) == 'Crafts':
 			return -0.8739
@@ -289,8 +289,8 @@ class DataSource:
 
 	def currencyCoefficient(self, currency):
 		if str(currency) == 'AUD':
-            return 0
-        elif str(currency) == 'CAD':
+			return 0
+		elif str(currency) == 'CAD':
 			return 0.0995
 		elif str(currency) == 'CHF':
 			return 0.2178
