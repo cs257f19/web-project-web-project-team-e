@@ -23,9 +23,8 @@ def form():
     currency = request.form['currency']
     goal = request.form['goal']
     ds = DataSource()
-    conncetion = ds.connect()
     probabilityOfSuccess = ds.calculateProbabilityOfSuccess(category, currency, goal)
-    return render_template('Results.html', category, currency, goal, probabilityOfSuccess)
+    return render_template('Results.html', category = request.form['category'])
 
 
 if __name__ == "__main__":
