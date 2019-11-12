@@ -9,8 +9,8 @@ import sys
 app = flask.Flask(__name__)
 
 @app.route('/')
-def hello():
-    return 'Test, Citizen of CS257.'
+def homepage():
+    return render_template('Homepage.html')
 
 @app.route('/create/')
 def renderTest():
@@ -18,14 +18,13 @@ def renderTest():
 
 @app.route('/results', methods=['GET', 'POST'])
 def form():
-    #render_template('Results.html', category = request.form['category'], currency = request.form['currency'], goal = request.form['goal'])
+
     category = request.form['category']
     currency = request.form['currency']
     goal = request.form['goal']
     ds = DataSource()
-    conncetion = ds.connect()
     probabilityOfSuccess = ds.calculateProbabilityOfSuccess(category, currency, goal)
-    return probabilityOfSuccess
+    return render_template('Results.html', category = category, currency = currency, goal = goal, probabilityOfSuccess = probabilityOfSuccess)
 
 
 if __name__ == "__main__":
