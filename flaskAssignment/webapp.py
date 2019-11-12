@@ -9,8 +9,8 @@ import sys
 app = flask.Flask(__name__)
 
 @app.route('/')
-def hello():
-    return 'Test, Citizen of CS257.'
+def homepage():
+    return render_template('Homepage.html')
 
 @app.route('/create/')
 def renderTest():
