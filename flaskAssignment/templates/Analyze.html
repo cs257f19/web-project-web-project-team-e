@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Analyze the Data</title>
+<link rel = "stylesheet"
+   type = "text/css"
+   href = "Analyze.css" />
+</head>
+
+<body>
+	<div class="header">
+
+		<h1>Will it Fund?</h1>
+		<h3>Kickstarting Your Kickstarter</h3>
+
+		<div class = "search-box">
+			<input type = "text" class = "input" placeholder= "Search...">
+			</div>
+
+		<div class="tabs">
+			<ul id="nav">
+        <li><a href="homepage.html">Home</a></li>
+				<li><b><a href="analyze.html">Analyze the Data</a></b></li>
+				<li><a href="homepage.html">Create and Compare Your Kickstarter</a></li>
+				<li><a href="homepage.html">Explore Curated Project Data</a></li>
+        <li><a href="aboutpage.html">About</a></li>
+			</ul>
+		</div>
+		<!--menu-->
+	</div>
+	<!--header-->
+
+	<h3>Analyze the Data</h3>
+	<p>Compare Kickstarter data by using the drop down menus to generate a graph. In the current version, you can specify whether you want the graph to be organized as a histogram of total counts or as a stacked bar plot showing proportions, as well choose a category by which to sort the data.</p>
+
+	<div>
+		<label for="compare">Compare By:</label>
+		<select id="compare" name="compare">
+			<option value="proportion">Proportion of Success</option>
+			<option value="counts">Counts</option>
+		</select>
+	</div>
+
+	<div>
+		<label for="filter">Filter By:</label>
+		<select id="filter" name="filter">
+			<option value="main_category">Project Type</option>
+			<option value="currency">Currency</option>
+			<option value="country">Country</option>
+			<option value="year">Year</option>
+
+		</select>
+		<br>
+		<input type="submit" value="Submit">
+	</div>
+
+	<br>
+
+	<div class="container">
+  		<img src="graph.png" alt="Compare Major Categories by Proportion" width="10" height="30">
+	</div>
+
+
+</body>
+
+</html>
