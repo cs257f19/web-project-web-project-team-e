@@ -335,8 +335,8 @@ class DataSource:
 			probabilityOfSuccess = 1.652 + categoryCoefficient + currencyCoefficient + (-0.2872) * math.log(float(usd_goal))
 			if probabilityOfSuccess > 1:
 				return '100%'
-			elif probabilityOfSuccess < 0:
-				return '0%'
+			elif probabilityOfSuccess < 1:
+				return 'Less than 1%'
 			else:
 				return str(round(probabilityOfSuccess*100,2))+'%'
 		else:
