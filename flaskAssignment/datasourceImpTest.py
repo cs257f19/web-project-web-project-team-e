@@ -1,6 +1,5 @@
 import psycopg2
 import getpass
-import math
 
 '''
 AMY
@@ -255,63 +254,63 @@ class DataSource:
 
 	def mainCategoryCoefficient(self,nameOfVariable):
 		if str(nameOfVariable) == 'Comics':
-			return 0.6494
+			return 0.5624
 		elif str(nameOfVariable) == 'Crafts':
-			return -0.8739
+			return -0.8077
 		elif str(nameOfVariable) == 'Dance':
-			return 0.9299
+			return 0.8176
 		elif str(nameOfVariable) == 'Design':
-			return 0.2445
+			return 0.07425
 		elif str(nameOfVariable) == 'Fashion':
-			return -0.5401
+			return -0.6580
 		elif str(nameOfVariable) == 'Film & Video':
-			return 0.1279
+			return 0.006285
 		elif str(nameOfVariable) == 'Food':
-			return -0.4783
+			return -0.5893
 		elif str(nameOfVariable) == 'Games':
-			return 0.2531
+			return 0.1332
 		elif str(nameOfVariable) == 'Journalism':
-			return -0.7870
+			return -0.8444
 		elif str(nameOfVariable) == 'Music':
-			return 0.4117
+			return 0.3002
 		elif str(nameOfVariable) == 'Photography':
-			return -0.3656
+			return -0.4406
 		elif str(nameOfVariable) == 'Publishing':
-			return -0.3063
+			return -0.4172
 		elif str(nameOfVariable) == 'Technology':
-			return -0.4427
+			return -0.5818
 		elif str(nameOfVariable) == 'Theater':
-			return 0.8702
+			return 0.7797
 		else:
 			return 0
 
 	def currencyCoefficient(self, currency):
 		if str(currency) == 'CAD':
-			return 0.0995
+			return 0.08675
 		elif str(currency) == 'CHF':
-			return 0.2178
+			return 0.1285
 		elif str(currency) == 'DKK':
-			return 0.3417
+			return 0.3552
 		elif str(currency) == 'EUR':
-			return -0.0677
+			return -0.0967
 		elif str(currency) == 'GBP':
-			return 0.3486
+			return 0.3547
 		elif str(currency) == 'HKD':
-			return 0.7594
+			return 0.7019
 		elif str(currency) == 'JPY':
-			return 0.1313
+			return 0.0246
 		elif str(currency) == 'MXN':
-			return -0.3702
+			return -0.3355
 		elif str(currency) == 'NOK':
-			return -0.1847
+			return -0.1688
 		elif str(currency) == 'NZD':
-			return 0.1909
+			return 0.188
 		elif str(currency) == 'SEK':
-			return 0.1097
+			return 0.09516
 		elif str(currency) == 'SGD':
-			return 0.4328
+			return 0.4147
 		elif str(currency) == 'USD':
-			return 0.4391
+			return 0.3836
 		else:
 			return 0
 
@@ -332,7 +331,7 @@ class DataSource:
 		categoryCoefficient = self.mainCategoryCoefficient(nameOfVariable)
 		currencyCoefficient = self.currencyCoefficient(currency)
 		if categoryCoefficient != 0 and currencyCoefficient != 0:
-			probabilityOfSuccess = 1.652 + categoryCoefficient + currencyCoefficient + (-0.2872) * math.log(float(usd_goal))
+			probabilityOfSuccess = -0.4214 + categoryCoefficient + currencyCoefficient + (-0.00001562)*float(usd_goal)
 			if probabilityOfSuccess > 1:
 				return '100%'
 			elif probabilityOfSuccess < 0:

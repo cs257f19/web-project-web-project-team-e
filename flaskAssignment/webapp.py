@@ -1,8 +1,10 @@
+from datasourceImpTest import*
 import flask
 from flask import render_template
 from flask import request
 import json
 import sys
+
 
 app = flask.Flask(__name__)
 
@@ -14,9 +16,16 @@ def hello():
 def renderTest():
     return render_template('Create.html')
 
-@app.route('/i', methods=['GET', 'POST'])
+@app.route('/results', methods=['GET', 'POST'])
 def form():
-    return render_template('Create.html')
+    #render_template('Results.html', category = request.form['category'], currency = request.form['currency'], goal = request.form['goal'])
+    category = request.form['category']
+    currency = request.form['currency']
+    goal = request.form['goal']
+    ds = DataSource()
+    conncetion = ds.connect()
+    return ds.calculateProbabilityOfSuccess(category, currency, goal)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
