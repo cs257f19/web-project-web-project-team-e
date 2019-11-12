@@ -89,11 +89,14 @@ ul > li > a {
 	font-size: 125px;
 }
 
+.results > h3{
+	text-align: center;
+	font-family: "trebuchet ms";
+	font-size: 35px;
+}
+
 #button{
 	display: inline-grid;
-	position: relative;
-	top: -13%;
-	left: 63%;
 	padding: 0px 10px;
 	margin-right: 10px;
 	align-content: center;
