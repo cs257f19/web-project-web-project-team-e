@@ -18,7 +18,10 @@ def renderTest():
 
 @app.route('/results', methods=['GET', 'POST'])
 def form():
-    render_template('Results.html', category = request.form['category'], currency = request.form['currency'], goal = request.form['goal'])
+    #render_template('Results.html', category = request.form['category'], currency = request.form['currency'], goal = request.form['goal'])
+    category = request.form['category']
+    currency = request.form['currency']
+    goal = request.form['goal']
     ds = DataSource()
     conncetion = ds.connect()
     return ds.calculateProbabilityOfSuccess(category, currency, goal)
