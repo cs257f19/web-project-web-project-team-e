@@ -18,14 +18,13 @@ def renderTest():
 
 @app.route('/results', methods=['GET', 'POST'])
 def form():
-    #render_template('Results.html', category = request.form['category'], currency = request.form['currency'], goal = request.form['goal'])
+
     category = request.form['category']
     currency = request.form['currency']
     goal = request.form['goal']
     ds = DataSource()
-    conncetion = ds.connect()
     probabilityOfSuccess = ds.calculateProbabilityOfSuccess(category, currency, goal)
-    return probabilityOfSuccess
+    return render_template('Results.html', category = request.form['category'])
 
 
 if __name__ == "__main__":
