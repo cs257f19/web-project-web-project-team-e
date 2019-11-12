@@ -14,9 +14,9 @@ def hello():
 def renderTest():
     return render_template('Create.html')
 
-@app.route('/i', methods=['GET', 'POST'])
+@app.route('/results', methods=['GET', 'POST'])
 def form():
-    return render_template('Create.html')
+    return render_template('Results.html', category = request.form['category'], currency = request.form['currency'], goal = request.form['goal'])
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
