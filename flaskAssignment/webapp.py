@@ -3,7 +3,7 @@ from flask import render_template
 from flask import request
 import json
 import sys
-import datasourceImpTest
+from datasourceImpTest import*
 
 app = flask.Flask(__name__)
 
