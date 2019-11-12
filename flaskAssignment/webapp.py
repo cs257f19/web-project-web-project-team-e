@@ -24,7 +24,8 @@ def form():
     goal = request.form['goal']
     ds = DataSource()
     conncetion = ds.connect()
-    return ds.calculateProbabilityOfSuccess(category, currency, goal)
+    probabilityOfSuccess = ds.calculateProbabilityOfSuccess(category, currency, goal)
+    return probabilityOfSuccess
 
 
 if __name__ == "__main__":
