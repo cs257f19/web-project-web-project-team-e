@@ -18,7 +18,7 @@ a{
 }
 
 .header > h1{
-	font-family: "trebuchet ms";
+	font-family: "Merriweather";
 	font-size: 50px;
 	color: #ffffff;
 	padding-left: 15px;
@@ -81,10 +81,7 @@ ul > li > a {
 	padding-right: 30px;
 	height: 250px;
 	margin: 0px;
-	background-image : url("datapic.jpg");
 	background-color: #dddddd;
-	background-position: top;
-	background-blend-mode: hard-light;
 	font-family: "trebuchet ms";
 	text-align: center;
 	color: #c44c44;
@@ -94,6 +91,25 @@ ul > li > a {
 	border-color: #ffc849;
 	transition: 0.3s background-image;
 	overflow: hidden;
+}
+
+#analyze {
+		background-image : url("analyze.jpg");
+		background-position: top;
+		background-blend-mode: hard-light;
+}
+
+#create {
+		background-image : url("datapic.jpg");
+		background-position: top;
+		background-blend-mode: hard-light;
+}
+
+#explore {
+		background-image : url("explore.jpg");
+		background-position: top;
+		background-size: contain;
+		background-blend-mode: hard-light;
 }
 
 .column > h2 {
@@ -108,8 +124,6 @@ ul > li > a {
 }
 
 .column:hover{
-	/**change background of column when hovered**/
-	background: #d45555;
 
 	/** change color of text when hovered**/
 	color: #ffffff;
@@ -118,6 +132,16 @@ ul > li > a {
 	height: 400px;
 	transition: .3s;
 	}
+
+#analyze:hover{
+	background: #d45555;
+}
+#create:hover{
+	background: #d45555;
+}
+#explore:hover{
+	background: #d45555;
+}
 
 /* Clear floats after the columns */
 .row:after {
