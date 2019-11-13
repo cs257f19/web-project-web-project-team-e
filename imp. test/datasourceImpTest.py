@@ -1,6 +1,8 @@
 import psycopg2
 import getpass
 import math
+import numpy as np
+from matplotlib import pyplot as plt
 
 '''
 AMY
@@ -346,6 +348,23 @@ class DataSource:
 		else:
 			return 'Please Enter a Valid Parameters'
 
+	def countProjectsGraph(self, connection, nameOfVariable):
+		try:
+			cursor = connection.cursor()
+			query = "SELECT COUNT(DISTINCT" + str(nameOfVariable) + ") FROM ksdata"
+			cursor.execute(query)
+			#x = query
+			#y = query
+			#plt.title("Count Of Projects by " + str(nameOfVariable))
+			#plt.xlabel(str(nameOfVariable).upper())
+			#plt.ylabel("COUNT")
+			#plt.bar(x, y, align='center')
+			#plt.show()
+			return cursor.fetchall()
+
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
 
 	def createRGraph(self, connection, typeOfGraph, tbdFilters):
 		'''
