@@ -67,7 +67,7 @@ ul > li > a {
 
 .results{
 	width: 1250px;
-	height: 700px;
+	height: 650px;
 	margin: 20px auto;
 	padding: 5px 40px;
 	font-family: "trebuchet ms";
@@ -88,6 +88,7 @@ ul > li > a {
 	text-align: center;
 	font-size: 120px;
 	margin-top: 0;
+	margin-bottom: 0;
 }
 
 .results > h3{
@@ -98,7 +99,6 @@ ul > li > a {
 
 #button{
 	display: inline-block;
-	margin-left: 100px;
 	padding: 0px 10px;
 	border-radius: 10px;
 	border-style: double;
