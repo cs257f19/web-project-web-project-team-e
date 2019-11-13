@@ -24,7 +24,7 @@ def renderCreatePage():
 
 '''
 Renders the analyze page when the user directs to http://perlman.mathcs.carleton.edu:5222/create/
-**THIS FUNCTION IS NOT RELEVANT TO THE SPECIFIC USER QUERY FOR THIS DELIVERABLE**
+**THIS HTML PAGE IS NOT RELEVANT TO THE SPECIFIC USER QUERY FOR THIS DELIVERABLE**
 **DO NOT GRADE**
 '''
 @app.route('/analyze/')
