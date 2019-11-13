@@ -6,11 +6,13 @@ body{
 	margin: 0;
 }
 
+/* Remove link decoration */
 a{
 	text-decoration: none;
 	color: inherit;
 }
 
+/* Top logo and search */
 .header{
 	overflow: hidden;
 	background-color: #d45555;
@@ -37,6 +39,7 @@ a{
 	right: 17px;
 }
 
+/* Tabs */
 ul{
 	list-style-type: none;
 	margin: 5px;
@@ -68,6 +71,7 @@ ul > li > a {
 	height: 100%;
 }
 
+/* Kickstarter creation form */
 form{
 	width: 250px;
 	height: 450px;
