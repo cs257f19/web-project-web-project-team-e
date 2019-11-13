@@ -9,22 +9,26 @@ import sys
 app = flask.Flask(__name__)
 
 @app.route('/')
-def homepage():
+def renderHomepage():
     return render_template('Homepage.html')
 
 @app.route('/create/')
-def renderTest():
+def renderCreatePage():
     return render_template('Create.html')
 
-@app.route('/results', methods=['GET', 'POST'])
-def form():
+@app.route('/analyze/')
+def renderAnalyzePage():
+    return render_template('Analyze.html')
 
+@app.route('/results', methods=['GET', 'POST'])
+def displayProbabilityOfSuccess():
     category = request.form['category']
     currency = request.form['currency']
     goal = request.form['goal']
     ds = DataSource()
     probabilityOfSuccess = ds.calculateProbabilityOfSuccess(category, currency, goal)
     return render_template('Results.html', category = category, currency = currency, goal = goal, probabilityOfSuccess = probabilityOfSuccess)
+
 
 
 if __name__ == "__main__":
