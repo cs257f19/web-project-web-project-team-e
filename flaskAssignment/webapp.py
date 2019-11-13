@@ -33,6 +33,9 @@ def renderAnalyzePage():
 
 '''
 Renders the results page when the user is directed to http://perlman.mathcs.carleton.edu:5222/results/
+Assigns variables 'category', 'currency', and 'goal' to their corresponding form submissions using 'request' from flask
+Creates a datasource object and calculates the probabilityOfSuccess based of the given variables
+'Results.html' is rendered using the form submissions and the probabilityOfSuccess variable
 '''
 @app.route('/results/', methods=['GET', 'POST'])
 def displayProbabilityOfSuccess():
@@ -40,6 +43,7 @@ def displayProbabilityOfSuccess():
     currency = request.form['currency']
     goal = request.form['goal']
     ds = DataSource()
+    #note: connection is not passed because this function can be ran independently of the database
     probabilityOfSuccess = ds.calculateProbabilityOfSuccess(category, currency, goal)
     return render_template('Results.html', category = category, currency = currency, goal = goal, probabilityOfSuccess = probabilityOfSuccess)
 
