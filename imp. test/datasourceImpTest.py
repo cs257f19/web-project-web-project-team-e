@@ -1,8 +1,8 @@
 import psycopg2
 import getpass
 import math
-import numpy as np
-from matplotlib import pyplot as plt
+#import numpy as np
+#from matplotlib import pyplot as plt
 
 '''
 AMY
