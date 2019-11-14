@@ -351,16 +351,23 @@ class DataSource:
 	def countProjectsGraph(self, connection, nameOfVariable):
 		try:
 			cursor = connection.cursor()
-			query = "SELECT COUNT(DISTINCT" + str(nameOfVariable) + ") FROM ksdata"
-			cursor.execute(query)
-			#x = query
-			#y = query
-			#plt.title("Count Of Projects by " + str(nameOfVariable))
-			#plt.xlabel(str(nameOfVariable).upper())
-			#plt.ylabel("COUNT")
-			#plt.bar(x, y, align='center')
-			#plt.show()
+            
+			xVariableQuery = "SELECT COUNT(DISTINCT" + str(nameOfVariable) + ") FROM ksdata"
+			cursor.execute(xVariableQuery)
+            xVariables = []
+            #for i in cursor.fetchall():
+            for i in xVariableQuery:
+                xVariables.append(i[0])
+            print(xVariables)
+            
+            yVariables = []
+            for i in xVariables:
+                yVariableQuery = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata WHERE " + str(nameOfVariable) + " = '" + i +"'"
+                cursor.execute(yVariableQuery)
+                yVariables.append(cursor.fetchall()[0][0])
+			print(yVariables)
 			return cursor.fetchall()
+        
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -379,6 +386,11 @@ class DataSource:
         RETURN:
             a graph
         '''
+        #plt.title("Count Of Projects by " + str(nameOfVariable))
+        #plt.xlabel(str(nameOfVariable).upper())
+        #plt.ylabel("COUNT")
+        #plt.bar(x, y, align='center')
+        #plt.show()
 		return []
 
 	def mostSuccessfulProjects(self, connection, listLength, nameOfVariable, variableCondition):
