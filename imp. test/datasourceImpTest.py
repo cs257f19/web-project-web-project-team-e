@@ -354,20 +354,26 @@ class DataSource:
             
 			xVariableQuery = "SELECT COUNT(DISTINCT" + str(nameOfVariable) + ") FROM ksdata"
 			cursor.execute(xVariableQuery)
-            xVariables = []
-            #for i in cursor.fetchall():
-            for i in xVariableQuery:
-                xVariables.append(i[0])
-            print(xVariables)
-            
-            yVariables = []
-            for i in xVariables:
-                yVariableQuery = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata WHERE " + str(nameOfVariable) + " = '" + i +"'"
-                cursor.execute(yVariableQuery)
-                yVariables.append(cursor.fetchall()[0][0])
-			print(yVariables)
-			return cursor.fetchall()
-        
+			xVariables = []
+
+			#for i in cursor.fetchall():
+			for i in xVariableQuery:
+				xVariables.append(i[0])
+			#print(xVariables)
+
+
+			yVariables = []
+			for i in xVariables:
+				yVariableQuery = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata WHERE " + str(nameOfVariable) + " = '" + i +"'"
+				cursor.execute(yVariableQuery)
+				yVariables.append(cursor.fetchall()[0][0])
+			#print(yVariables)
+			plt.title("Count Of Projects by " + str(nameOfVariable))
+			plt.xlabel(str(nameOfVariable).upper())
+			plt.ylabel("COUNT")
+			plt.bar(xVariables, yVariables, align='center')
+			return plt.show()
+
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -386,7 +392,7 @@ class DataSource:
         RETURN:
             a graph
         '''
-        #plt.title("Count Of Projects by " + str(nameOfVariable))
+		#plt.title("Count Of Projects by " + str(nameOfVariable))
         #plt.xlabel(str(nameOfVariable).upper())
         #plt.ylabel("COUNT")
         #plt.bar(x, y, align='center')
