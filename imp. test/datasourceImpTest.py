@@ -1,8 +1,9 @@
 import psycopg2
 import getpass
 import math
-#import numpy as np
-#from matplotlib import pyplot as plt
+from matplotlib
+from matplotlib import pyplot as plt
+import numpy as np
 
 '''
 AMY
@@ -351,28 +352,34 @@ class DataSource:
 	def countProjectsGraph(self, connection, nameOfVariable):
 		try:
 			cursor = connection.cursor()
-            
+			fig = plt.figure()
+
+			#Getting all the distinct variables
 			xVariableQuery = "SELECT COUNT(DISTINCT" + str(nameOfVariable) + ") FROM ksdata"
 			cursor.execute(xVariableQuery)
-			xVariables = []
 
+			#Creating a list of all the distinct variables to feed into plt function
+			xVariables = []
+			#could also be the following for loop syntax
 			#for i in cursor.fetchall():
 			for i in xVariableQuery:
 				xVariables.append(i[0])
-			#print(xVariables)
 
-
+			#Creating a list of the counts for each x value
 			yVariables = []
 			for i in xVariables:
 				yVariableQuery = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata WHERE " + str(nameOfVariable) + " = '" + i +"'"
 				cursor.execute(yVariableQuery)
 				yVariables.append(cursor.fetchall()[0][0])
-			#print(yVariables)
+
+			#Creating the graph labels and the graph itself
 			plt.title("Count Of Projects by " + str(nameOfVariable))
 			plt.xlabel(str(nameOfVariable).upper())
 			plt.ylabel("COUNT")
 			plt.bar(xVariables, yVariables, align='center')
-			return plt.show()
+
+			#Saving the image in the same directory, there is no need to return anything
+			fig.save('plot.png')
 
 
 		except Exception as e:
@@ -446,7 +453,7 @@ def main():
 	ds = DataSource()
 	connection = ds.connect()
 	print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
-	print(str(ds.countProjectsGraph(self, connection, 'currency')))
+	ds.countProjectsGraph(self, connection, 'currency')
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
