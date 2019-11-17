@@ -356,7 +356,7 @@ class DataSource:
 			fig = plt.figure()
 
 			#Getting all the distinct variables
-			xVariableQuery = "SELECT COUNT(DISTINCT" + str(nameOfVariable) + ") FROM ksdata"
+			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
 			cursor.execute(xVariableQuery)
 
 			#Creating a list of all the distinct variables to feed into plt function
