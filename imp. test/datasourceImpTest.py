@@ -365,6 +365,7 @@ class DataSource:
 			#for i in cursor.fetchall():
 			for i in xVariableQuery:
 				xVariables.append(i[0])
+			print(xVariables)
 
 			#Creating a list of the counts for each x value
 			yVariables = []
@@ -372,6 +373,7 @@ class DataSource:
 				yVariableQuery = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata WHERE " + str(nameOfVariable) + " = '" + i +"'"
 				cursor.execute(yVariableQuery)
 				yVariables.append(cursor.fetchall()[0][0])
+			print(yVariables)
 
 			#Creating the graph labels and the graph itself
 			plt.title("Count Of Projects by " + str(nameOfVariable))
@@ -380,7 +382,8 @@ class DataSource:
 			plt.bar(xVariables, yVariables, align='center')
 
 			#Saving the image in the same directory, there is no need to return anything
-			fig.save('plot.png')
+			#fig.save('plot.png')
+			return 1
 
 
 		except Exception as e:
