@@ -454,7 +454,7 @@ def main():
 	ds = DataSource()
 	connection = ds.connect()
 	print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
-	ds.countProjectsGraph(self, connection, 'currency')
+	ds.countProjectsGraph(connection, 'currency')
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
