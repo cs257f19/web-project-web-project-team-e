@@ -1,7 +1,6 @@
 import psycopg2
 import getpass
 import math
-from matplotlib
 from matplotlib import pyplot as plt
 import numpy as np
 
