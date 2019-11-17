@@ -362,8 +362,7 @@ class DataSource:
 			#Creating a list of all the distinct variables to feed into plt function
 			xVariables = []
 			#could also be the following for loop syntax
-			#for i in cursor.fetchall():
-			for i in xVariableQuery:
+			for i in cursor.fetchall():
 				xVariables.append(i[0])
 			print(xVariables)
 
