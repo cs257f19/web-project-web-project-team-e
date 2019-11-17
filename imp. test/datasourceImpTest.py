@@ -1,6 +1,7 @@
 import psycopg2
 import getpass
 import math
+import matplotlib
 from matplotlib import pyplot as plt
 import numpy as np
 
@@ -455,7 +456,7 @@ class DataSource:
 def main():
 	ds = DataSource()
 	connection = ds.connect()
-	print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
+	#print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
 	ds.countProjectsGraph(connection, 'currency')
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
