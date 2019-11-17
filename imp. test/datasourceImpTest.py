@@ -22,8 +22,8 @@ class DataSource:
 	def __init__(self):
 		#self.user = 'santosb'
 		#self.password = 'book347winter'
-        self.user = 'nystromk'
-		self.password = 'java692spam'Java692spam
+		self.user = 'nystromk'
+		self.password = 'java692spam'
 
 	def connect(self):
 		'''
