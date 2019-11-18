@@ -373,7 +373,8 @@ class DataSource:
 			plt.bar(xVariables, yVariables, align='center')
 
 			#Saving the image in the same directory, there is no need to return anything
-			fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
+			#fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
+
 
 	def proportionProjectsGraph(self, connection, nameOfVariable):
 		try:
