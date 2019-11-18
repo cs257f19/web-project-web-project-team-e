@@ -375,6 +375,9 @@ class DataSource:
 			#Saving the image in the same directory, there is no need to return anything
 			#fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
 
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
 
 	def proportionProjectsGraph(self, connection, nameOfVariable):
 		try:
@@ -397,9 +400,6 @@ class DataSource:
 				failuresList.append(self.getCountOfVariableFailure(connection, nameOfVariable, i))
 			print(successesList)
 			print(failuresList)
-
-
-
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -473,7 +473,8 @@ def main():
 	connection = ds.connect()
 	#print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
 	#ds.countProjectsGraph(connection, 'currency')
-	print(ds.getCountOfVariableFailure(connection, 'currency', 'JPY'))
+	ds.proportionProjectsGraph(connection, 'currency')
+	#print(ds.getCountOfVariableFailure(connection, 'currency', 'JPY'))
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
