@@ -383,7 +383,7 @@ class DataSource:
 
 			#Saving the image in the same directory, there is no need to return anything
 			fig.savefig('plot.png')
-			display plot.png
+			display 'plot.png'
 
 
 		except Exception as e:
