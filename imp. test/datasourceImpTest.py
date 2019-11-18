@@ -114,33 +114,32 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
-			def getCountOfVariableFailure(self, connection, nameOfVariable, variableCondition):
-				'''
-		        Returns the count (an integer) of all projects of one variable that meet a certain condition AND were successful.
+	def getCountOfVariableFailure(self, connection, nameOfVariable, variableCondition):
+		'''
+        Returns the count (an integer) of all projects of one variable that meet a certain condition AND were successful.
 
-		        PARAMETERS:
-					connection - the connection to the database
-		            nameOfVariable - the variable of the project we are counting from.
-			    	variableCondition - the condition that needs to be met for the project to be counted. For example, if the name of variable is 'country',
-					a condition to meet could be 'USA' or 'GB'
+        PARAMETERS:
+        connection - the connection to the database
+        nameOfVariable - the variable of the project we are counting from.
+        variableCondition - the condition that needs to be met for the project to be counted. For example, if the name of variable is 'country',
+        a condition to meet could be 'USA' or 'GB'
 
+        RETURN:
+        an integer that is a total of all the projects in the database that fit these two variables AND is successful (the count of successful Film & Video Projects)
+        '''
+		# work in progress - DO NOT GRADE
+		try:
+			cursor = connection.cursor()
+			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'failed' AND " + str(nameOfVariable) + " = '" + str(variableCondition) + "'"
+			cursor.execute(query)
+			count = int(cursor.fetchall()[0][0])
+			return count
 
-		        RETURN:
-		            an integer that is a total of all the projects in the database that fit these two variables AND is successful (the count of successful Film & Video Projects)
-				'''
-				# work in progress - DO NOT GRADE
-				try:
-					cursor = connection.cursor()
-					query = "SELECT COUNT(state) FROM ksdata WHERE state = 'failed' AND " + str(
-						nameOfVariable) + " = '" + str(variableCondition) + "'"
-					cursor.execute(query)
-					count = int(cursor.fetchall()[0][0])
-					return count
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return None
 
-				except Exception as e:
-					print ("Something went wrong when executing the query: ", e)
-					return None
-
+			
 	def getMinimumValueOfVariable(self, connection, nameOfVariable):
 		'''
 		Returns the smallest value (a float) in the dataset for a given variable (filter)
