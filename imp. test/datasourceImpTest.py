@@ -390,25 +390,26 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
-	def countProjectBackersGraph(self, connection, nameOfVariable):
+	def averagedVariableGraph(self, connection, averagedVariable, nameOfVariable):
+		#for goal, funding, and backers
 		try:
 			cursor = connection.cursor()
 			fig = plt.figure()
 
-			#Getting all the distinct variables
+
 			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
 			cursor.execute(xVariableQuery)
 
-			#Creating a list of all the distinct variables to feed into plt function
+
 			xVariables = []
 			for i in cursor.fetchall():
 				xVariables.append(i[0])
 			print(xVariables)
 
-			#Creating a list of the counts for each x value
+
 			yVariables = []
 			for i in xVariables:
-				average = self.getAverageOfConditionedVariable(connection, 'backers', nameOfVariable, i)
+				average = self.getAverageOfConditionedVariable(connection, averagedVariable, nameOfVariable, i)
 				roundAverage = round(average,0)
 				yVariables.append(roundAverage)
 			print(yVariables)
@@ -534,7 +535,7 @@ def main():
 
 	#ds.countProjectsGraph(connection, 'currency')
 	#ds.proportionProjectsGraph(connection, 'currency')
-	ds.countProjectBackersGraph(connection, 'main_category')
+	ds.averagedVariableGraph(connection, 'backers', main_category')
 
 	# print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
 	#print(ds.getCountOfVariableFailure(connection, 'currency', 'JPY'))
