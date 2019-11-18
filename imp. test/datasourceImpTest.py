@@ -409,7 +409,7 @@ class DataSource:
 			plt.bar(ind, proportion_failures, width = 0.5, label = 'failures', color = 'red', bottom = proportion_successes)
 			plt.bar(ind, proportion_successes, width = 0.5, label = 'successes', color = 'green')
 
-			plt.xticks(ind, countries)
+			plt.xticks(ind, xVariables)
 			plt.ylabel("Proportion")
 			plt.xlabel(str(nameOfVariable))
 			plt.title("Proportion Of Project Successes and Failures by " + str(nameOfVariable))
