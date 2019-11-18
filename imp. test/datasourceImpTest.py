@@ -382,7 +382,7 @@ class DataSource:
 			plt.bar(xVariables, yVariables, align='center')
 
 			#Saving the image in the same directory, there is no need to return anything
-			fig.savefig('plot.png')
+			fig.savefig('/Users/elisaloy/Desktop/plot.png')
 
 
 		except Exception as e:
