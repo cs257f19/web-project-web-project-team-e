@@ -390,16 +390,34 @@ class DataSource:
 			xVariables = []
 			for i in cursor.fetchall():
 				xVariables.append(i[0])
-			print(xVariables)
 
+			ind = [x for x, _ in enumerate(xVariables)]
 
 			successesList = []
 			failuresList = []
 			for i in xVariables:
 				successesList.append(self.getCountOfVariableSuccess(connection, nameOfVariable, i))
 				failuresList.append(self.getCountOfVariableFailure(connection, nameOfVariable, i))
-			print(successesList)
-			print(failuresList)
+
+			successes= np.array(successesList)
+			failures = np.array(failuresList)
+			total = failures + successes
+
+			proportion_failures = np.true_divide(failures, total) * 100
+			proportion_successes = np.true_divide(successes, total) * 100
+
+			plt.bar(ind, proportion_failures, width = 0.5, label = 'failures', color = 'red', bottom = proportion_successes)
+			plt.bar(ind, proportion_successes, width = 0.5, label = 'successes', color = 'green')
+
+			plt.xticks(ind, countries)
+			plt.ylabel("Proportion")
+			plt.xlabel(str(nameOfVariable))
+			plt.title("Proportion Of Project Successes and Failures by " + str(nameOfVariable))
+			plt.ylim = 0.8
+
+
+			plt.setp(plt.gca().get_xticklabels(), rotation = 45, horizontalalignment = 'right')
+			plt.show()
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
