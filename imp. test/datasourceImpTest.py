@@ -447,7 +447,7 @@ def main():
 	connection = ds.connect()
 	#print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
 	#ds.countProjectsGraph(connection, 'currency')
-	print(ds.getCountOfVariableFailure(connection, 'currency', 'USD'))
+	print(ds.getCountOfVariableFailure(connection, 'currency', 'JPY'))
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
