@@ -382,6 +382,7 @@ class DataSource:
 			plt.xlabel(str(nameOfVariable).upper())
 			plt.ylabel("COUNT")
 			plt.bar(xVariables, yVariables, align='center')
+			plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
 
 			#Saving the image in the same directory, there is no need to return anything
 			fig.savefig('plot1.png')
@@ -420,6 +421,7 @@ class DataSource:
 			plt.xlabel(str(nameOfVariable).upper())
 			plt.ylabel("COUNT")
 			plt.bar(xVariables, yVariables, align='center')
+			plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
 
 			#Saving the image in the same directory, there is no need to return anything
 			fig.savefig('plot2.png')
@@ -538,7 +540,7 @@ def main():
 
 	ds.countProjectsGraph(connection, 'currency')
 	ds.proportionProjectsGraph(connection, 'currency')
-	ds.averagedVariableGraph(connection, 'backers', 'main_category')
+	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
 	ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
 
 
