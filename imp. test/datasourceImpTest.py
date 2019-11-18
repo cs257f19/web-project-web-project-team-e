@@ -114,6 +114,33 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
+			def getCountOfVariableFailure(self, connection, nameOfVariable, variableCondition):
+				'''
+		        Returns the count (an integer) of all projects of one variable that meet a certain condition AND were successful.
+
+		        PARAMETERS:
+					connection - the connection to the database
+		            nameOfVariable - the variable of the project we are counting from.
+			    	variableCondition - the condition that needs to be met for the project to be counted. For example, if the name of variable is 'country',
+					a condition to meet could be 'USA' or 'GB'
+
+
+		        RETURN:
+		            an integer that is a total of all the projects in the database that fit these two variables AND is successful (the count of successful Film & Video Projects)
+				'''
+				# work in progress - DO NOT GRADE
+				try:
+					cursor = connection.cursor()
+					query = "SELECT COUNT(state) FROM ksdata WHERE state = 'failed' AND " + str(
+						nameOfVariable) + " = '" + str(variableCondition) + "'"
+					cursor.execute(query)
+					count = int(cursor.fetchall()[0][0])
+					return count
+
+				except Exception as e:
+					print ("Something went wrong when executing the query: ", e)
+					return None
+
 	def getMinimumValueOfVariable(self, connection, nameOfVariable):
 		'''
 		Returns the smallest value (a float) in the dataset for a given variable (filter)
@@ -189,7 +216,6 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
-		return []
 
 	def getProportionOfSuccess(self, connection, nameOfVariable, variableCondition):
 		'''
@@ -223,40 +249,6 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
-	def getMedianOfEntireColumn(self, connection, nameOfVariable):
-		'''
-        Returns the median of a quantitative variable.
-
-        PARAMETERS:
-			connection - the connection to the database
-            nameOfVariable - the name of the variable we wish to calculate the median of.
-
-        RETURN:
-            a integer that is the median of the provided parameter
-
-		RAISES:
-			NeedQuantitativeVariableError - If parameter entered is a categorical variable
-        '''
-		return []
-
-	def getMedianOfFilteredCategory(self, connection, nameOfVariable, variableCondition):
-		'''
-		Returns the median of a selected 'category' that is grouped by a quantitative variable.
-
-        PARAMETERS
-			connection - the connection to the database
-			nameOfVariable - a selected category of projects (i.e Design)
-			variableCondition - a filter that highlights one specific part of the category. This is typically the name ofa another category (i.e backers or USD goal).
-
-
-
-        RETURN:
-			an integer that is the median of the provided parameter grouped by the filter (i.e the median USD goal for Design projects)
-
-		RAISES:
-			NeedQuantitativeVariableError - If the filter parameter entered is a categorical variable
-		'''
-		return []
 
 	def mainCategoryCoefficient(self,nameOfVariable):
 		if str(nameOfVariable) == 'Arts':
@@ -456,6 +448,7 @@ def main():
 	connection = ds.connect()
 	#print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
 	ds.countProjectsGraph(connection, 'currency')
+	ds.getCountOfVariableFailure(connection, 'currency', 'USD')
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
