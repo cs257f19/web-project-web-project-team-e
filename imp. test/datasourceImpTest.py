@@ -139,7 +139,7 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
-			
+
 	def getMinimumValueOfVariable(self, connection, nameOfVariable):
 		'''
 		Returns the smallest value (a float) in the dataset for a given variable (filter)
@@ -446,7 +446,7 @@ def main():
 	ds = DataSource()
 	connection = ds.connect()
 	#print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
-	ds.countProjectsGraph(connection, 'currency')
+	#ds.countProjectsGraph(connection, 'currency')
 	ds.getCountOfVariableFailure(connection, 'currency', 'USD')
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
