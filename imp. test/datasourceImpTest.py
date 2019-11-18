@@ -408,7 +408,9 @@ class DataSource:
 			#Creating a list of the counts for each x value
 			yVariables = []
 			for i in xVariables:
-				yVariables.append(self.getAverageOfConditionedVariable(connection, 'backers', nameOfVariable, i))
+				average = self.getAverageOfConditionedVariable(connection, 'backers', nameOfVariable, i)
+				roundAverage = round(average,0)
+				yVariables.append(roundAverage)
 			print(yVariables)
 
 			#Creating the graph labels and the graph itself
