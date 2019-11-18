@@ -408,7 +408,7 @@ class DataSource:
 			#Creating a list of the counts for each x value
 			yVariables = []
 			for i in xVariables:
-				etAverageOfConditionedVariable(connection, 'backers', nameOfVariable, i)
+				yVariables.append(getAverageOfConditionedVariable(connection, 'backers', nameOfVariable, i))
 			print(yVariables)
 
 			#Creating the graph labels and the graph itself
@@ -529,10 +529,12 @@ class DataSource:
 def main():
 	ds = DataSource()
 	connection = ds.connect()
-	#print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
+
 	#ds.countProjectsGraph(connection, 'currency')
 	#ds.proportionProjectsGraph(connection, 'currency')
-	ds.countProjectBackersGraph(connection, 'category')
+	#ds.countProjectBackersGraph(connection, 'main_category')
+
+	# print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
 	#print(ds.getCountOfVariableFailure(connection, 'currency', 'JPY'))
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
