@@ -536,7 +536,7 @@ def main():
 	#ds.countProjectsGraph(connection, 'currency')
 	#ds.proportionProjectsGraph(connection, 'currency')
 	ds.averagedVariableGraph(connection, 'backers', 'main_category')
-	ds.averagedVariableGraph(connection, 'usd_goal', 'main_category')
+	ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
 
 
 	# print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
