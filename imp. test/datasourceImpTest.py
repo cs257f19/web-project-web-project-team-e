@@ -215,6 +215,18 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
+	def getAverageOfConditionedVariable(self, connection, averagedVariable, nameOfVariable, variableCondition):
+			try:
+				cursor = connection.cursor()
+				query = "SELECT AVG(" + str(averagedVariable) + ") FROM ksdata WHERE " +str(nameOfVariable) + " =  '" + str(variableCondition) + "'"
+				cursor.execute(query)
+				averageValue = float(cursor.fetchall()[0][0])
+				return averageValue
+
+			except Exception as e:
+				print ("Something went wrong when executing the query: ", e)
+				return None
+
 
 	def getProportionOfSuccess(self, connection, nameOfVariable, variableCondition):
 		'''
@@ -353,7 +365,6 @@ class DataSource:
 
 			#Creating a list of all the distinct variables to feed into plt function
 			xVariables = []
-			#could also be the following for loop syntax
 			for i in cursor.fetchall():
 				xVariables.append(i[0])
 			print(xVariables)
@@ -368,6 +379,40 @@ class DataSource:
 
 			#Creating the graph labels and the graph itself
 			plt.title("Count Of Projects by " + str(nameOfVariable))
+			plt.xlabel(str(nameOfVariable).upper())
+			plt.ylabel("COUNT")
+			plt.bar(xVariables, yVariables, align='center')
+
+			#Saving the image in the same directory, there is no need to return anything
+			#fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
+
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
+
+	def countProjectBackersGraph(self, connection, nameOfVariable):
+		try:
+			cursor = connection.cursor()
+			fig = plt.figure()
+
+			#Getting all the distinct variables
+			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
+			cursor.execute(xVariableQuery)
+
+			#Creating a list of all the distinct variables to feed into plt function
+			xVariables = []
+			for i in cursor.fetchall():
+				xVariables.append(i[0])
+			print(xVariables)
+
+			#Creating a list of the counts for each x value
+			yVariables = []
+			for i in xVariables:
+				etAverageOfConditionedVariable(connection, 'backers', nameOfVariable, i)
+			print(yVariables)
+
+			#Creating the graph labels and the graph itself
+			plt.title("Count Of Project Average Backers by " + str(nameOfVariable))
 			plt.xlabel(str(nameOfVariable).upper())
 			plt.ylabel("COUNT")
 			plt.bar(xVariables, yVariables, align='center')
@@ -406,24 +451,23 @@ class DataSource:
 			proportion_failures = np.true_divide(failures, total) * 100
 			proportion_successes = np.true_divide(successes, total) * 100
 
-			plt.bar(ind, proportion_failures, width = 0.5, label = 'failures', color = 'red', bottom = proportion_successes)
-			plt.bar(ind, proportion_successes, width = 0.5, label = 'successes', color = 'green')
+			plt.bar(ind, proportion_failures, width = 0.5, label = 'failures', color = '#e57373', bottom = proportion_successes)
+			plt.bar(ind, proportion_successes, width = 0.5, label = 'successes', color = '#b2ebf2')
 
-			plt.xticks(ind, xVariables)
-			plt.ylabel("Proportion")
-			plt.xlabel(str(nameOfVariable))
 			plt.title("Proportion Of Project Successes and Failures by " + str(nameOfVariable))
-			plt.ylim = 0.8
+			plt.xticks(ind, xVariables)
+			plt.xlabel(str(nameOfVariable).upper())
+			plt.ylabel("PROPORTION")
 
 
 			plt.setp(plt.gca().get_xticklabels(), rotation = 45, horizontalalignment = 'right')
-			plt.show()
+			# fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
-	def createRGraph(self, connection, typeOfGraph, tbdFilters):
+	def createRGraph(self, connection, nameOfVariable, typeOfGraph):
 		'''
         Creates a graph and return the graph onto the website given certain selected
         filters and the type of graph chosen
@@ -436,11 +480,7 @@ class DataSource:
         RETURN:
             a graph
         '''
-		#plt.title("Count Of Projects by " + str(nameOfVariable))
-        #plt.xlabel(str(nameOfVariable).upper())
-        #plt.ylabel("COUNT")
-        #plt.bar(x, y, align='center')
-        #plt.show()
+
 		return []
 
 	def mostSuccessfulProjects(self, connection, listLength, nameOfVariable, variableCondition):
@@ -491,7 +531,8 @@ def main():
 	connection = ds.connect()
 	#print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
 	#ds.countProjectsGraph(connection, 'currency')
-	ds.proportionProjectsGraph(connection, 'currency')
+	#ds.proportionProjectsGraph(connection, 'currency')
+	ds.countProjectBackersGraph(connection, 'category')
 	#print(ds.getCountOfVariableFailure(connection, 'currency', 'JPY'))
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
