@@ -375,6 +375,31 @@ class DataSource:
 			#Saving the image in the same directory, there is no need to return anything
 			fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
 
+	def proportionProjectsGraph(self, connection, nameOfVariable):
+		try:
+			cursor = connection.cursor()
+			fig = plt.figure()
+
+			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
+			cursor.execute(xVariableQuery)
+
+			xVariables = []
+			for i in cursor.fetchall():
+				xVariables.append(i[0])
+			print(xVariables)
+
+
+			successesList = []
+			failuresList = []
+			for i in xVariables:
+				successesList.append(self.getCountOfVariableSuccess(connection, nameOfVariable, i))
+				failuresList.append(self.getCountOfVariableFailure(connection, nameOfVariable, i))
+			print(successesList)
+			print(failuresList)
+
+
+
+
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
