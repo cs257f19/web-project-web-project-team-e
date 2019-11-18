@@ -532,7 +532,7 @@ def main():
 
 	#ds.countProjectsGraph(connection, 'currency')
 	#ds.proportionProjectsGraph(connection, 'currency')
-	#ds.countProjectBackersGraph(connection, 'main_category')
+	ds.countProjectBackersGraph(connection, 'main_category')
 
 	# print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
 	#print(ds.getCountOfVariableFailure(connection, 'currency', 'JPY'))
