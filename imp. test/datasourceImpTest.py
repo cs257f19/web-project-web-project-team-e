@@ -382,9 +382,7 @@ class DataSource:
 			plt.bar(xVariables, yVariables, align='center')
 
 			#Saving the image in the same directory, there is no need to return anything
-			fig.savefig('plot.png')
-			display 'plot.png'
-
+			fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
