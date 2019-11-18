@@ -468,7 +468,7 @@ class DataSource:
 
 
 			plt.setp(plt.gca().get_xticklabels(), rotation = 45, horizontalalignment = 'right')
-			fig.savefig('plot3.png')
+			fig.savefig('plot3.png', dpi=fig.dpi)
 			# fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
 
 		except Exception as e:
@@ -538,10 +538,10 @@ def main():
 	ds = DataSource()
 	connection = ds.connect()
 
-	ds.countProjectsGraph(connection, 'currency')
+	#ds.countProjectsGraph(connection, 'currency')
 	ds.proportionProjectsGraph(connection, 'currency')
 	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
-	ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
+	#ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
 
 
 	# print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
