@@ -475,8 +475,8 @@ class DataSource:
 
 
 			plt.setp(plt.gca().get_xticklabels(), rotation = 45, horizontalalignment = 'right')
-			fig.savefig('plot3.png', dpi=fig.dpi)
-			# fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
+			#fig.savefig('plot3.png', dpi=fig.dpi)
+			fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
