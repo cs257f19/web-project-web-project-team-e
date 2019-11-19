@@ -354,12 +354,14 @@ class DataSource:
 		else:
 			return 'Please Enter a Valid Parameters'
 
+	#input a column name
 	def countProjectsGraph(self, connection, nameOfVariable):
 		try:
 			cursor = connection.cursor()
 			fig = plt.figure()
 
 			#Getting all the distinct variables
+			#gets all the distnct x-values - for setting up x-axis
 			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
 			cursor.execute(xVariableQuery)
 
@@ -370,6 +372,7 @@ class DataSource:
 			print(xVariables)
 
 			#Creating a list of the counts for each x value
+			#Iterates through x variable list and gets the count, appends to a empty y list
 			yVariables = []
 			for i in xVariables:
 				yVariableQuery = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata WHERE " + str(nameOfVariable) + " = '" + i +"'"
@@ -392,7 +395,10 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
+	#the average variable for a column - all colums displayed on x-axis
 	def averagedVariableGraph(self, connection, averagedVariable, nameOfVariable):
+		#averagedVariagle= goal funding or Backers
+		#name of variable = year, country, both categories, currency
 		#for goal, funding, and backers
 		try:
 			cursor = connection.cursor()
@@ -451,6 +457,7 @@ class DataSource:
 				successesList.append(self.getCountOfVariableSuccess(connection, nameOfVariable, i))
 				failuresList.append(self.getCountOfVariableFailure(connection, nameOfVariable, i))
 
+			#make into array, add the two arrays together - has to be array for barplot
 			successes= np.array(successesList)
 			failures = np.array(failuresList)
 			total = failures + successes
@@ -475,21 +482,6 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
-	def createRGraph(self, connection, nameOfVariable, typeOfGraph):
-		'''
-        Creates a graph and return the graph onto the website given certain selected
-        filters and the type of graph chosen
-
-        PARAMETERS:
-            connection - the connection to the database
-            typeOfGraph - selected to be either a graph of counts or proportions
-            We have yet to determine how varying number of filters can be added
-
-        RETURN:
-            a graph
-        '''
-
-		return []
 
 	def mostSuccessfulProjects(self, connection, listLength, nameOfVariable, variableCondition):
 		'''
