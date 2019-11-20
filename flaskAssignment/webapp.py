@@ -37,9 +37,8 @@ def displayProportionProjectsGraph():
     filter = request.form['filter']
     ds = DataSource()
     ds.proportionProjectsGraph(connection, filter)
-    filename = 'static/plot.png'
 
-    return render_template("Image.html", usergraph = filename)
+    return render_template("Image.html")
 
 
 '''
