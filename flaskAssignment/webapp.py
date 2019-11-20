@@ -35,6 +35,7 @@ Renders the analyze page when the user directs to http://perlman.mathcs.carleton
 def displayProportionProjectsGraph():
     filter = request.form['filter']
     ds = DataSource()
+    connection = ds.connect()
     ds.proportionProjectsGraph(connection, filter)
 
     return render_template('Homepage.html')
