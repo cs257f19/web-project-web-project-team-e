@@ -37,7 +37,7 @@ def displayProportionProjectsGraph():
     ds = DataSource()
     ds.proportionProjectsGraph(connection, filter)
 
-    return render_template('Image.html')
+    return render_template('Homepage.html')
 
 
 '''
