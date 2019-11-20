@@ -388,7 +388,7 @@ class DataSource:
 			plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
 
 			#Saving the image in the same directory, there is no need to return anything
-			fig.savefig('plot1.png')
+			fig.savefig('TestFolder/plot.png')
 			#fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
 
 		except Exception as e:
@@ -430,7 +430,7 @@ class DataSource:
 			plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
 
 			#Saving the image in the same directory, there is no need to return anything
-			fig.savefig('plot2.png')
+			fig.savefig('TestFolder/plot.png')
 			#fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
 
 		except Exception as e:
@@ -476,7 +476,7 @@ class DataSource:
 
 			plt.setp(plt.gca().get_xticklabels(), rotation = 45, horizontalalignment = 'right')
 			#fig.savefig('plot3.png', dpi=fig.dpi)
-			fig.savefig('C:/Users/Ben/Documents/GitHub/web-project-web-project-team-e/imp. test/plot.png')
+			fig.savefig('TestFolder/plot.png')
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -530,8 +530,8 @@ def main():
 	ds = DataSource()
 	connection = ds.connect()
 
-	#ds.countProjectsGraph(connection, 'currency')
-	ds.proportionProjectsGraph(connection, 'currency')
+	ds.countProjectsGraph(connection, 'currency')
+	#ds.proportionProjectsGraph(connection, 'currency')
 	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
 	#ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
 
