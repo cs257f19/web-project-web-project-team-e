@@ -27,9 +27,14 @@ Renders the analyze page when the user directs to http://perlman.mathcs.carleton
 **THIS HTML PAGE IS NOT RELEVANT TO THE SPECIFIC USER QUERY FOR THIS DELIVERABLE**
 **DO NOT GRADE**
 '''
-@app.route('/analyze/')
-def renderAnalyzePage():
-    return render_template('Analyze.html')
+@app.route('/analyze/', methods=['GET', 'POST'])
+def displayProportionProjectsGraph():
+    filter = request.form['filter']
+    ds = DataSource()
+    #note: connection is not passed because this function can be ran independently of the database
+    ds.proportionProjectsGraph(connection, filter)
+    filename = 'static\\plot.png'
+    return send_file(filename, mimetype='image/jpg')
 
 '''
 Renders the results page when the user is directed to http://perlman.mathcs.carleton.edu:5222/results/
@@ -46,6 +51,9 @@ def displayProbabilityOfSuccess():
     #note: connection is not passed because this function can be ran independently of the database
     probabilityOfSuccess = ds.calculateProbabilityOfSuccess(category, currency, goal)
     return render_template('Results.html', category = category, currency = currency, goal = goal, probabilityOfSuccess = probabilityOfSuccess)
+
+
+
 
 
 
