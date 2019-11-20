@@ -38,7 +38,7 @@ def displayProportionProjectsGraph():
     connection = ds.connect()
     ds.proportionProjectsGraph(connection, filter)
 
-    return render_template('Homepage.html')
+    return render_template('Image.html')
 
 
 '''
