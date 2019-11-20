@@ -22,12 +22,16 @@ Renders the create page when the user directs to http://perlman.mathcs.carleton.
 def renderCreatePage():
     return render_template('Create.html')
 
+@app.route('/analyze/')
+def renderCreatePage():
+    return render_template('Analyze.html')
+
 '''
 Renders the analyze page when the user directs to http://perlman.mathcs.carleton.edu:5222/create/
 **THIS HTML PAGE IS NOT RELEVANT TO THE SPECIFIC USER QUERY FOR THIS DELIVERABLE**
 **DO NOT GRADE**
 '''
-@app.route('/analyze/', methods=['GET', 'POST'])
+@app.route('/proportiongraph/', methods=['GET', 'POST'])
 def displayProportionProjectsGraph():
     filter = request.form['filter']
     ds = DataSource()
