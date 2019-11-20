@@ -38,7 +38,7 @@ def displayProportionProjectsGraph():
     #note: connection is not passed because this function can be ran independently of the database
     ds.proportionProjectsGraph(connection, filter)
     filename = 'static\\plot.png'
-    return send_file(filename, mimetype='image/jpg')
+    return 'Made it'
 
 '''
 Renders the results page when the user is directed to http://perlman.mathcs.carleton.edu:5222/results/
