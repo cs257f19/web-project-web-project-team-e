@@ -4,6 +4,7 @@
 body{
 	background-color: #ffffff;
 	margin: 0;
+
 }
 
 a{
@@ -13,22 +14,23 @@ a{
 
 .header{
 	overflow: hidden;
-	background-color: #d45555;
+	background-color: #484d5c;
 	line-height: 10px;
 }
 
 .header > h1{
-	font-family: "Merriweather";
-	font-size: 50px;
-	color: #ffffff;
+	font-family: 'Oswald', sans-serif;
+ 	text-transform: uppercase;
+	font-size: 60px;
+	color: #ffce00;
 	padding-left: 15px;
 }
 
 .header > h3{
-	font-family: "trebuchet ms";
+	font-family: 'Oswald', sans-serif;
 	font-size: 25px;
-	color: #ffffff;
-	padding-left: 15px;
+	color: #c0ccd4;
+	padding-left: 25px;
 }
 
 .search-box{
@@ -38,12 +40,13 @@ a{
 }
 
 ul{
+	font-family: 'Oswald';
 	list-style-type: none;
 	margin: 5px;
 	padding-left: 10px;
 	overflow: hidden;
 	font-size: 20px;
-	background-color: #d45555;
+	background-color: #484d5c;
 	}
 
 ul > li{
@@ -53,9 +56,9 @@ ul > li{
 	float: left;
 	border-radius: 10px;
 	border-style: double;
-	border-color: #cccccc;
+	border-color: #c0ccd4;
 	background-color: #ffffff;
-	color: #2f3b78;
+	color: #484d5c;
 	}
 
 ul > li:hover{
@@ -81,14 +84,15 @@ ul > li > a {
 	padding-right: 30px;
 	height: 250px;
 	margin: 0px;
-	background-color: #dddddd;
+	background-color: #c0ccd4;
 	font-family: "trebuchet ms";
 	text-align: center;
-	color: #c44c44;
+	/** big text color **/
+	color: #484d5c;
 	border-radius: .5px;
 	border-style: solid;
 	border-width: 4px;
-	border-color: #ffc849;
+	border-color: #ffce00;
 	transition: 0.3s background-image;
 	overflow: hidden;
 }
@@ -112,10 +116,11 @@ ul > li > a {
 		background-blend-mode: hard-light;
 }
 
+
 .column > h2 {
 	display: inline-block;
 	font-size: 65px;
-	padding-bottom: 15px;
+	padding-bottom: 25px;
 }
 
 .column > p {
@@ -126,21 +131,22 @@ ul > li > a {
 .column:hover{
 
 	/** change color of text when hovered**/
-	color: #ffffff;
+	color: #ffce00;
 
 	/**what length bars change to**/
 	height: 400px;
 	transition: .3s;
 	}
 
+
 #analyze:hover{
-	background: #d45555;
+	background: #484d5c;
 }
 #create:hover{
-	background: #d45555;
+	background: #484d5c;
 }
 #explore:hover{
-	background: #d45555;
+	background: #484d5c;
 }
 
 /* Clear floats after the columns */
