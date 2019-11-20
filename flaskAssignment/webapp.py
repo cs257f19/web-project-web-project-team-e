@@ -33,11 +33,13 @@ Renders the analyze page when the user directs to http://perlman.mathcs.carleton
 '''
 @app.route('/usergraph/', methods=['GET', 'POST'])
 def displayProportionProjectsGraph():
+    '''
     filter = request.form['filter']
     ds = DataSource()
     #note: connection is not passed because this function can be ran independently of the database
     ds.proportionProjectsGraph(connection, filter)
     filename = 'static\\plot.png'
+    '''
     return 'Made it'
 
 '''
