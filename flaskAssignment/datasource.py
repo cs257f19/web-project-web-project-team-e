@@ -1,6 +1,9 @@
 import psycopg2
 import getpass
 import math
+import matplotlib
+from matplotlib import pyplot as plt
+import numpy as np
 
 '''
 AMY
@@ -18,8 +21,10 @@ class DataSource:
 	'''
 
 	def __init__(self):
-		self.user = 'santosb'
-		self.password = 'book347winter'
+		#self.user = 'santosb'
+		#self.password = 'book347winter'
+		self.user = 'nystromk'
+		self.password = 'java692spam'
 
 	def connect(self):
 		'''
@@ -35,7 +40,7 @@ class DataSource:
 		Note: Code written by Amy Csizmar Dalal
 		'''
 		try:
-			connection = psycopg2.connect(database=self.user, user=self.user, password= self.password)
+			connection = psycopg2.connect(host="localhost", database=self.user, user=self.user, password= self.password)
 		except Exception as e:
 			print("Connection error: ", e)
 			exit()
@@ -108,6 +113,32 @@ class DataSource:
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
 			return None
+
+	def getCountOfVariableFailure(self, connection, nameOfVariable, variableCondition):
+		'''
+        Returns the count (an integer) of all projects of one variable that meet a certain condition AND were successful.
+
+        PARAMETERS:
+        connection - the connection to the database
+        nameOfVariable - the variable of the project we are counting from.
+        variableCondition - the condition that needs to be met for the project to be counted. For example, if the name of variable is 'country',
+        a condition to meet could be 'USA' or 'GB'
+
+        RETURN:
+        an integer that is a total of all the projects in the database that fit these two variables AND is successful (the count of successful Film & Video Projects)
+        '''
+		# work in progress - DO NOT GRADE
+		try:
+			cursor = connection.cursor()
+			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'failed' AND " + str(nameOfVariable) + " = '" + str(variableCondition) + "'"
+			cursor.execute(query)
+			count = int(cursor.fetchall()[0][0])
+			return count
+
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return None
+
 
 	def getMinimumValueOfVariable(self, connection, nameOfVariable):
 		'''
@@ -184,7 +215,18 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return None
 
-		return []
+	def getAverageOfConditionedVariable(self, connection, averagedVariable, nameOfVariable, variableCondition):
+			try:
+				cursor = connection.cursor()
+				query = "SELECT AVG(" + str(averagedVariable) + ") FROM ksdata WHERE " +str(nameOfVariable) + " =  '" + str(variableCondition) + "'"
+				cursor.execute(query)
+				averageValue = float(cursor.fetchall()[0][0])
+				return averageValue
+
+			except Exception as e:
+				print ("Something went wrong when executing the query: ", e)
+				return None
+
 
 	def getProportionOfSuccess(self, connection, nameOfVariable, variableCondition):
 		'''
@@ -218,40 +260,6 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
-	def getMedianOfEntireColumn(self, connection, nameOfVariable):
-		'''
-        Returns the median of a quantitative variable.
-
-        PARAMETERS:
-			connection - the connection to the database
-            nameOfVariable - the name of the variable we wish to calculate the median of.
-
-        RETURN:
-            a integer that is the median of the provided parameter
-
-		RAISES:
-			NeedQuantitativeVariableError - If parameter entered is a categorical variable
-        '''
-		return []
-
-	def getMedianOfFilteredCategory(self, connection, nameOfVariable, variableCondition):
-		'''
-		Returns the median of a selected 'category' that is grouped by a quantitative variable.
-
-        PARAMETERS
-			connection - the connection to the database
-			nameOfVariable - a selected category of projects (i.e Design)
-			variableCondition - a filter that highlights one specific part of the category. This is typically the name ofa another category (i.e backers or USD goal).
-
-
-
-        RETURN:
-			an integer that is the median of the provided parameter grouped by the filter (i.e the median USD goal for Design projects)
-
-		RAISES:
-			NeedQuantitativeVariableError - If the filter parameter entered is a categorical variable
-		'''
-		return []
 
 	def mainCategoryCoefficient(self,nameOfVariable):
 		if str(nameOfVariable) == 'Arts':
@@ -346,21 +354,131 @@ class DataSource:
 		else:
 			return 'Please Enter a Valid Parameters'
 
+	#input a column name
+	def countProjectsGraph(self, connection, nameOfVariable):
+		try:
+			cursor = connection.cursor()
+			fig = plt.figure()
 
-	def createRGraph(self, connection, typeOfGraph, tbdFilters):
-		'''
-        Creates a graph and return the graph onto the website given certain selected
-        filters and the type of graph chosen
+			#Getting all the distinct variables
+			#gets all the distnct x-values - for setting up x-axis
+			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
+			cursor.execute(xVariableQuery)
 
-        PARAMETERS:
-            connection - the connection to the database
-            typeOfGraph - selected to be either a graph of counts or proportions
-            We have yet to determine how varying number of filters can be added
+			#Creating a list of all the distinct variables to feed into plt function
+			xVariables = []
+			for i in cursor.fetchall():
+				xVariables.append(i[0])
+			print(xVariables)
 
-        RETURN:
-            a graph
-        '''
-		return []
+			#Creating a list of the counts for each x value
+			#Iterates through x variable list and gets the count, appends to a empty y list
+			yVariables = []
+			for i in xVariables:
+				yVariableQuery = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata WHERE " + str(nameOfVariable) + " = '" + i +"'"
+				cursor.execute(yVariableQuery)
+				yVariables.append(cursor.fetchall()[0][0])
+			print(yVariables)
+
+			#Creating the graph labels and the graph itself
+			plt.title("Count Of Projects by " + str(nameOfVariable))
+			plt.xlabel(str(nameOfVariable).upper())
+			plt.ylabel("COUNT")
+			plt.bar(xVariables, yVariables, align='center')
+			plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
+
+			#Saving the image in the same directory, there is no need to return anything
+			fig.savefig('static/plot.png')
+
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
+
+	#the average variable for a column - all colums displayed on x-axis
+	def averagedVariableGraph(self, connection, averagedVariable, nameOfVariable):
+		#averagedVariagle= goal funding or Backers
+		#name of variable = year, country, both categories, currency
+		#for goal, funding, and backers
+		try:
+			cursor = connection.cursor()
+			fig = plt.figure()
+
+
+			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
+			cursor.execute(xVariableQuery)
+
+
+			xVariables = []
+			for i in cursor.fetchall():
+				xVariables.append(i[0])
+			print(xVariables)
+
+
+			yVariables = []
+			for i in xVariables:
+				average = self.getAverageOfConditionedVariable(connection, averagedVariable, nameOfVariable, i)
+				roundAverage = round(average,0)
+				yVariables.append(roundAverage)
+			print(yVariables)
+
+			#Creating the graph labels and the graph itself
+			plt.title("Count Of Project Average Backers by " + str(nameOfVariable))
+			plt.xlabel(str(nameOfVariable).upper())
+			plt.ylabel("COUNT")
+			plt.bar(xVariables, yVariables, align='center')
+			plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
+
+			#Saving the image in the same directory, there is no need to return anything
+			fig.savefig('static/plot.png')
+
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
+
+	def proportionProjectsGraph(self, connection, nameOfVariable):
+		try:
+			cursor = connection.cursor()
+			fig = plt.figure()
+
+			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
+			cursor.execute(xVariableQuery)
+
+			xVariables = []
+			for i in cursor.fetchall():
+				xVariables.append(i[0])
+
+			ind = [x for x, _ in enumerate(xVariables)]
+
+			successesList = []
+			failuresList = []
+			for i in xVariables:
+				successesList.append(self.getCountOfVariableSuccess(connection, nameOfVariable, i))
+				failuresList.append(self.getCountOfVariableFailure(connection, nameOfVariable, i))
+
+			#make into array, add the two arrays together - has to be array for barplot
+			successes= np.array(successesList)
+			failures = np.array(failuresList)
+			total = failures + successes
+
+			proportion_failures = np.true_divide(failures, total) * 100
+			proportion_successes = np.true_divide(successes, total) * 100
+
+			plt.bar(ind, proportion_failures, width = 0.5, label = 'failures', color = '#e57373', bottom = proportion_successes)
+			plt.bar(ind, proportion_successes, width = 0.5, label = 'successes', color = '#b2ebf2')
+
+			plt.title("Proportion Of Project Successes and Failures by " + str(nameOfVariable))
+			plt.xticks(ind, xVariables)
+			plt.xlabel(str(nameOfVariable).upper())
+			plt.ylabel("PROPORTION")
+
+
+			plt.setp(plt.gca().get_xticklabels(), rotation = 45, horizontalalignment = 'right')
+			fig.savefig('static/plot.png')
+
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
+
 
 	def mostSuccessfulProjects(self, connection, listLength, nameOfVariable, variableCondition):
 		'''
@@ -408,7 +526,15 @@ class DataSource:
 def main():
 	ds = DataSource()
 	connection = ds.connect()
-	print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
+
+	#ds.countProjectsGraph(connection, 'currency')
+	ds.proportionProjectsGraph(connection, 'currency')
+	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
+	#ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
+
+
+	#print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
+	#print(ds.getCountOfVariableFailure(connection, 'currency', 'JPY'))
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
