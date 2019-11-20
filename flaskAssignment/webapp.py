@@ -31,7 +31,7 @@ Renders the analyze page when the user directs to http://perlman.mathcs.carleton
 **THIS HTML PAGE IS NOT RELEVANT TO THE SPECIFIC USER QUERY FOR THIS DELIVERABLE**
 **DO NOT GRADE**
 '''
-@app.route('/proportiongraph/', methods=['GET', 'POST'])
+@app.route('/usergraph/', methods=['GET', 'POST'])
 def displayProportionProjectsGraph():
     filter = request.form['filter']
     ds = DataSource()
