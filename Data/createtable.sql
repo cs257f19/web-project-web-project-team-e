@@ -8,7 +8,6 @@ CREATE TABLE ksdata (
   projectyear real,
   deadline date,
   goal real,
-  launched date,
   total_days real,
   pledged real,
   state text,
