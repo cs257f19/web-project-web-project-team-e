@@ -35,22 +35,13 @@
 	<p>Compare Kickstarter data by using the drop down menus to generate a graph. In the current version, you can specify whether you want the graph to be organized as a histogram of total counts or as a stacked bar plot showing proportions, as well choose a category by which to sort the data.</p>
 
 
-  <form action="/usergraph/" method="post">
-    <!--The box where you select what you want to compare-->
-    <div>
-      <label for="compare">Compare by:</label>
-      <select id="compare" name="compare">
-        <option value="counts">Counts</option>
-        <option value="proportion">Proportion of Success</option>
-        <option value="average">Averages</option>
-      </select>
-    <!--End of options-->
+  <form action="/countgraph/" method="post">
     </div>
-      <!--The box where you select what you want to compare-->
+      <!--The box where you select what counts you want to compare-->
     <div>
-      <label for="filter">Filter by:</label>
+      <label for="filter">Compare counts of projects:</label>
       <select id="filter" name="filter">
-        <option value="main_category">Project Type</option>
+        <option value="main_category">Project Category</option>
         <option value="currency">Currency</option>
         <option value="country">Country</option>
         <option value="year">Year</option>
@@ -66,6 +57,67 @@
 
     </form>
 
+    <form action="/proportiongraph/" method="post">
+      <!--The box where you select what you want to compare-->
+      <div>
+        <label for="compare">Compare how successful projects are based on:</label>
+        <select id="compare" name="compare">
+          <option value="counts">Counts</option>
+          <option value="proportion">Proportion of Success</option>
+          <option value="average">Averages</option>
+        </select>
+      <!--End of options-->
+      </div>
+        <!--The box where you select what you want to compare-->
+      <div>
+        <label for="filter">Filter by:</label>
+        <select id="filter" name="filter">
+          <option value="main_category">Project Type</option>
+          <option value="currency">Currency</option>
+          <option value="country">Country</option>
+          <option value="year">Year</option>
+        </select>
+      <!--End of options-->
+      </div>
+
+      <br>
+
+      <div class="button">
+        <button type="submit">Create graph</button>
+      </div>
+
+      </form>
+
+      <form action="/averagesgraph/" method="post">
+        <!--The box where you select what you want to compare-->
+        <div>
+          <label for="compare">Compare by:</label>
+          <select id="compare" name="compare">
+            <option value="counts">Counts</option>
+            <option value="proportion">Proportion of Success</option>
+            <option value="average">Averages</option>
+          </select>
+        <!--End of options-->
+        </div>
+          <!--The box where you select what you want to compare-->
+        <div>
+          <label for="filter">Filter by:</label>
+          <select id="filter" name="filter">
+            <option value="main_category">Project Type</option>
+            <option value="currency">Currency</option>
+            <option value="country">Country</option>
+            <option value="year">Year</option>
+          </select>
+        <!--End of options-->
+        </div>
+
+        <br>
+
+        <div class="button">
+          <button type="submit">Create graph</button>
+        </div>
+
+        </form>
 
 
 	<div class="container">
