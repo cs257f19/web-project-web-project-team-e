@@ -5,6 +5,7 @@ CREATE TABLE ksdata (
   category text,
   main_category text,
   currency text,
+  projectyear real,
   deadline date,
   goal real,
   launched date,
