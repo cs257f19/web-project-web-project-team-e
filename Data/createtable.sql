@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS ksdata;
 CREATE TABLE ksdata (
-  name text,
+  projectname text,
   id real,
   category text,
   main_category text,
