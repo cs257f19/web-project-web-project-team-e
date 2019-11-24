@@ -1,13 +1,13 @@
 DROP TABLE IF EXISTS ksdata;
 CREATE TABLE ksdata (
-  projectname text,
   id real,
+  projectname text,
   category text,
   main_category text,
   currency text,
+  projectyear real,
   deadline date,
   goal real,
-  launched date,
   total_days real,
   pledged real,
   state text,
