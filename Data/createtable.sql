@@ -15,5 +15,5 @@ CREATE TABLE ksdata (
   country text,
   usd_pledged_real real,
   usd_goal_real real,
-  success_score real,
+  success_score real
 );
