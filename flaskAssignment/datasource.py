@@ -388,6 +388,18 @@ class DataSource:
 
 	#input a column name
 	def countProjectsGraph(self, connection, nameOfVariable):
+		'''
+		Creates a bar plot graph and image of the graph. The function graphs the count of all projects of a given variable
+
+		PARAMETERS:
+			connection - the connection to the database
+			nameOfVariable - str of variable for which we are counting distinct projects
+			For example, nameOfVariable could be 'country' and the function would create a graph of the count
+			for 'US', 'GB', 'JP', etc. and save it to the static directory
+
+		RETURNS:
+			nothing, simply saves the graph as a .png
+		'''
 		try:
 			cursor = connection.cursor()
 			fig = plt.figure()
@@ -428,6 +440,20 @@ class DataSource:
 
 	#the average variable for a column - all colums displayed on x-axis
 	def averagedVariableGraph(self, connection, averagedVariable, nameOfVariable):
+		'''
+		Creates a bar plot graph and image of the graph.
+		The function graphs the average of a variable for all projects of a distinct instances of a variable
+
+		PARAMETERS:
+			connection - the connection to the database
+			averagedVariable - the value that would be averaged for each distinct values from nameOfVariable
+			nameOfVariable - str of variable for which we are counting distinct projects
+			For example, averagedVariable is 'backers' and nameOfVariable is 'country'
+			The function would create a graph of the average number of backers for 'US', 'GB', 'JP', etc. and save it to the static directory
+
+		RETURNS:
+			nothing, simply saves the graph as a .png
+		'''
 		#averagedVariagle= goal funding or Backers
 		#name of variable = year, country, both categories, currency
 		#for goal, funding, and backers
@@ -468,6 +494,19 @@ class DataSource:
 			return connection.cursor()
 
 	def proportionProjectsGraph(self, connection, nameOfVariable):
+		'''
+		Creates a stacked bar plot graph and image of the graph.
+		The function graphs the proportion of success and failures for distinct instances of a variable
+
+		PARAMETERS:
+			connection - the connection to the database
+			nameOfVariable - str of variable for which we are getting success/failure proportions for each distinct projects
+			For example, nameOfVariable is 'country'
+			The function would stacked proportions of success to failures for 'US', 'GB', 'JP', etc. and save it to the static directory
+
+		RETURNS:
+			nothing, simply saves the graph as a .png
+		'''
 		try:
 			cursor = connection.cursor()
 			fig = plt.figure()
