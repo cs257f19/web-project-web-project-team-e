@@ -632,8 +632,8 @@ def main():
 	ds = DataSource()
 	connection = ds.connect()
 
-	ds.countProjectsGraph(connection, 'currency')
-	#ds.proportionProjectsGraph(connection, 'currency')
+	#ds.countProjectsGraph(connection, 'currency')
+	ds.proportionProjectsGraph(connection, 'currency')
 	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
 	#ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
 
