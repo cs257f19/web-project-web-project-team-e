@@ -4,6 +4,7 @@ import math
 import matplotlib
 from matplotlib import pyplot as plt
 import numpy as np
+import os
 
 '''
 AMY
@@ -467,7 +468,8 @@ class DataSource:
 			fig.tight_layout()
 
 			#Saving the image in the same directory, there is no need to return anything
-			fig.savefig('static/plot1.png', dpi=199)
+			os.remove('static/plot.png')
+			fig.savefig('static/plot.png', dpi=199)
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
