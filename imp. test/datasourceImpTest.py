@@ -388,7 +388,7 @@ class DataSource:
 			plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
 
 			#Saving the image in the same directory, there is no need to return anything
-			fig.savefig('TestFolder/plot.png')
+			fig.savefig('static/plot.png')
 			#fig.savefig('/Users/elisaloy/Documents/GitHub/web-project-web-project-team-e/imp.test/plot.png')
 
 		except Exception as e:
@@ -531,7 +531,7 @@ def main():
 	connection = ds.connect()
 
 	#ds.countProjectsGraph(connection, 'currency')
-	ds.proportionProjectsGraph(connection, 'main_category')
+	#ds.proportionProjectsGraph(connection, 'main_category')
 	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
 	#ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
 
@@ -544,7 +544,7 @@ def main():
 	#print("The total number of projects is:" + str(ds.getNumberOfProjects(connection)))
 	#print("A random project is:" + str(ds.getRandomProject(connection)))
 	#print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
-	print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
+	#print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
 	#print("The proportion of Music projects that were successful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
 	#print(ds.mostSuccessfulProjects(connection, 3, 'category', 'Music'))
 
