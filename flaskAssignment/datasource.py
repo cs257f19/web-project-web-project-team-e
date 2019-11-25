@@ -432,7 +432,7 @@ class DataSource:
 			plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
 
 			#Saving the image in the same directory, there is no need to return anything
-			fig.savefig('static/plot1.png')
+			fig.savefig('static/plot.png')
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)

@@ -34,6 +34,7 @@ Renders the analyze page when the user directs to http://perlman.mathcs.carleton
 
 @app.route('/countgraph/', methods=['GET', 'POST'])
 def displayCountsGraph():
+    cache.clear()
     comparecounts = request.form['comparecounts']
     ds = DataSource()
     connection = ds.connect()
