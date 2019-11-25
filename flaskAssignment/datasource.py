@@ -41,8 +41,7 @@ class DataSource:
 		Note: Code written by Amy Csizmar Dalal
 		'''
 		try:
-			connection = psycopg2.connect(database=self.user, user=self.user, password= self.password)
-			#host="localhost"
+			connection = psycopg2.connect(host="localhost", database=self.user, user=self.user, password= self.password)
 		except Exception as e:
 			print("Connection error: ", e)
 			exit()
