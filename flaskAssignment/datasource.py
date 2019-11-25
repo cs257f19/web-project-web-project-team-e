@@ -411,7 +411,9 @@ class DataSource:
 			# Creating a list of all the distinct variables to feed into plt function
 			xVariables = []
 			for i in cursor.fetchall():
-				xVariables.append(str(int(i[0])))
+				if nameOfVariable == "projectyear":
+					int(i[0])
+				xVariables.append(str(i[0]))
 
 			xVariables.sort()
 			return xVariables
