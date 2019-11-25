@@ -81,7 +81,7 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT * FROM ksdata ORDER BY RANDOM() LIMIT 1"
+			query = "SELECT title FROM ksdata ORDER BY RANDOM() LIMIT 1"
 			cursor.execute(query)
 			return cursor.fetchall()
 
