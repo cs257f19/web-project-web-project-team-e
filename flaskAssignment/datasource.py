@@ -22,10 +22,10 @@ class DataSource:
 	'''
 
 	def __init__(self):
-		#self.user = 'santosb'
-		#self.password = 'book347winter'
-		self.user = 'loye'
-		self.password = 'tablet984spring'
+		self.user = 'santosb'
+		self.password = 'book347winter'
+		#self.user = 'loye'
+		#self.password = 'tablet984spring'
 
 	def connect(self):
 		'''
@@ -455,7 +455,7 @@ class DataSource:
 				yVariables.append(cursor.fetchall()[0][0])
 
 			#Creating the graph labels and the graph itself
-			plt.title("Count Of Projects by " + str(nameOfVariable))
+			plt.title("Number of Projects for each " + str(nameOfVariable).capitalize())
 			plt.xlabel(str(nameOfVariable).upper())
 			plt.ylabel("COUNT")
 			plt.bar(xVariables, yVariables, align='center')
@@ -465,7 +465,6 @@ class DataSource:
 			#Saving the image in the same directory, there is no need to return anything
 			strFile = "static/plot.svg"
 			if os.path.isfile(strFile):
-				print("It is here")
 				os.remove(strFile)
 			fig.savefig('static/plot.svg', format='svg')
 
@@ -506,7 +505,7 @@ class DataSource:
 				yVariables.append(roundAverage)
 
 			#Creating the graph labels and the graph itself
-			plt.title("Count Of Project Average " + str(averagedVariable)+  " by " + str(nameOfVariable))
+			plt.title("The Average Number of " + str(averagedVariable).capitalize() +  " for each " + str(nameOfVariable).capitalize())
 			plt.xlabel(str(nameOfVariable).upper())
 			plt.ylabel("COUNT")
 			plt.bar(xVariables, yVariables, align='center')
@@ -516,7 +515,6 @@ class DataSource:
 			# Saving the image in the same directory, there is no need to return anything
 			strFile = "static/plot.svg"
 			if os.path.isfile(strFile):
-				print("It is here")
 				os.remove(strFile)
 			fig.savefig('static/plot.svg', format='svg')
 
@@ -564,7 +562,7 @@ class DataSource:
 			plt.bar(ind, proportion_successes, width = 0.5, label = 'successes', color = '#b2ebf2')
 
 			# Creating the graph labels and the graph itself
-			plt.title("Proportion Of Project Successes and Failures by " + str(nameOfVariable))
+			plt.title("Proportion of Project Successes and Failures by " + str(nameOfVariable).capitalize())
 			plt.xticks(ind, xVariables)
 			plt.xlabel(str(nameOfVariable).upper())
 			plt.ylabel("PROPORTION")
@@ -574,7 +572,6 @@ class DataSource:
 			# Saving the image in the same directory, there is no need to return anything
 			strFile = "static/plot.svg"
 			if os.path.isfile(strFile):
-				print("It is here")
 				os.remove(strFile)
 			fig.savefig('static/plot.svg', format='svg')
 
@@ -633,7 +630,7 @@ def main():
 	connection = ds.connect()
 
 	#ds.countProjectsGraph(connection, 'currency')
-	ds.proportionProjectsGraph(connection, 'currency')
+	#ds.proportionProjectsGraph(connection, 'currency')
 	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
 	#ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
 
