@@ -8,6 +8,7 @@ import sys
 
 app = flask.Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 '''
 Renders the homepage when the user connects to http://perlman.mathcs.carleton.edu:5222/
 '''
