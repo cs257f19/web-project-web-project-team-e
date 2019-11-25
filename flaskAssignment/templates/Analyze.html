@@ -39,12 +39,12 @@
     </div>
       <!--The box where you select what counts you want to compare-->
     <div>
-      <label for="filter">Compare counts of projects:</label>
-      <select id="filter" name="filter">
-        <option value="main_category">Project Category</option>
-        <option value="currency">Currency</option>
-        <option value="country">Country</option>
-        <option value="year">Year</option>
+      <label for="comparecounts">Compare total counts of projects by:</label>
+      <select id="comparecounts" name="comparecounts">
+        <option value="main_category_count">Project Category</option>
+        <option value="currency_count">Currency</option>
+        <option value="country_count">Country</option>
+        <option value="year_count">Year</option>
       </select>
     <!--End of options-->
     </div>
@@ -60,22 +60,12 @@
     <form action="/proportiongraph/" method="post">
       <!--The box where you select what you want to compare-->
       <div>
-        <label for="compare">Compare how successful projects are based on:</label>
-        <select id="compare" name="compare">
-          <option value="counts">Counts</option>
-          <option value="proportion">Proportion of Success</option>
-          <option value="average">Averages</option>
-        </select>
-      <!--End of options-->
-      </div>
-        <!--The box where you select what you want to compare-->
-      <div>
-        <label for="filter">Filter by:</label>
-        <select id="filter" name="filter">
-          <option value="main_category">Project Type</option>
-          <option value="currency">Currency</option>
-          <option value="country">Country</option>
-          <option value="year">Year</option>
+        <label for="compareproportion">Compare how successful projects are based on:</label>
+        <select id="compareproportion" name="compareproportion">
+          <option value="main_category_proportion">Project Category</option>
+          <option value="currency_proportion">Currency</option>
+          <option value="country_proportion">Country</option>
+          <option value="year_proportion">Year</option>
         </select>
       <!--End of options-->
       </div>
@@ -91,22 +81,23 @@
       <form action="/averagesgraph/" method="post">
         <!--The box where you select what you want to compare-->
         <div>
-          <label for="compare">Compare by:</label>
-          <select id="compare" name="compare">
-            <option value="counts">Counts</option>
-            <option value="proportion">Proportion of Success</option>
-            <option value="average">Averages</option>
+          <label for="averagecompare">Compare:</label>
+          <select id="averagecompare" name="averagecompare">
+            <option value="backers">Number of backers</option>
+            <option value="goal">Project Goal</option>
+            <option value="pledged">Amount pledged for the project</option>
+            <option value="days">Days</option>
           </select>
         <!--End of options-->
         </div>
           <!--The box where you select what you want to compare-->
         <div>
-          <label for="filter">Filter by:</label>
+          <label for="filter">Based on a project's:</label>
           <select id="filter" name="filter">
-            <option value="main_category">Project Type</option>
-            <option value="currency">Currency</option>
-            <option value="country">Country</option>
-            <option value="year">Year</option>
+            <option value="main_category_average">Category</option>
+            <option value="currency_average">Currency</option>
+            <option value="country_average">Country</option>
+            <option value="year_average">Year</option>
           </select>
         <!--End of options-->
         </div>
