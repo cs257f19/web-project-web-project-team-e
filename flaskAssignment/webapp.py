@@ -4,6 +4,7 @@ from flask import render_template
 from flask import request
 import json
 import sys
+import os
 
 
 app = flask.Flask(__name__)
@@ -34,7 +35,7 @@ Renders the analyze page when the user directs to http://perlman.mathcs.carleton
 
 @app.route('/countgraph/', methods=['GET', 'POST'])
 def displayCountsGraph():
-    cache.clear()
+    os.remove('static/plot.png')
     comparecounts = request.form['comparecounts']
     ds = DataSource()
     connection = ds.connect()
