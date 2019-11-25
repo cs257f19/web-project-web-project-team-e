@@ -44,7 +44,7 @@ def displayCountsGraph():
 
 @app.route('/proportiongraph/', methods=['GET', 'POST'])
 def displayProportionGraph():
-    comparecounts = request.form['compareproportion']
+    compareproportion = request.form['compareproportion']
     ds = DataSource()
     connection = ds.connect()
     ds.proportionProjectsGraph(connection, compareproportion)
