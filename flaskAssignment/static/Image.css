@@ -65,3 +65,19 @@ img{
  margin-right: auto;
  width: 50%;
 }
+
+button{
+	display: inline-block;
+	padding: 0px 10px;
+	border-radius: 10px;
+	border-style: double;
+	border-width: 10px;
+	border-color: #ffc849;
+	background-color: #ffffff;
+	color: #d45555;
+	font-size: 25px;
+}
+
+#button:hover{
+	background-color: #ffc849;
+}
