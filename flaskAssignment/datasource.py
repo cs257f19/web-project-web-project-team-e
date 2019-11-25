@@ -462,7 +462,7 @@ class DataSource:
 			fig.tight_layout()
 
 			#Saving the image in the same directory, there is no need to return anything
-			strFile = "static/plot.png"
+			strFile = "static/plot.svg"
 			if os.path.isfile(strFile):
 				print("It is here")
 				os.remove(strFile)
@@ -513,7 +513,7 @@ class DataSource:
 			fig.tight_layout()
 
 			# Saving the image in the same directory, there is no need to return anything
-			strFile = "static/plot.png"
+			strFile = "static/plot.svg"
 			if os.path.isfile(strFile):
 				print("It is here")
 				os.remove(strFile)
@@ -571,7 +571,7 @@ class DataSource:
 			fig.tight_layout()
 
 			# Saving the image in the same directory, there is no need to return anything
-			strFile = "static/plot.png"
+			strFile = "static/plot.svg"
 			if os.path.isfile(strFile):
 				print("It is here")
 				os.remove(strFile)
