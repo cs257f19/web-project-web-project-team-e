@@ -22,13 +22,14 @@ a{
 }
 
 .header > h3{
-	font-family: "Lora";
+	font-family: "Montserrat";
 	font-size: 25px;
 	color: #ffffff;
 	padding-left: 15px;
 }
 
 ul{
+	font-family: "Oswald";
 	list-style-type: none;
 	margin: 0px;
 	padding-left: 10px;
