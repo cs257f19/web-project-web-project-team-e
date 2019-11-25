@@ -37,7 +37,7 @@ def displayCountsGraph():
     comparecounts = request.form['comparecounts']
     ds = DataSource()
     connection = ds.connect()
-    ds.proportionProjectsGraph(connection, comparecounts)
+    ds.countProjectsGraph(connection, comparecounts)
 
     return render_template('Image.html')
 
