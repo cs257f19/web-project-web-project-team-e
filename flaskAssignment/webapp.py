@@ -47,7 +47,6 @@ def displayProportionProjectsGraph():
     ds = DataSource()
     connection = ds.connect()
     ds.countProjectsGraph(connection, filter)
-
     return render_template('Image.html')
 
 
