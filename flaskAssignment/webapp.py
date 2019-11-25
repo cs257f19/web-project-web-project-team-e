@@ -92,8 +92,9 @@ style as the results page above
 
 @app.route('/explore/random/', methods=['GET', 'POST'])
 def renderRandomPage():
-
-    return render_template('Random.html')
+    ds = DataSource()
+    name = ds.getRandomProject()
+    return render_template('Random.html', name = name)
 
 
 
