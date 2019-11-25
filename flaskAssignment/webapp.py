@@ -4,11 +4,10 @@ from flask import render_template
 from flask import request
 import json
 import sys
-import os
 
 
 app = flask.Flask(__name__)
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 '''
 Renders the homepage when the user connects to http://perlman.mathcs.carleton.edu:5222/
 '''
@@ -35,7 +34,6 @@ Renders the analyze page when the user directs to http://perlman.mathcs.carleton
 
 @app.route('/countgraph/', methods=['GET', 'POST'])
 def displayCountsGraph():
-    os.remove('static/plot.png')
     comparecounts = request.form['comparecounts']
     ds = DataSource()
     connection = ds.connect()
