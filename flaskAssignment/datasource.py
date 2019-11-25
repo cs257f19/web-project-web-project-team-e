@@ -412,7 +412,7 @@ class DataSource:
 			# Creating a list of all the distinct variables to feed into plt function
 			xVariables = []
 			for i in cursor.fetchall():
-				xVariables.append(i[0])
+				xVariables.append(str(int(i[0])))
 
 			xVariables.sort()
 			return xVariables
@@ -541,14 +541,7 @@ class DataSource:
 			cursor = connection.cursor()
 			fig = plt.figure()
 
-			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
-			cursor.execute(xVariableQuery)
-
-			xVariables = []
-			for i in cursor.fetchall():
-				xVariables.append(i[0])
-
-			# xVariables = self.getDistinctXVariables(connection, nameOfVariable)
+			xVariables = self.getDistinctXVariables(connection, nameOfVariable)
 
 			ind = [x for x, _ in enumerate(xVariables)]
 
