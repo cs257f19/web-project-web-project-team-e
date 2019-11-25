@@ -80,7 +80,7 @@ ul > a:hover{
 }
 
 .explore{
-	box-sizing: border-box;
+	display: flex;
 }
 
 .explore > h1{
@@ -99,7 +99,7 @@ ul > a:hover{
 	background-color: #ffffff;
 }
 
-.explore > ul > button{
+.side-tabs{
 	float: left;
 	height: 60px;
 	width: 300px;
@@ -113,17 +113,27 @@ ul > a:hover{
 	cursor: pointer;
 }
 
-.explore > ul > button:hover{
+.side-tabs:hover{
 	background-color: #cccccc;
 }
 
+.side-tabs.active{
+	background-color: #d45555;
+	color: #ffffff;
+}
+
 .subPage{
+	display: none;
   float: left;
   padding: 0px 12px;
   border: 1px solid #ccc;
   width: 70%;
   border-left: none;
   height: 300px;
+}
+
+#random{
+	display: block;
 }
 
 .show{
