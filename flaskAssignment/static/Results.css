@@ -8,7 +8,6 @@ a{
 	color: inherit;
 }
 
-/* Top logo and search */
 .header{
 	overflow: hidden;
 	background-color: #d45555;
@@ -35,40 +34,51 @@ a{
 	right: 17px;
 }
 
-/* Tabs */
 ul{
 	list-style-type: none;
-	margin: 5px;
+	margin: 0px;
 	padding-left: 10px;
 	overflow: hidden;
 	font-size: 20px;
 	background-color: #d45555;
 }
 
-ul > li{
+ul > a{
 	display: inline-grid;
 	padding: 15px 25px 15px 25px;
-	margin-right: 10px
+	margin-right: 5px;
 	float: left;
 	border-radius: 10px;
-	border-style: double;
-	border-color: #cccccc;
+	border-style: solid;
+	border-color: #2f3b78;
 	background-color: #ffffff;
 	color: #2f3b78;
 }
 
-ul > li:hover{
-	background-color: #cccccc;
-	}
-
-ul > li > a {
-	display:block;
-	width: 100%;
-	height: 100%;
+ul > a:hover{
+	border-color: #ffffff;
+	background-color: #2f3b78;
+	color: #ffffff;
 }
 
+#current{
+	display: inline-grid;
+	padding: 15px 25px 15px 25px;
+	margin-right: 5px;
+	float: left;
+	border-radius: 10px 10px 0 0;
+	border-style: solid;
+	border-color: #2f3b78 #2f3b78 #ffffff #2f3b78;
+	background-color: #ffffff;
+	color: #2f3b66;
+}
 
-/* Display figure for results */
+#current:hover{
+	border-color: #ffffff;
+	background-color: #2f3b78;
+	color: #ffffff;
+}
+
 .results{
 	width: 1250px;
 	height: 650px;

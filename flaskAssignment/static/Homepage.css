@@ -18,7 +18,7 @@ a{
 }
 
 .header > h1{
-	font-family: "trebuchet ms";
+	font-family: "Merriweather";
 	font-size: 50px;
 	color: #ffffff;
 	padding-left: 15px;
@@ -39,33 +39,47 @@ a{
 
 ul{
 	list-style-type: none;
-	margin: 5px;
+	margin: 0px;
 	padding-left: 10px;
 	overflow: hidden;
 	font-size: 20px;
 	background-color: #d45555;
-	}
+}
 
-ul > li{
+ul > a{
 	display: inline-grid;
 	padding: 15px 25px 15px 25px;
-	margin-right: 10px
+	margin-right: 5px;
 	float: left;
 	border-radius: 10px;
-	border-style: double;
-	border-color: #cccccc;
+	border-style: solid;
+	border-color: #2f3b78;
 	background-color: #ffffff;
 	color: #2f3b78;
-	}
+}
 
-ul > li:hover{
-	background-color: #cccccc;
-	}
+ul > a:hover{
+	border-color: #ffffff;
+	background-color: #2f3b78;
+	color: #ffffff;
+}
 
-ul > li > a {
-	display:block;
-	width: 100%;
-	height: 100%;
+#current{
+	display: inline-grid;
+	padding: 15px 25px 15px 25px;
+	margin-right: 5px;
+	float: left;
+	border-radius: 10px 10px 0 0;
+	border-style: solid;
+	border-color: #2f3b78 #2f3b78 #ffffff #2f3b78;
+	background-color: #ffffff;
+	color: #2f3b66;
+}
+
+#current:hover{
+	border-color: #ffffff;
+	background-color: #2f3b78;
+	color: #ffffff;
 }
 
 * {
@@ -80,20 +94,36 @@ ul > li > a {
 	padding-left: 30px;
 	padding-right: 30px;
 	height: 250px;
-	margin: 0px;
-	background-image : url("datapic.jpg");
+	margin: 5px 2px;
 	background-color: #dddddd;
-	background-position: top;
-	background-blend-mode: hard-light;
 	font-family: "trebuchet ms";
 	text-align: center;
 	color: #c44c44;
 	border-radius: .5px;
 	border-style: solid;
-	border-width: 4px;
-	border-color: #ffc849;
+	border-width: 2px;
+	border-color: #d45555;
 	transition: 0.3s background-image;
 	overflow: hidden;
+}
+
+#analyze {
+		background-image : url("analyze.jpg");
+		background-position: top;
+		background-blend-mode: hard-light;
+}
+
+#create {
+		background-image : url("datapic.jpg");
+		background-position: top;
+		background-blend-mode: hard-light;
+}
+
+#explore {
+		background-image : url("explore.jpg");
+		background-position: top;
+		background-size: contain;
+		background-blend-mode: hard-light;
 }
 
 .column > h2 {
@@ -104,12 +134,10 @@ ul > li > a {
 
 .column > p {
 	color: #ffffff;
-	font-size: 20px;
+	font-size: 25px;
 }
 
 .column:hover{
-	/**change background of column when hovered**/
-	background: #d45555;
 
 	/** change color of text when hovered**/
 	color: #ffffff;
@@ -118,6 +146,16 @@ ul > li > a {
 	height: 400px;
 	transition: .3s;
 	}
+
+#analyze:hover{
+	background: #d45555;
+}
+#create:hover{
+	background: #d45555;
+}
+#explore:hover{
+	background: #d45555;
+}
 
 /* Clear floats after the columns */
 .row:after {

@@ -19,15 +19,15 @@
 			<input type = "text" class = "input" placeholder= "Search...">
 			</div>
 
-		<div class="tabs">
-			<ul id="nav">
-				<li><b><a href="http://perlman.mathcs.carleton.edu:5222/">Home</a></b></li>
-				<li><a href="http://perlman.mathcs.carleton.edu:5222/analyze/">Analyze the Data</a></li>
-				<li><a href="http://perlman.mathcs.carleton.edu:5222/create/">Create and Compare Your Kickstarter</a></li>
-				<li><a href="homepage.html">Explore Curated Project Data</a></li>
-        <li><a href="aboutpage.html">About</a></li>
-			</ul>
-		</div>
+      <div class="tabs">
+  			<ul id="nav">
+  				<a href="http://perlman.mathcs.carleton.edu:5222/" id="current">Home</a>
+  				<a href="http://perlman.mathcs.carleton.edu:5222/analyze/">Analyze the Data</a>
+  				<a href="http://perlman.mathcs.carleton.edu:5222/create/">Create and Compare Your Kickstarter</a>
+  				<a href="http://perlman.mathcs.carleton.edu:5222/explore/">Explore Curated Project Data</a>
+          <a href="http://perlman.mathcs.carleton.edu:5222/aboutpage/">About</a>
+  			</ul>
+  		</div>
 		<!--End of tabs-->
 	</div>
 	<!--End of header-->
@@ -36,30 +36,30 @@
 	<!--Placing the three main boxes of information-->
 	<div class="row">
 		<!--Start of Column 1: Analyze-->
-		<div class="column">
-			<h2><a href="http://perlman.mathcs.carleton.edu:5222/analyze/"><center>ANALYZE</center></a></h2>
+		<a href="http://perlman.mathcs.carleton.edu:5222/analyze/" class="column" id="analyze">
+			<h2><center>ANALYZE</center></h2>
     		<p>Explore data about real kickstarter projects -
           Projects range from Dance to Tech and span over 11 years
           in more than 20 countries</p>
-		</div>
+		</a>
 		<!--End of Column 1: Analyze-->
 
 		<!--Start of Column 2: Create-->
-		<div class="column">
-    		<h2><a href="http://perlman.mathcs.carleton.edu:5222/create/"><center>CREATE</center></h2>
+		<a href="http://perlman.mathcs.carleton.edu:5222/create/" class="column" id="create">
+    		<h2><center>CREATE</center></h2>
     		<p>See how likely your Kickstarter idea is to succeed:  enter
           information about your dream Kickstarter and compare your
           idea to current and past projects</p>
-  		</div>
+  		</a>
 		<!--End of Column 2: Create-->
 
 		<!--Start of Column 3: Explore-->
-		<div class="column">
+		<a href="http://perlman.mathcs.carleton.edu:5222/explore/" class="column" id="explore">
     		<h2><center>EXPLORE</center></h2>
         <p>Peruse some of the specifically curated project data our team
           has put together. Browse fun features like the random project
           generator</p>
-  		</div>
+  		</a>
 		<!--End of Column 3-->
 	</div>
 	<!--End of Homepage information-->
