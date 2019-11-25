@@ -30,105 +30,6 @@
 	</div>
 	<!--header-->
 
-	<h3>Analyze the Data</h3>
-	<p>Compare Kickstarter data by using the drop down menus to generate a graph. In the current version, you can specify whether you want the graph to be organized as a histogram of total counts or as a stacked bar plot showing proportions, as well choose a category by which to sort the data.</p>
-	<p>If you are comparing yearly data, please note that our dataset was collected before 2018 was complete. As a result, the count of 2018 projects will be much lower than others.</p>
-
-
-  <form action="/countgraph/" method="post">
-    </div>
-      <!--The box where you select what counts you want to compare-->
-    <div>
-      <label for="comparecounts">Compare total counts of projects by:</label>
-      <select id="comparecounts" name="comparecounts">
-        <option value="main_category">Project Category</option>
-        <option value="currency">Currency</option>
-        <option value="country">Country</option>
-        <option value="projectyear">Year</option>
-      </select>
-    <!--End of options-->
-    </div>
-
-    <br>
-
-    <div class="button">
-      <button type="submit">Create graph</button>
-    </div>
-
-    </form>
-
-    <form action="/proportiongraph/" method="post">
-      <!--The box where you select what you want to compare-->
-      <div>
-        <label for="compareproportion">Compare how successful projects are based on:</label>
-        <select id="compareproportion" name="compareproportion">
-          <option value="main_category">Project Category</option>
-          <option value="currency">Currency</option>
-          <option value="country">Country</option>
-          <option value="projectyear">Year</option>
-        </select>
-      <!--End of options-->
-      </div>
-
-      <br>
-
-      <div class="button">
-        <button type="submit">Create graph</button>
-      </div>
-
-      </form>
-
-      <form action="/averagesgraph/" method="post">
-        <!--The box where you select what you want to compare-->
-        <div>
-          <label for="averagecompare">Compare:</label>
-          <select id="averagecompare" name="averagecompare">
-            <option value="backers">Number of backers</option>
-            <option value="usd_goal_real">Project Goal</option>
-            <option value="usd_pledged_real">Amount pledged for the project</option>
-            <option value="total_days">Days</option>
-          </select>
-        <!--End of options-->
-        </div>
-          <!--The box where you select what you want to compare-->
-        <div>
-          <label for="filter">Based on project:</label>
-          <select id="filter" name="filter">
-            <option value="main_category">Category</option>
-            <option value="currency">Currency</option>
-            <option value="country">Country</option>
-            <option value="projectyear">Year</option>
-          </select>
-        <!--End of options-->
-        </div>
-
-        <br>
-
-        <div class="button">
-          <button type="submit">Create graph</button>
-        </div>
-
-        </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <div class="sectionHeader">
       	<h2>Design your own graphs!</h2>
       	<p>Click one of the sections below to get started.</p>
@@ -159,11 +60,7 @@
       					<button type="submit">Create Graph</button>
       				</form>
       		</div>
-
-              <br>
-
-
-
+          <br>
           <div class="subPage" id="proportion">
       			<p>Choose an aspect of Kickstarter projects and see how it relates to its success rate.</p>
               <form action="/proportiongraph/" method="post">
@@ -182,8 +79,44 @@
       				</form>
       		</div>
 
+          <div class="subPage" id="average">
+      			<p>Choose an aspect of Kickstarter projects and see how it relates to its success rate.</p>
+            <form action="/averagesgraph/" method="post">
+              <!--The box where you select what you want to compare-->
+              <div>
+                <label for="averagecompare">Compare:</label>
+                <select id="averagecompare" name="averagecompare">
+                  <option value="backers">Number of backers</option>
+                  <option value="usd_goal_real">Project Goal</option>
+                  <option value="usd_pledged_real">Amount pledged for the project</option>
+                  <option value="total_days">Days</option>
+                </select>
+              <!--End of options-->
+              </div>
+
+              <br>
+                <!--The box where you select what you want to compare-->
+              <div>
+                <label for="filter">Based on project:</label>
+                <select id="filter" name="filter">
+                  <option value="main_category">Category</option>
+                  <option value="currency">Currency</option>
+                  <option value="country">Country</option>
+                  <option value="projectyear">Year</option>
+                </select>
+              <!--End of options-->
+              </div>
+
+              <br>
+
+              <div class="button">
+                <button type="submit">Create graph</button>
+              </div>
+              </form>
+            </div>
+
         </div>
-          <script>
+        <script>
 
 
           /** Based on a function made by w3schools.com

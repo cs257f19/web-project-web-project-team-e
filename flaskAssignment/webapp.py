@@ -97,7 +97,7 @@ def renderRandomPage():
     name = ds.getRandomProject(connection)
     return render_template('Random.html', name = name)
 
-@app.route('/minmax/', methods=['GET', 'POST'])
+@app.route('/explore/minmax/', methods=['GET', 'POST'])
 def renderMinmaxPage():
     category = request.form['category']
     ds = DataSource()
