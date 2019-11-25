@@ -414,6 +414,7 @@ class DataSource:
 			for i in cursor.fetchall():
 				xVariables.append(i[0])
 
+			xVariables.sort()
 			return xVariables
 
 		except Exception as e:
