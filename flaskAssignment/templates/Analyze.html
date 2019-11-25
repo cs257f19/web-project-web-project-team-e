@@ -142,12 +142,29 @@
       		</ul>
 
       		<div class="subPage" id="random">
-      			<h1>Generate a Random Project</h1>
-      			<p>This is one of our favorites - simply click the button below and we will
-      				churn out a random Kickstarter project for you. It is obviously a very
-      				simple feature, but seeing the real variety of the Kickstarter projects
-      				out there is quite interesting.</p>
-      				<a href="http://perlman.mathcs.carleton.edu:5222/explore/random">Generate Project</a>
+            
+            <form action="/countgraph/" method="post">
+              </div>
+                <!--The box where you select what counts you want to compare-->
+              <div>
+                <label for="comparecounts">Compare total counts of projects by:</label>
+                <select id="comparecounts" name="comparecounts">
+                  <option value="main_category">Project Category</option>
+                  <option value="currency">Currency</option>
+                  <option value="country">Country</option>
+                  <option value="projectyear">Year</option>
+                </select>
+              <!--End of options-->
+              </div>
+
+              <br>
+
+              <div class="button">
+                <button type="submit">Create graph</button>
+              </div>
+
+              </form>
+
       		</div>
 
 </body>
