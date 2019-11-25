@@ -141,7 +141,7 @@
       		</ul>
 
       		<div class="subPage" id="random">
-            
+
             <form action="/countgraph/" method="post">
               </div>
                 <!--The box where you select what counts you want to compare-->
@@ -166,6 +166,59 @@
 
       		</div>
 
-</body>
+          <div class="subPage" id="minmax">
+      			<p>With this feature, you can choose a project category and subcategory,
+      				and we will return the projects with the highest and lowest cash value
+      				raised for those choices. Obviously most categories have more than one
+      			 	project that had raised $0, so in that case one will be chosen at random.</p>
+      				<form action="explore/minmax/" method="post">
+      					<div>
+      			      <label for="category">Category:</label>
+      			      <select id="category" name="category">
+      			  		<option value="Arts">Arts</option>
+      			      <option value="Comics">Comics</option>
+      			      <option value="Crafts">Crafts</option>
+      			      <option value="Dance">Dance</option>
+      			      <option value="Design">Design</option>
+      			  		<option value="Fashion">Fashion</option>
+      			  		<option value="Film & Video">Film & Video</option>
+      			  		<option value="Food">Food</option>
+      			  		<option value="Games">Games</option>
+      			  		<option value="Journalism">Journalism</option>
+      			  		<option value="Music">Music</option>
+      			  		<option value="Photography">Photography</option>
+      			  		<option value="Publishing">Publishing</option>
+      			  		<option value="Technology">Technology</option>
+      			  		<option value="Theater">Theater</option>
+      			      </select>
+      				  <!--End of form options-->
+      			    </div>
+      					<button type="submit">Find Min and Max</button>
+      				</form>
+      		</div>
+
+          <script>
+          /** Based on a function made by w3schools.com
+            * On the click of a tab, all page sections are cleared and the selected
+            * section is "unhidden" and shown on the page
+           **/
+          function showSection(evnt, sectionName) {
+            var i, pageContent, sections;
+            pageContent = document.getElementsByClassName("subPage");
+            for (i = 0; i < pageContent.length; i++) {
+              pageContent[i].style.display = "none";
+            }
+
+            sections = document.getElementsByClassName("side-tabs");
+            for (i = 0; i < sections.length; i++) {
+              sections[i].className = sections[i].className.replace(" active", "");
+            }
+
+            document.getElementById(sectionName).style.display = "block";
+            evnt.currentTarget.className += " active";
+          }
+          </script>
+
+        </body>
 
 </html>
