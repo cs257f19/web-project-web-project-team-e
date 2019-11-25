@@ -522,7 +522,7 @@ class DataSource:
 				yVariables.append(roundAverage)
 
 			#Creating the graph labels and the graph itself
-			plt.title("Count Of Project Average Backers by " + str(nameOfVariable))
+			plt.title("Count Of Project Average " +str(averagedVariable)+  " by " + str(nameOfVariable))
 			plt.xlabel(str(nameOfVariable).upper())
 			plt.ylabel("COUNT")
 			plt.bar(xVariables, yVariables, align='center')
