@@ -65,7 +65,7 @@ def displayAveragesGraph():
     ds = DataSource()
     connection = ds.connect()
     ds.averagedVariableGraph(connection, averagecompare, filter)
-    return render_template('Image.html')
+    return render_template('GraphPage.html')
 
 
 '''
