@@ -472,7 +472,7 @@ class DataSource:
 			if os.path.isfile(strFile):
 				print("It is here")
 				os.remove(strFile)
-			fig.savefig('static/plot.png', dpi=199)
+			fig.savefig('static/plot.svg', format='svg')
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -532,7 +532,7 @@ class DataSource:
 			if os.path.isfile(strFile):
 				print("It is here")
 				os.remove(strFile)
-			fig.savefig('static/plot.png', dpi=199)
+			fig.savefig('static/plot.svg', format='svg')
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -597,7 +597,7 @@ class DataSource:
 			if os.path.isfile(strFile):
 				print("It is here")
 				os.remove(strFile)
-			fig.savefig('static/plot.png', dpi=199)
+			fig.savefig('static/plot.svg', format='svg')
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
