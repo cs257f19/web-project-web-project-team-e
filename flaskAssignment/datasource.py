@@ -471,9 +471,7 @@ class DataSource:
 			strFile = "static/plot.png"
 			if os.path.isfile(strFile):
 				print("It is here")
-				os.remove(strFile)   # Opt.: os.system("rm "+strFile)
-			if os.path.isfile(strFile):
-				print("Failed")
+				os.remove(strFile)
 			fig.savefig('static/plot.png', dpi=199)
 
 		except Exception as e:
@@ -530,6 +528,10 @@ class DataSource:
 			fig.tight_layout()
 
 			# Saving the image in the same directory, there is no need to return anything
+			strFile = "static/plot.png"
+			if os.path.isfile(strFile):
+				print("It is here")
+				os.remove(strFile)
 			fig.savefig('static/plot.png', dpi=199)
 
 		except Exception as e:
@@ -591,6 +593,10 @@ class DataSource:
 			fig.tight_layout()
 
 			# Saving the image in the same directory, there is no need to return anything
+			strFile = "static/plot.png"
+			if os.path.isfile(strFile):
+				print("It is here")
+				os.remove(strFile)
 			fig.savefig('static/plot.png', dpi=199)
 
 		except Exception as e:

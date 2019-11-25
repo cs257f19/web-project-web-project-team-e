@@ -42,8 +42,17 @@ def displayCountsGraph():
 
     return render_template('Image.html')
 
-@app.route('/usergraph/', methods=['GET', 'POST'])
-def displayProportionProjectsGraph():
+@app.route('/proportiongraph/', methods=['GET', 'POST'])
+def displayProportionGraph():
+    comparecounts = request.form['compareproportion']
+    ds = DataSource()
+    connection = ds.connect()
+    ds.proportionProjectsGraph(connection, compareproportion)
+
+    return render_template('Image.html')
+
+@app.route('/averagesgraph/', methods=['GET', 'POST'])
+def displayAveragesProjectsGraph():
     filter = request.form['filter']
     ds = DataSource()
     connection = ds.connect()
