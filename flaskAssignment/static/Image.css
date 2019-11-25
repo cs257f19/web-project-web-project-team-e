@@ -46,3 +46,20 @@ ul{
 	font-size: 20px;
 	background-color: #d45555;
 }
+
+ul > a{
+	display: inline-grid;
+	padding: 15px 25px 15px 25px;
+	margin-right: 5px;
+	float: left;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: #2f3b78;
+	background-color: #ffffff;
+	color: #2f3b78;
+}
+
+ul > a:hover{
+	border-color: #ffffff;
+	background-color: #2f3b78;
+	color: #ffffff;
