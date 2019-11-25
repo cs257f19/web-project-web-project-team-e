@@ -562,7 +562,7 @@ class DataSource:
 			plt.bar(ind, proportion_successes, width = 0.5, label = 'successes', color = '#b2ebf2')
 
 			# Creating the graph labels and the graph itself
-			plt.title("Proportion of Project Successes and Failures by " + str(nameOfVariable).capitalize())
+			plt.title("Proportion of Project Successes and Failures for each " + str(nameOfVariable).capitalize())
 			plt.xticks(ind, xVariables)
 			plt.xlabel(str(nameOfVariable).upper())
 			plt.ylabel("PROPORTION")
