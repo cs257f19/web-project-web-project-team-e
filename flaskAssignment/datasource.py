@@ -24,8 +24,8 @@ class DataSource:
 	def __init__(self):
 		#self.user = 'santosb'
 		#self.password = 'book347winter'
-		self.user = 'nystromk'
-		self.password = 'java692spam'
+		self.user = 'loye'
+		self.password = 'tablet984spring'
 
 	def connect(self):
 		'''
@@ -41,7 +41,8 @@ class DataSource:
 		Note: Code written by Amy Csizmar Dalal
 		'''
 		try:
-			connection = psycopg2.connect(host="localhost", database=self.user, user=self.user, password= self.password)
+			connection = psycopg2.connect(database=self.user, user=self.user, password= self.password)
+			#host="localhost"
 		except Exception as e:
 			print("Connection error: ", e)
 			exit()
