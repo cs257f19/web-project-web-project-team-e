@@ -439,16 +439,16 @@ class DataSource:
 
 			#Getting all the distinct variables
 			#gets all the distnct x-values - for setting up x-axis
-			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
-			cursor.execute(xVariableQuery)
+			#xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
+			#cursor.execute(xVariableQuery)
 
 			#Creating a list of all the distinct variables to feed into plt function
-			xVariables = []
-			for i in cursor.fetchall():
-				xVariables.append(i[0])
+			#xVariables = []
+			#for i in cursor.fetchall():
+				#xVariables.append(i[0])
 
 
-			#xVariables = self.getDistinctXVariables(connection, nameOfVariable)
+			xVariables = self.getDistinctXVariables(connection, nameOfVariable)
 
 			#Creating a list of the counts for each x value
 			#Iterates through x variable list and gets the count, appends to a empty y list
@@ -640,12 +640,11 @@ def main():
 	ds = DataSource()
 	connection = ds.connect()
 
-	#ds.countProjectsGraph(connection, 'currency')
+	ds.countProjectsGraph(connection, 'currency')
 	#ds.proportionProjectsGraph(connection, 'currency')
 	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
 	#ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
 
-	print(ds.getDistinctXVariables(connection, 'currency'))
 	#print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
 	#print(ds.getCountOfVariableFailure(connection, 'currency', 'JPY'))
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
