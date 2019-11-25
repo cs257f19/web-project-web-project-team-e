@@ -47,7 +47,7 @@ def displayCountsGraph():
     connection = ds.connect()
     ds.countProjectsGraph(connection, comparecounts)
 
-    return render_template('GraphPage.html')
+    return render_template('Image.html')
 
 @app.route('/proportiongraph/', methods=['GET', 'POST'])
 def displayProportionGraph():
@@ -56,7 +56,7 @@ def displayProportionGraph():
     connection = ds.connect()
     ds.proportionProjectsGraph(connection, compareproportion)
 
-    return render_template('GraphPage.html')
+    return render_template('Image.html')
 
 @app.route('/averagesgraph/', methods=['GET', 'POST'])
 def displayAveragesGraph():
@@ -65,7 +65,7 @@ def displayAveragesGraph():
     ds = DataSource()
     connection = ds.connect()
     ds.averagedVariableGraph(connection, averagecompare, filter)
-    return render_template('GraphPage.html')
+    return render_template('Image.html')
 
 
 '''
