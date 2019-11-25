@@ -42,7 +42,6 @@ class DataSource:
 		'''
 		try:
 			connection = psycopg2.connect(database=self.user, user=self.user, password= self.password)
-			#host="localhost"
 		except Exception as e:
 			print("Connection error: ", e)
 			exit()
@@ -412,7 +411,9 @@ class DataSource:
 			# Creating a list of all the distinct variables to feed into plt function
 			xVariables = []
 			for i in cursor.fetchall():
-				xVariables.append(str(int(i[0])))
+				if nameOfVariable == "projectyear":
+					int(i[0])
+				xVariables.append(str(i[0]))
 
 			xVariables.sort()
 			return xVariables
@@ -462,7 +463,7 @@ class DataSource:
 			fig.tight_layout()
 
 			#Saving the image in the same directory, there is no need to return anything
-			strFile = "static/plot.png"
+			strFile = "static/plot.svg"
 			if os.path.isfile(strFile):
 				print("It is here")
 				os.remove(strFile)
@@ -513,7 +514,7 @@ class DataSource:
 			fig.tight_layout()
 
 			# Saving the image in the same directory, there is no need to return anything
-			strFile = "static/plot.png"
+			strFile = "static/plot.svg"
 			if os.path.isfile(strFile):
 				print("It is here")
 				os.remove(strFile)
@@ -571,7 +572,7 @@ class DataSource:
 			fig.tight_layout()
 
 			# Saving the image in the same directory, there is no need to return anything
-			strFile = "static/plot.png"
+			strFile = "static/plot.svg"
 			if os.path.isfile(strFile):
 				print("It is here")
 				os.remove(strFile)
@@ -632,7 +633,7 @@ def main():
 	connection = ds.connect()
 
 	#ds.countProjectsGraph(connection, 'currency')
-	#ds.proportionProjectsGraph(connection, 'currency')
+	ds.proportionProjectsGraph(connection, 'currency')
 	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
 	#ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
 
@@ -642,7 +643,7 @@ def main():
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
 	#print("The total number of projects is:" + str(ds.getNumberOfProjects(connection)))
-	print("A random project is:" + str(ds.getRandomProject(connection)))
+	#print("A random project is:" + str(ds.getRandomProject(connection)))
 	#print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
 	#print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
 	#print("The proportion of Music projects that were successful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
