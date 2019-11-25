@@ -79,53 +79,35 @@ ul > a:hover{
 	color: #ffffff;
 }
 
-form{
-	width: 700px;
-	height: 400px;
-	margin: 30px auto;
-	padding: 40px 20px;
+.explore > h1{
 	font-family: "trebuchet ms";
-	font-size: 35px;
-	color: #ffffff;
-	border-style: solid;
-	border-radius: 1px;
-	border-width: 5px;
-	border-color: #ffc849;
-	background-color: #d45555;
+	font-size: 80px;
+	color: #2f3b66;
+	margin: 10px 0px 10px 300px;
 }
 
-select{
+.explore > ul{
 	width: 250px;
+	margin: 0px;
+	padding-left: 10px;
+	font-size: 20px;
+	background-color: #ffffff;
+}
+
+.explore > ul > button{
+	float: left;
 	height: 50px;
-	font-family: "trebuchet ms";
-	font-size: 25px;
-	color: #2f3b78;
-}
-
-#goal{
-	width: 250px;
-  height: 50px;
-  font-family: "trebuchet ms";
-  font-size: 25px;
-  color: #2f3b78;
-}
-
-label {
-	/* Uniform size & alignment */
-	display: inline-block;
 	width: 200px;
-	text-align: left;
-	margin: 10px 0 0 110px;
-}
-
-#cash{
-	margin: 0 0 0 110px;
-}
-
-button{
-	margin: 10px 0 0 225px;
-	width: 250px;
-	height: 50px;
-	font-family: fantasy;
+	border-radius: 0px;
+	border-style: double;
+	border-color: #cccccc;
+	background-color: #eeeeee;
+	color: #d45555;
 	font-size: 25px;
+}
+
+.explore > p{
+	font-family: "trebuchet ms";
+	font-size: 40px;
+	color: #2f3b66;
 }
