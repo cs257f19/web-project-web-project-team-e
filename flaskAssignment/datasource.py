@@ -22,10 +22,10 @@ class DataSource:
 	'''
 
 	def __init__(self):
-		#self.user = 'santosb'
-		#self.password = 'book347winter'
-		self.user = 'nystromk'
-		self.password = 'java692spam'
+		self.user = 'santosb'
+		self.password = 'book347winter'
+		#self.user = 'loye'
+		#self.password = 'tablet984spring'
 
 	def connect(self):
 		'''
@@ -41,7 +41,8 @@ class DataSource:
 		Note: Code written by Amy Csizmar Dalal
 		'''
 		try:
-			connection = psycopg2.connect(host="localhost", database=self.user, user=self.user, password= self.password)
+			connection = psycopg2.connect(database=self.user, user=self.user, password= self.password)
+			#host="localhost"
 		except Exception as e:
 			print("Connection error: ", e)
 			exit()
@@ -81,9 +82,9 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT * FROM ksdata ORDER BY RANDOM() LIMIT 1"
+			query = "SELECT title FROM ksdata ORDER BY RANDOM() LIMIT 1"
 			cursor.execute(query)
-			return cursor.fetchall()
+			return cursor.fetchall()[0][0]
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -413,6 +414,7 @@ class DataSource:
 			for i in cursor.fetchall():
 				xVariables.append(i[0])
 
+			xVariables.sort()
 			return xVariables
 
 		except Exception as e:
@@ -520,7 +522,7 @@ class DataSource:
 				yVariables.append(roundAverage)
 
 			#Creating the graph labels and the graph itself
-			plt.title("Count Of Project Average Backers by " + str(nameOfVariable))
+			plt.title("Count Of Project Average " +str(averagedVariable)+  " by " + str(nameOfVariable))
 			plt.xlabel(str(nameOfVariable).upper())
 			plt.ylabel("COUNT")
 			plt.bar(xVariables, yVariables, align='center')
@@ -653,7 +655,7 @@ def main():
 	ds = DataSource()
 	connection = ds.connect()
 
-	ds.countProjectsGraph(connection, 'currency')
+	#ds.countProjectsGraph(connection, 'currency')
 	#ds.proportionProjectsGraph(connection, 'currency')
 	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
 	#ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
@@ -664,7 +666,7 @@ def main():
 	#print(str(ds.calculateProbabilityOfSuccess('Dance', 'US', 500)))
 	#print(str(ds.getListOfAllProjectsOfOneCategory(connection,'category','Printing')))
 	#print("The total number of projects is:" + str(ds.getNumberOfProjects(connection)))
-	#print("A random project is:" + str(ds.getRandomProject(connection)))
+	print("A random project is:" + str(ds.getRandomProject(connection)))
 	#print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
 	#print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
 	#print("The proportion of Music projects that were successful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
