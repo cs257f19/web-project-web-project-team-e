@@ -442,15 +442,7 @@ class DataSource:
 
 			#Getting all the distinct variables
 			#gets all the distnct x-values - for setting up x-axis
-			#xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
-			#cursor.execute(xVariableQuery)
-
 			#Creating a list of all the distinct variables to feed into plt function
-			#xVariables = []
-			#for i in cursor.fetchall():
-				#xVariables.append(i[0])
-
-
 			xVariables = self.getDistinctXVariables(connection, nameOfVariable)
 
 			#Creating a list of the counts for each x value
@@ -503,16 +495,7 @@ class DataSource:
 			cursor = connection.cursor()
 			fig = plt.figure()
 
-
-			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
-			cursor.execute(xVariableQuery)
-
-
-			xVariables = []
-			for i in cursor.fetchall():
-				xVariables.append(i[0])
-
-			#xVariables = self.getDistinctXVariables(connection, nameOfVariable)
+			xVariables = self.getDistinctXVariables(connection, nameOfVariable)
 
 
 			yVariables = []
@@ -522,7 +505,7 @@ class DataSource:
 				yVariables.append(roundAverage)
 
 			#Creating the graph labels and the graph itself
-			plt.title("Count Of Project Average " +str(averagedVariable)+  " by " + str(nameOfVariable))
+			plt.title("Count Of Project Average " + str(averagedVariable)+  " by " + str(nameOfVariable))
 			plt.xlabel(str(nameOfVariable).upper())
 			plt.ylabel("COUNT")
 			plt.bar(xVariables, yVariables, align='center')
