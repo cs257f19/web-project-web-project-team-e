@@ -51,12 +51,13 @@
 		<div class="subPage" id="minmax">
 			<p>With this feature, you can choose a project category and subcategory,
 				and we will return the projects with the highest and lowest cash value
-				raised for those choices. Obviously most categories have more than one
-			 	project that had raised $0, so in that case one will be chosen at random.</p>
+				pledged for those choices. Obviously most categories have more than one
+			 	project that raised $0, so in that case one will be chosen at random.</p>
 				<form action="explore/minmax/" method="post">
 					<div>
 			      <label for="category">Category:</label>
 			      <select id="category" name="category">
+            <option selected>{{category}}</option>
 			  		<option value="Arts">Arts</option>
 			      <option value="Comics">Comics</option>
 			      <option value="Crafts">Crafts</option>
@@ -77,7 +78,10 @@
 			    </div>
 					<button type="submit">Find Min and Max</button>
 				</form>
-        <h2></h2>
+        <h2>The {{category}} project with the lowest amount pledged was <i>{{minProj}}</i>
+          with ${{minValue}} USD.</h2>
+        <h2>Meanwhile, the {{category}} project with the highest amount pledged was
+          <i>{{minProj}}</i> with ${{maxValue}} USD.</h2>
 		</div>
 
 		<div class="subPage" id="proportion">
