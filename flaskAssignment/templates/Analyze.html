@@ -136,7 +136,7 @@
       	<div class="explore">
       		<ul id="side-nav">
       			<button class="side-tabs active" onclick="showSection(event, 'counts')">Counts</button>
-      			<button class="side-tabs" onclick="showSection(event, 'minmax')">Proportion</button>
+      			<button class="side-tabs" onclick="showSection(event, 'proportions')">Proportion</button>
       			<button class="side-tabs" onclick="showSection(event, 'proportion')">Averages</button>
       		</ul>
 
@@ -155,7 +155,7 @@
       			    </div>
 
                 <br>
-                
+
       					<button type="submit">Create Graph</button>
       				</form>
       		</div>
@@ -165,33 +165,20 @@
       		</div>
 
           <div class="subPage" id="minmax">
-      			<p>With this feature, you can choose a project category and subcategory,
-      				and we will return the projects with the highest and lowest cash value
-      				raised for those choices. Obviously most categories have more than one
-      			 	project that had raised $0, so in that case one will be chosen at random.</p>
-      				  <form action="/averagesgraph/" method="post">
-      					<div>
-      			      <label for="category">Category:</label>
-      			      <select id="category" name="category">
-      			  		<option value="Arts">Arts</option>
-      			      <option value="Comics">Comics</option>
-      			      <option value="Crafts">Crafts</option>
-      			      <option value="Dance">Dance</option>
-      			      <option value="Design">Design</option>
-      			  		<option value="Fashion">Fashion</option>
-      			  		<option value="Film & Video">Film & Video</option>
-      			  		<option value="Food">Food</option>
-      			  		<option value="Games">Games</option>
-      			  		<option value="Journalism">Journalism</option>
-      			  		<option value="Music">Music</option>
-      			  		<option value="Photography">Photography</option>
-      			  		<option value="Publishing">Publishing</option>
-      			  		<option value="Technology">Technology</option>
-      			  		<option value="Theater">Theater</option>
-      			      </select>
+      			<p>Choose an aspect of Kickstarter projects and see how it relates to its success rate.</p>
+              <form action="/proportiongraph/" method="post">
+                <!--The box where you select what you want to compare-->
+                <div>
+                  <label for="compareproportion">Compare how successful a project is based on its:</label>
+                  <select id="compareproportion" name="compareproportion">
+                    <option value="main_category">Project Category</option>
+                    <option value="currency">Currency</option>
+                    <option value="country">Country</option>
+                    <option value="projectyear">Year</option>
+                  </select>
       				  <!--End of form options-->
       			    </div>
-      					<button type="submit">Find Min and Max</button>
+      					<button type="submit">Create Graph</button>
       				</form>
       		</div>
 
