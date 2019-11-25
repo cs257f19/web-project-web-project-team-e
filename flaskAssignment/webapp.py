@@ -7,7 +7,7 @@ import sys
 
 
 app = flask.Flask(__name__)
-
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 '''
 Renders the homepage when the user connects to http://perlman.mathcs.carleton.edu:5222/
 '''
@@ -31,13 +31,22 @@ Renders the analyze page when the user directs to http://perlman.mathcs.carleton
 **THIS HTML PAGE IS NOT RELEVANT TO THE SPECIFIC USER QUERY FOR THIS DELIVERABLE**
 **DO NOT GRADE**
 '''
+
+@app.route('/countgraph/', methods=['GET', 'POST'])
+def displayCountsGraph():
+    comparecounts = request.form['comparecounts']
+    ds = DataSource()
+    connection = ds.connect()
+    ds.countProjectsGraph(connection, comparecounts)
+
+    return render_template('Image.html')
+
 @app.route('/usergraph/', methods=['GET', 'POST'])
 def displayProportionProjectsGraph():
     filter = request.form['filter']
     ds = DataSource()
     connection = ds.connect()
-    ds.proportionProjectsGraph(connection, filter)
-
+    ds.countProjectsGraph(connection, filter)
     return render_template('Image.html')
 
 

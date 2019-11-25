@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Will it Fund?|Create</title>
+<link rel = "stylesheet" type = "text/css" href ="Explore.css" />
+</head>
+
+<body>
+	<div class="header">
+
+		<h1>Will it Fund?</h1>
+		<h3>Kickstarting Your Kickstarter</h3>
+
+		<div class = "search-box">
+			<input type = "text" class = "input" placeholder= "Search...">
+			</div>
+
+		<div class="tabs">
+			<ul id="nav">
+				<a href="homepage.html">Home</a>
+				<a href="analyze.html">Analyze the Data</a>
+				<a href="create.html">Create and Compare Your Kickstarter</a>
+				<a href="explore.html" id="current">Explore Curated Project Data</a>
+        <a href="aboutpage.html">About</a>
+			</ul>
+		</div>
+		<!--menu-->
+	</div>
+	<!--header-->
+	<div class="explore">
+		<h1>Explore our data!</h1>
+		<ul id="side-nav">
+			<button onclick="showRandom()">Random Project Generator</button>
+			<button onclick="showother()">Party time</button>
+		</ul>
+		<p id="random">Bruh</p>
+		<script>
+			function showRandom() {
+				document.getElementByID("random").classList.toggle("show");
+			}
+		</script>
+	</div>
+
+</body>
+
+
+</html>

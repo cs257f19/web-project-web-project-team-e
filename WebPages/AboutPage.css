@@ -1,14 +1,31 @@
-@charset "utf-8";
-/* CSS Document */
-
 body{
-	background: #F0F8FF;
+	background-color: #ffffff;
+	margin: 0;
 }
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
+
 .header{
-	padding-left: 5px;
-	line-height: 10px;
 	overflow: hidden;
-	background-color: honeydew;
+	background-color: #d45555;
+	line-height: 10px;
+}
+
+.header > h1{
+	font-family: "trebuchet ms";
+	font-size: 50px;
+	color: #ffffff;
+	padding-left: 15px;
+}
+
+.header > h3{
+	font-family: "trebuchet ms";
+	font-size: 25px;
+	color: #ffffff;
+	padding-left: 15px;
 }
 
 .search-box{
@@ -19,29 +36,45 @@ body{
 
 ul{
 	list-style-type: none;
-	margin: 0;
-	padding: 0;
+	margin: 0px;
+	padding-left: 10px;
 	overflow: hidden;
-	background-color: #dddddd;
-
+	font-size: 20px;
+	background-color: #d45555;
 }
 
-
-li{
-display: inline block;
-float: left;
-padding: 10px;
-
-border-right: .1px solid #ffffff;
-
-}
-
-li:hover {
-  background-color: #D6B6FF;
-}
-
-.leftAlign{
+ul > a{
+	display: inline-grid;
+	padding: 15px 25px 15px 25px;
+	margin-right: 5px;
 	float: left;
-	padding:  0 25px 25px 0;
+	border-radius: 10px;
+	border-style: solid;
+	border-color: #2f3b78;
+	background-color: #ffffff;
+	color: #2f3b78;
+}
 
+ul > a:hover{
+	border-color: #ffffff;
+	background-color: #2f3b78;
+	color: #ffffff;
+}
+
+#current{
+	display: inline-grid;
+	padding: 15px 25px 15px 25px;
+	margin-right: 5px;
+	float: left;
+	border-radius: 10px 10px 0 0;
+	border-style: solid;
+	border-color: #2f3b78 #2f3b78 #ffffff #2f3b78;
+	background-color: #ffffff;
+	color: #2f3b66;
+}
+
+#current:hover{
+	border-color: #ffffff;
+	background-color: #2f3b78;
+	color: #ffffff;
 }
