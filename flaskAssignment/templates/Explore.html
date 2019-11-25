@@ -29,7 +29,10 @@
 		<!--menu-->
 	</div>
 	<!--header-->
+	<div class="sectionHeader">
 	<h2>Explore our data!</h2>
+	<p>Check out a few of our unique features that manipulate the dataset in miscellaneous ways</p>
+	</div>
 	<div class="explore">
 		<ul id="side-nav">
 			<button class="side-tabs active" onclick="showSection(event, 'random')">Random Project Generator</button>
@@ -39,7 +42,14 @@
 		</ul>
 
 		<div class="subPage" id="random">
-			<p>RANDOMPROJECTGENERATOR lol</p>
+			<h1>Generate a Random Project</h1>
+			<p>This is one of our favorites - simply click the button below and we will
+				churn out a random Kickstarter project for you. It is obviously a very
+				simple feature, but seeing the real variety of the Kickstarter projects
+				out there is quite interesting.</p>
+				<button onclick="generateProject">Generate Project</button>
+			<h2 id="projectFound">Project Name</h2>
+			<p id="projectInfo">Category etc</p>
 		</div>
 
 		<div class="subPage" id="minmax">
@@ -56,24 +66,29 @@
 	</div>
 
 	<script>
-  /** Based on a function made by w3schools.com
-	 	* On the click of a tab, all page sections are cleared and the selected
-	  * section is "unhidden" and shown on the page
+	/** Based on a function made by w3schools.com
+		* On the click of a tab, all page sections are cleared and the selected
+		* section is "unhidden" and shown on the page
 	 **/
 	function showSection(evnt, sectionName) {
 		var i, pageContent, sections;
 		pageContent = document.getElementsByClassName("subPage");
 		for (i = 0; i < pageContent.length; i++) {
-    	pageContent[i].style.display = "none";
+			pageContent[i].style.display = "none";
 		}
 
 		sections = document.getElementsByClassName("side-tabs");
-  	for (i = 0; i < sections.length; i++) {
-    	sections[i].className = sections[i].className.replace(" active", "");
+		for (i = 0; i < sections.length; i++) {
+			sections[i].className = sections[i].className.replace(" active", "");
 		}
 
 		document.getElementById(sectionName).style.display = "block";
 		evnt.currentTarget.className += " active";
+	}
+
+	function generate() {
+		document.getElementById("projectFound").innerhtml = *PERLMAN CODE*;
+		document.getElementById("projectInfo").innerhtml = *PERLMAN CODE*;
 	}
 	</script>
 
