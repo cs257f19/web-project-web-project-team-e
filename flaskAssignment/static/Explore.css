@@ -83,7 +83,7 @@ h2{
 	font-family: "trebuchet ms";
 	font-size: 80px;
 	color: #2f3b66;
-	padding: 10px 0px 10px 300px;
+	padding: 10px 0px 10px 350px;
 	margin: 0;
 	background-color: #dddddd;
 }
@@ -93,8 +93,8 @@ h2{
 }
 
 .explore > ul{
-	width: 20%;
-	height: 600px;
+	width: 24%;
+	height: 605px;
 	padding: 0 0 0 10px;
 	background-color: #dddddd;
 }
@@ -103,39 +103,40 @@ h2{
 	float: right;
 	height: 60px;
 	width: 95%;
-	border-radius: 0px;
+	border-width: 3px;
 	border-style: double;
-	border-color: #cccccc;
+	border-color: #ffc849;
 	background-color: #d45555;
 	text-align: right;
 	color: #ffffff;
 	font-size: 22px;
 	cursor: pointer;
+	margin-bottom: 3px;
 }
 
 .side-tabs:hover{
-	background-color: #eeeeee;
+	background-color: #ffffff;
 	color: #d45555;
 }
 
 .side-tabs.active{
 	background-color: #ffffff;
 	color: #d45555;
-}
-
-.side-tabs.active:hover{
-	background-color: #eeeeee;
-	color: #d45555;
+	border-color: #ffc849 #ffffff #ffc849 #ffc849;
 }
 
 .subPage{
 	display: none;
+	height: 600px;
+	width: 76%;
+	padding-left: 40px;
+	position: static;
+	border-color: #ffc849 #ffc849 #ffc849 #ffffff;
+	border-style: double;
+	border-width: 3px;
   float: left;
   font-size: 30px;
-	color: #3e5c2b;
-  width: 80%;
-  border-left: none;
-  height: 300px;
+	color: #2f3b66;
 }
 
 #random{
