@@ -52,11 +52,12 @@ def displayProportionGraph():
     return render_template('Image.html')
 
 @app.route('/averagesgraph/', methods=['GET', 'POST'])
-def displayAveragesProjectsGraph():
+def displayAveragesGraph():
     filter = request.form['filter']
+    averagecompare = request.form['averagecompare']
     ds = DataSource()
     connection = ds.connect()
-    ds.countProjectsGraph(connection, filter)
+    ds.averagedVariableGraph(connection, filter, averagecompare)
     return render_template('Image.html')
 
 
