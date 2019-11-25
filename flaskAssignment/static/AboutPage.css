@@ -84,7 +84,7 @@ article{
 		margin: 0px 40px;
 }
 
-article > a{
+article > p > a{
 	color: #c324bd;
 }
 
