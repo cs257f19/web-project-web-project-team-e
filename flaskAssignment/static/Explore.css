@@ -80,13 +80,24 @@ ul > a:hover{
 	color: #ffffff;
 }
 
-h2{
+.sectionHeader{
 	font-family: "trebuchet ms";
-	font-size: 80px;
 	color: #2f3b66;
 	padding: 10px 0px 10px 350px;
 	margin: 0;
 	background-color: #dddddd;
+}
+
+.sectionHeader > h2{
+	font-size: 80px;
+	padding: 0;
+	margin: 0;
+}
+
+.sectionHeader > p{
+	font-size: 20px;
+	padding: 0;
+	margin: 0;
 }
 
 .explore{
@@ -136,8 +147,38 @@ h2{
 	border-style: double;
 	border-width: 3px;
   float: left;
-  font-size: 30px;
+	color: #d45555;
+}
+
+.subPage > h1{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 40px;
+	margin: 10px;
+}
+
+.subPage > p{
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 25px;
+	margin: 10px 200px 10px 0px;
+}
+
+.subPage > button{
+	height: 60px;
+	width: 20%;
+	border-width: 2px;
+	border-style: inset;
+	border-color: #d45555;
+	background-color: #ffffff;
+	text-align: center;
 	color: #2f3b66;
+	font-size: 22px;
+	cursor: pointer;
+	margin: 10px 0px 5px 0px;
+}
+
+.subPage > h2{
+	font-family: "trebuchet ms";
+	font-size: 30px;
 }
 
 #random{
