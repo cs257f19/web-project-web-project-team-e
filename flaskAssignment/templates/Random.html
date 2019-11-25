@@ -2,35 +2,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Will it Fund?|Create</title>
+<title>Will it Fund?|Explore</title>
+<link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
 <link rel = "stylesheet" type = "text/css" href ="Explore.css" />
+<script language="javascript"></script>
 </head>
 
 <body>
 	<div class="header">
 
-		<h1>Will it Fund?</h1>
+		<h1><a href="http://perlman.mathcs.carleton.edu:5222/">WILL IT FUND?</a></h1>
 		<h3>Kickstarting Your Kickstarter</h3>
 
 		<div class = "search-box">
 			<input type = "text" class = "input" placeholder= "Search...">
 			</div>
 
-		<div class="tabs">
-			<ul id="nav">
-				<a href="homepage.html">Home</a>
-				<a href="analyze.html">Analyze the Data</a>
-				<a href="create.html">Create and Compare Your Kickstarter</a>
-				<a href="explore.html" id="current">Explore Curated Project Data</a>
-        <a href="aboutpage.html">About</a>
-			</ul>
-		</div>
+    <div class="tabs">
+      <ul id="nav">
+        <a href="http://perlman.mathcs.carleton.edu:5222/">Home</a>
+        <a href="http://perlman.mathcs.carleton.edu:5222/analyze/">Analyze the Data</a>
+        <a href="http://perlman.mathcs.carleton.edu:5222/create/">Create and Compare Your Kickstarter</a>
+        <a href="http://perlman.mathcs.carleton.edu:5222/explore/" id="current">Explore Curated Project Data</a>
+        <a href="http://perlman.mathcs.carleton.edu:5222/aboutpage/">About</a>
+      </ul>
+    </div>
 		<!--menu-->
 	</div>
 	<!--header-->
 	<div class="sectionHeader">
-		<h2>Explore our data!</h2>
-		<p>Check out a few of our unique features that manipulate the dataset in miscellaneous ways</p>
+	<h2>Explore our data!</h2>
+	<p>Check out a few of our unique features that manipulate the dataset in miscellaneous ways</p>
 	</div>
 	<div class="explore">
 		<ul id="side-nav">
@@ -46,9 +49,9 @@
 				churn out a random Kickstarter project for you. It is obviously a very
 				simple feature, but seeing the real variety of the Kickstarter projects
 				out there is quite interesting.</p>
-				<button onclick="generateProject">Generate Project</button>
-			<h2 id="projectFound">Project Name</h2>
-			<p id="projectInfo">Category etc</p>
+			<a href="http://perlman.mathcs.carleton.edu:5222/random/">Generate Another Project</a>
+      <h2>Your project is: <i>{{name}}</i>
+      <p></p>
 		</div>
 
 		<div class="subPage" id="minmax">
@@ -65,20 +68,20 @@
 	</div>
 
 	<script>
-  /** Based on a function made by w3schools.com
-	 	* On the click of a tab, all page sections are cleared and the selected
-	  * section is "unhidden" and shown on the page
+	/** Based on a function made by w3schools.com
+		* On the click of a tab, all page sections are cleared and the selected
+		* section is "unhidden" and shown on the page
 	 **/
 	function showSection(evnt, sectionName) {
 		var i, pageContent, sections;
 		pageContent = document.getElementsByClassName("subPage");
 		for (i = 0; i < pageContent.length; i++) {
-    	pageContent[i].style.display = "none";
+			pageContent[i].style.display = "none";
 		}
 
 		sections = document.getElementsByClassName("side-tabs");
-  	for (i = 0; i < sections.length; i++) {
-    	sections[i].className = sections[i].className.replace(" active", "");
+		for (i = 0; i < sections.length; i++) {
+			sections[i].className = sections[i].className.replace(" active", "");
 		}
 
 		document.getElementById(sectionName).style.display = "block";
