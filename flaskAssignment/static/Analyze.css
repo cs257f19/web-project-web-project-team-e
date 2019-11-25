@@ -26,7 +26,7 @@ a{
 }
 
 .header > h3{
-	font-family: 'Cardo', serif;
+	font-family: 'Cardo';
 	font-size: 25px;
 	color: #ffffff;
 	padding-left: 15px;
@@ -39,6 +39,7 @@ a{
 }
 
 ul{
+	font-family: 'Cardo';
 	list-style-type: none;
 	margin: 0px;
 	padding-left: 10px;
@@ -48,6 +49,7 @@ ul{
 }
 
 ul > a{
+	font-family: 'Cardo';
 	display: inline-grid;
 	padding: 15px 25px 15px 25px;
 	margin-right: 5px;
