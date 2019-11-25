@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Will it Fund?|Create</title>
-<link rel = "stylesheet" type = "text/css" href ="Explore.css" />
+<link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+<link rel = "stylesheet" type = "text/css"
+href ="{{ url_for('static', filename='AboutPage.css') }}" />
 </head>
 
 <body>
@@ -31,10 +34,7 @@
 <!--About Page Text-->
 <article>
 	<h1>About our site</h1>
-
-	<div class= "leftAlign">
-		<img src="kickstarter.png" alt="Kickstarter logo" width="300" height="93">
-	</div>
+	<a href="kickstarter.com"><img src="/static/kickstarter.png" alt="Kickstarter logo" width="300" height="93"></a>
 
 	<p>This site is designed for those who are, for one reason or another, intrigued by Kickstarter, to learn about what factors—goals, time period, type of project, etc—result in failed or successful Kickstarter projects. Our goal is to help you learn about trends among Kickstarter projects, and if you have a project vision, to help you see how similar projects have performed historically.  Whether you are a curious user, a crowdfunding enthusiast, or an entrepreneur, we welcome you; this site has something for everyone. </p>
 

@@ -1,4 +1,5 @@
 body{
+	font-family: 'Oswald';
 	background-color: #ffffff;
 	margin: 0;
 }
@@ -77,4 +78,16 @@ ul > a:hover{
 	border-color: #ffffff;
 	background-color: #2f3b78;
 	color: #ffffff;
+}
+
+article{
+		margin: 0px 40px;
+}
+
+article > p > a{
+	color: #0000EE;
+}
+
+img{
+	float: left;
 }
