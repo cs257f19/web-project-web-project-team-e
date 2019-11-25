@@ -1,7 +1,7 @@
 body{
 	font-family: 'Oswald';
 	background-color: #ffffff;
-	margin: 0px 20px;
+
 }
 
 a{
@@ -78,4 +78,8 @@ ul > a:hover{
 	border-color: #ffffff;
 	background-color: #2f3b78;
 	color: #ffffff;
+}
+
+P{
+		margin: 0px 20px;
 }
