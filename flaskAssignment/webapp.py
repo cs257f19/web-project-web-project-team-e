@@ -97,7 +97,16 @@ def renderRandomPage():
     name = ds.getRandomProject(connection)
     return render_template('Random.html', name = name)
 
-
+@app.route('/explore/minmax/', methods=['GET', 'POST'])
+def renderMinmaxPage():
+    category = request.form['category']
+    ds = DataSource()
+    connection = ds.connect()
+    mimimum = getMinimumValueOfVariable(connection, category)
+    maximum = getMaximumValueOfVariable(connection, category)
+    minProj = minimum[0]
+    maxProj = maximum[0]
+    return render_template('minmax.html', minproj = minproj, maxproj = maxproj, category = category)
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
