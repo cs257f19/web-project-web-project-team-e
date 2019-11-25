@@ -79,3 +79,7 @@ ul > a:hover{
 	background-color: #2f3b78;
 	color: #ffffff;
 }
+
+p{
+		margin: 0px 40px;
+}
