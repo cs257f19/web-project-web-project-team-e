@@ -84,6 +84,10 @@ article{
 		margin: 0px 40px;
 }
 
+article > a{
+	color: #c324bd;
+}
+
 img{
 	float: left;
 }
