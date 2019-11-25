@@ -32,12 +32,6 @@ a{
 	padding-left: 20px;
 }
 
-.search-box{
-	position: absolute;
-	top: 17px;
-	right: 17px;
-}
-
 ul{
 	font-family: 'Oswald';
 	list-style-type: none;
