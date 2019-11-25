@@ -68,66 +68,72 @@ ul > a:hover{
 	float: left;
 	border-radius: 10px 10px 0 0;
 	border-style: solid;
-	border-color: #2f3b78 #2f3b78 #ffffff #2f3b78;
-	background-color: #ffffff;
+	border-color: #2f3b78 #2f3b78 #dddddd #2f3b78;
+	background-color: #dddddd;
 	color: #2f3b66;
 }
 
 #current:hover{
-	border-color: #ffffff;
+	border-color: #dddddd;
 	background-color: #2f3b78;
 	color: #ffffff;
+}
+
+h2{
+	font-family: "trebuchet ms";
+	font-size: 80px;
+	color: #2f3b66;
+	padding: 10px 0px 10px 300px;
+	margin: 0;
+	background-color: #dddddd;
 }
 
 .explore{
 	display: flex;
 }
 
-.explore > h1{
-	font-family: "trebuchet ms";
-	font-size: 80px;
-	color: #2f3b66;
-	padding: 10px 0px 10px 300px;
-	margin: 0;
-	background-color: #eeeeee;
-}
-
 .explore > ul{
-	width: 30%;
-	margin: 0px;
-	padding-left: 10px;
-	background-color: #ffffff;
+	width: 20%;
+	height: 600px;
+	padding: 0 0 0 10px;
+	background-color: #dddddd;
 }
 
 .side-tabs{
-	float: left;
+	float: right;
 	height: 60px;
-	width: 300px;
+	width: 95%;
 	border-radius: 0px;
 	border-style: double;
 	border-color: #cccccc;
-	background-color: #eeeeee;
+	background-color: #d45555;
 	text-align: right;
-	color: #d45555;
+	color: #ffffff;
 	font-size: 22px;
 	cursor: pointer;
 }
 
 .side-tabs:hover{
-	background-color: #cccccc;
+	background-color: #eeeeee;
+	color: #d45555;
 }
 
 .side-tabs.active{
-	background-color: #d45555;
-	color: #ffffff;
+	background-color: #ffffff;
+	color: #d45555;
+}
+
+.side-tabs.active:hover{
+	background-color: #eeeeee;
+	color: #d45555;
 }
 
 .subPage{
 	display: none;
   float: left;
-  padding: 0px 12px;
-  border: 1px solid #ccc;
-  width: 70%;
+  font-size: 30px;
+	color: #3e5c2b;
+  width: 80%;
   border-left: none;
   height: 300px;
 }
