@@ -4,14 +4,15 @@ CREATE TABLE ksdata (
   category text,
   main_category text,
   currency text,
+  projectyear real,
   deadline date,
   goal real,
-  launched date,
   total_days real,
   pledged real,
   state text,
   backers real,
   country text,
   usd_pledged_real real,
-  usd_goal_real real
+  usd_goal_real real,
+  success_score real
 );

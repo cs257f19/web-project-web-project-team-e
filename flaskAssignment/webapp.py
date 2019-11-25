@@ -31,15 +31,24 @@ Renders the analyze page when the user directs to http://perlman.mathcs.carleton
 **THIS HTML PAGE IS NOT RELEVANT TO THE SPECIFIC USER QUERY FOR THIS DELIVERABLE**
 **DO NOT GRADE**
 '''
+
+@app.route('/countgraph/', methods=['GET', 'POST'])
+def displayCountsGraph():
+    cache.clear()
+    comparecounts = request.form['comparecounts']
+    ds = DataSource()
+    connection = ds.connect()
+    ds.countProjectsGraph(connection, comparecounts)
+
+    return render_template('Image.html')
+
 @app.route('/usergraph/', methods=['GET', 'POST'])
 def displayProportionProjectsGraph():
-
     filter = request.form['filter']
     ds = DataSource()
-    ds.proportionProjectsGraph(connection, filter)
-    filename = 'static/plot.png'
-
-    return render_template("Image.html", usergraph = filename)
+    connection = ds.connect()
+    ds.countProjectsGraph(connection, filter)
+    return render_template('Image.html')
 
 
 '''

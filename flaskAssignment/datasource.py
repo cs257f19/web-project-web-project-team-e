@@ -31,8 +31,8 @@ class DataSource:
 		Establishes a connection to the database with the following credentials:
 
 		PARAMETERS:
-		user - username, which is also the name of the database
-		password - the password for this database on perlman
+			user - username, which is also the name of the database
+			password - the password for this database on perlman
 
 		RETURNS: a database connection.
 
@@ -51,10 +51,10 @@ class DataSource:
 		Gives the total number of projects(entries) in the data table. This is done to avoid having a 'magic number'
 
 		PARAMETERS:
-		connection - the connection to the database
+			connection - the connection to the database
 
 		RETURNS:
-		an int that is the total number of entries in the datatable.
+			an int that is the total number of entries in the datatable.
 		'''
 		try:
 			cursor = connection.cursor()
@@ -69,12 +69,13 @@ class DataSource:
 
 	def getRandomProject(self, connection):
 		'''
-        Returns all the information of a random project in list form from the Kickstarter dataset
+        All the information of a random project in list form from the Kickstarter dataset
+
         PARAMETERS:
             connection - the connection to the database
 
         RETURNS:
-            list of variables for a project, once the data is clean, we will produce the str name of the project
+            list of variables for the random project
         '''
 
 		try:
@@ -87,7 +88,7 @@ class DataSource:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
-	#the method implemented via test cases
+
 	def getCountOfVariableSuccess(self, connection, nameOfVariable, variableCondition):
 		'''
         Returns the count (an integer) of all projects of one variable that meet a certain condition AND were successful.
@@ -95,14 +96,12 @@ class DataSource:
         PARAMETERS:
 			connection - the connection to the database
             nameOfVariable - the variable of the project we are counting from.
-	    	variableCondition - the condition that needs to be met for the project to be counted. For example, if the name of variable is 'country',
-			a condition to meet could be 'USA' or 'GB'
-
+	    	variableCondition - the condition that needs to be met for the project to be counted.
+	    	For example, if the nameOfVariable is 'country', a variableCondition could be 'US' or 'GB'
 
         RETURN:
             an integer that is a total of all the projects in the database that fit these two variables AND is successful (the count of successful Film & Video Projects)
 		'''
-		#work in progress - DO NOT GRADE
 		try:
 			cursor = connection.cursor()
 			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(variableCondition) + "'"
@@ -116,18 +115,17 @@ class DataSource:
 
 	def getCountOfVariableFailure(self, connection, nameOfVariable, variableCondition):
 		'''
-        Returns the count (an integer) of all projects of one variable that meet a certain condition AND were successful.
+        Gets the count (an integer) of all projects of one variable that meet a certain condition AND were successful.
 
         PARAMETERS:
-        connection - the connection to the database
-        nameOfVariable - the variable of the project we are counting from.
-        variableCondition - the condition that needs to be met for the project to be counted. For example, if the name of variable is 'country',
-        a condition to meet could be 'USA' or 'GB'
+        	connection - the connection to the database
+        	nameOfVariable - the variable of the project we are counting from.
+        	variableCondition - the condition that needs to be met for the project to be counted.
+        	For example, if the nameOfVariable is 'country', a variableCondition could be 'US' or 'GB'
 
         RETURN:
-        an integer that is a total of all the projects in the database that fit these two variables AND is successful (the count of successful Film & Video Projects)
+        	an integer that is a total of all the projects in the database that fit these two variables AND is successful (the count of successful Film & Video Projects)
         '''
-		# work in progress - DO NOT GRADE
 		try:
 			cursor = connection.cursor()
 			query = "SELECT COUNT(state) FROM ksdata WHERE state = 'failed' AND " + str(nameOfVariable) + " = '" + str(variableCondition) + "'"
@@ -147,10 +145,10 @@ class DataSource:
 		PARAMETERS:
 			connection - the connection to the database
 			nameOfVariable - the major variable from which the minimum value is being taken
+			For example, nameOfVariable could be 'usd_goal'
 
 		RETURN:
 			a float that is the smallest value in the dataset for the variable provided
-
 		'''
 
 		try:
@@ -171,10 +169,10 @@ class DataSource:
 		PARAMETERS:
 			connection - the connection to the database
 			nameOfVariable - the major variable from which the maximum value is being taken
+			For example, nameOfVariable could be 'currency'
 
 		RETURN:
 			a float that is the largest value in the dataset for the variable provided
-
 		'''
 
 		try:
@@ -193,8 +191,9 @@ class DataSource:
         Returns an average of all the entries for one variable in the data set.
 
         PARAMETERS:
-		connection - the connection to the database
-		nameOfVariable - the name of the variable we wish to calculate the average of.
+			connection - the connection to the database
+			nameOfVariable - the name of the variable we wish to calculate the average of.
+			For example, nameOfVariable could be 'backers'
 
 
         RETURN:
@@ -202,7 +201,6 @@ class DataSource:
 
 		RAISES:
 			NeedQuantitaveVariableError - If parameter entered is a categorical variable
-
 		'''
 		try:
 			cursor = connection.cursor()
@@ -216,27 +214,41 @@ class DataSource:
 			return None
 
 	def getAverageOfConditionedVariable(self, connection, averagedVariable, nameOfVariable, variableCondition):
-			try:
-				cursor = connection.cursor()
-				query = "SELECT AVG(" + str(averagedVariable) + ") FROM ksdata WHERE " +str(nameOfVariable) + " =  '" + str(variableCondition) + "'"
-				cursor.execute(query)
-				averageValue = float(cursor.fetchall()[0][0])
-				return averageValue
+		'''
+        Returns an average of all the entries for one variable conditioned on another in the data set.
 
-			except Exception as e:
-				print ("Something went wrong when executing the query: ", e)
-				return None
+        PARAMETERS:
+        	connection - the connection to the database
+        	averagedVariable - the type of variable that is being average
+        	nameOfVariable - the name of the variable we wish to calculate the average of
+        	variableCondition - the condition that needs to be met to be included in the average
+        	For example, averagedVariable is 'backers', nameOfVariable is 'country', and variableCondition is 'US'
+
+        RETURN:
+    		an integer that is the average of the provided parameters
+        	For example, the average number of backers for all Kickstarters from the US
+        '''
+		try:
+			cursor = connection.cursor()
+			query = "SELECT AVG(" + str(averagedVariable) + ") FROM ksdata WHERE " +str(nameOfVariable) + " =  '" + str(variableCondition) + "'"
+			cursor.execute(query)
+			averageValue = float(cursor.fetchall()[0][0])
+			return averageValue
+
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return None
 
 
 	def getProportionOfSuccess(self, connection, nameOfVariable, variableCondition):
 		'''
-        Calculates the proportion of successful projects based on the name of
-        a column and the filter of that column.
+        Calculates the proportion of successful projects based on the name of a column and the filter of that column.
 
         PARAMETERS:
             connection - the connection to the database
             nameOfVariable - the str variable of the project we are creating a proportion for
             variableCondition - a str attribute of the main variable (i.e category, country, currency)
+            For example, nameOfVariable could be 'main_category' with the variableCondition being 'Arts'
 
         RETURNS:
             an int proportion between 0 and 1 inclusive
@@ -255,13 +267,22 @@ class DataSource:
 			proportionOfSuccess = successCount/totalCount
 			return proportionOfSuccess
 
-
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
 			return connection.cursor()
 
 
 	def mainCategoryCoefficient(self,nameOfVariable):
+		'''
+		Gets the coefficient associated with the probability of the given nameOfVariable
+        PARAMETERS:
+            connection - the connection to the database
+            nameOfVariable - the str variable of the project we want a coefficient for
+            Each if statement below contains the possibilities for nameOfVariable
+
+        RETURNS:
+            an int that depends on the category or -1 if the category does not exist in our dataset
+		'''
 		if str(nameOfVariable) == 'Arts':
 			return 0
 		elif str(nameOfVariable) == 'Comics':
@@ -296,6 +317,16 @@ class DataSource:
 			return -1
 
 	def currencyCoefficient(self, currency):
+		'''
+		Gets the coefficient associated with the probability of the given currency
+		PARAMETERS:
+		    connection - the connection to the database
+		    currency - the str currency of the project we want a coefficient for
+		    Each if statement below contains the possibilities for currency
+
+		RETURNS:
+		    an int that depends on the currency or -1 if the currency does not exist in our dataset
+		'''
 		if str(currency) == 'AUD':
 			return 0
 		elif str(currency) == 'CAD':
@@ -334,7 +365,8 @@ class DataSource:
         project idea. R software will be used to generate the formula
 
         PARAMETERS:
-            connection - the connection to the database
+
+
             str and int variables that are shown to be statistically significant to determining
             success of a project
 
@@ -356,6 +388,18 @@ class DataSource:
 
 	#input a column name
 	def countProjectsGraph(self, connection, nameOfVariable):
+		'''
+		Creates a bar plot graph and image of the graph. The function graphs the count of all projects of a given variable
+
+		PARAMETERS:
+			connection - the connection to the database
+			nameOfVariable - str of variable for which we are counting distinct projects
+			For example, nameOfVariable could be 'country' and the function would create a graph of the count
+			for 'US', 'GB', 'JP', etc. and save it to the static directory
+
+		RETURNS:
+			nothing, simply saves the graph as a .png
+		'''
 		try:
 			cursor = connection.cursor()
 			fig = plt.figure()
@@ -396,6 +440,20 @@ class DataSource:
 
 	#the average variable for a column - all colums displayed on x-axis
 	def averagedVariableGraph(self, connection, averagedVariable, nameOfVariable):
+		'''
+		Creates a bar plot graph and image of the graph.
+		The function graphs the average of a variable for all projects of a distinct instances of a variable
+
+		PARAMETERS:
+			connection - the connection to the database
+			averagedVariable - the value that would be averaged for each distinct values from nameOfVariable
+			nameOfVariable - str of variable for which we are counting distinct projects
+			For example, averagedVariable is 'backers' and nameOfVariable is 'country'
+			The function would create a graph of the average number of backers for 'US', 'GB', 'JP', etc. and save it to the static directory
+
+		RETURNS:
+			nothing, simply saves the graph as a .png
+		'''
 		#averagedVariagle= goal funding or Backers
 		#name of variable = year, country, both categories, currency
 		#for goal, funding, and backers
@@ -436,6 +494,19 @@ class DataSource:
 			return connection.cursor()
 
 	def proportionProjectsGraph(self, connection, nameOfVariable):
+		'''
+		Creates a stacked bar plot graph and image of the graph.
+		The function graphs the proportion of success and failures for distinct instances of a variable
+
+		PARAMETERS:
+			connection - the connection to the database
+			nameOfVariable - str of variable for which we are getting success/failure proportions for each distinct projects
+			For example, nameOfVariable is 'country'
+			The function would stacked proportions of success to failures for 'US', 'GB', 'JP', etc. and save it to the static directory
+
+		RETURNS:
+			nothing, simply saves the graph as a .png
+		'''
 		try:
 			cursor = connection.cursor()
 			fig = plt.figure()
@@ -485,6 +556,7 @@ class DataSource:
         Returns a list of the given length of the most successful projects by success score
 
         PARAMETERS:
+        	connection - the connection to the database
             listLength - int length of list the user wants
 			nameOfVariable - the str variable of the project we are creating a proportion for
 			variableCondition - a str attribute of the main variable (i.e category, country, currency)
@@ -507,6 +579,7 @@ class DataSource:
         Returns a list of every project for a given category
 
         PARAMETERS:
+        	connection - the connection to the database
             nameOfVariable - str of the chosen category in the dataset
             variableCondition - a str attribute of the main variable (i.e category, country, currency)
 
@@ -528,7 +601,7 @@ def main():
 	connection = ds.connect()
 
 	#ds.countProjectsGraph(connection, 'currency')
-	ds.proportionProjectsGraph(connection, 'currency')
+	#ds.proportionProjectsGraph(connection, 'currency')
 	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
 	#ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
 
