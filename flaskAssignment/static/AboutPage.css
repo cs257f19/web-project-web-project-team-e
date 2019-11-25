@@ -83,3 +83,7 @@ ul > a:hover{
 article{
 		margin: 0px 40px;
 }
+
+img{
+	float: left;
+}
