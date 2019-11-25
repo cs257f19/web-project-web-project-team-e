@@ -57,7 +57,7 @@ def displayAveragesGraph():
     averagecompare = request.form['averagecompare']
     ds = DataSource()
     connection = ds.connect()
-    ds.averagedVariableGraph(connection, filter, averagecompare)
+    ds.averagedVariableGraph(connection, averagecompare, filter)
     return render_template('Image.html')
 
 
