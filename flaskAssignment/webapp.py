@@ -27,6 +27,10 @@ def renderCreatePage():
 def renderAnalyzePage():
     return render_template('Analyze.html')
 
+@app.route('/aboutpage/')
+def renderAboutPage():
+    return render_template('AboutPage')
+
 '''
 Renders the analyze page when the user directs to http://perlman.mathcs.carleton.edu:5222/create/
 **THIS HTML PAGE IS NOT RELEVANT TO THE SPECIFIC USER QUERY FOR THIS DELIVERABLE**
