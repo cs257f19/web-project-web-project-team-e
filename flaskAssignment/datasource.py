@@ -84,7 +84,7 @@ class DataSource:
 			cursor = connection.cursor()
 			query = "SELECT title FROM ksdata ORDER BY RANDOM() LIMIT 1"
 			cursor.execute(query)
-			return cursor.fetchall()
+			return cursor.fetchall()[0][0]
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
