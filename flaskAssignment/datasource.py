@@ -157,6 +157,7 @@ class DataSource:
 			query = "SELECT MIN(" + str(nameOfVariable) + ") FROM ksdata"
 			cursor.execute(query)
 			smallestValue = float(cursor.fetchall()[0][0])
+			print(cursor.fetchall())
 			return smallestValue
 
 		except Exception as e:
