@@ -103,7 +103,7 @@ ul > a:hover{
 }
 
 #analyze {
-		background-image : url("analyze.jpg");
+		background-image : url("analyze.png");
 		background-position: top;
 		background-blend-mode: hard-light;
 }
@@ -115,7 +115,7 @@ ul > a:hover{
 }
 
 #explore {
-		background-image : url("explore.jpg");
+		background-image : url("explore.png");
 		background-position: top;
 		background-size: contain;
 		background-blend-mode: hard-light;
