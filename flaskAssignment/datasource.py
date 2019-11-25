@@ -645,7 +645,7 @@ def main():
 	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
 	#ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
 
-
+	print(ds.getDistinctXVariables(connection, 'currency'))
 	#print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
 	#print(ds.getCountOfVariableFailure(connection, 'currency', 'JPY'))
 	#print(str(ds.calculateProbabilityOfSuccess('Music', 'USD', 5)))
