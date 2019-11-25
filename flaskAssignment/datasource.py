@@ -472,6 +472,8 @@ class DataSource:
 			if os.path.isfile(strFile):
 				print("It is here")
 				os.remove(strFile)   # Opt.: os.system("rm "+strFile)
+			if os.path.isfile(strFile):
+				print("Failed")
 			fig.savefig('static/plot.png', dpi=199)
 
 		except Exception as e:
