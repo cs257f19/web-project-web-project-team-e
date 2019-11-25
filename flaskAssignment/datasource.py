@@ -468,7 +468,10 @@ class DataSource:
 			fig.tight_layout()
 
 			#Saving the image in the same directory, there is no need to return anything
-			os.remove('static/plot.png')
+			strFile = "static/plot.png"
+			if os.path.isfile(strFile):
+				print("It is here")
+   				os.remove(strFile)   # Opt.: os.system("rm "+strFile)
 			fig.savefig('static/plot.png', dpi=199)
 
 		except Exception as e:
