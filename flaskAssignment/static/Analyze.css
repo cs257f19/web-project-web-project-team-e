@@ -106,3 +106,133 @@ img {
   width: 50%;
   height: auto;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.sectionHeader{
+	font-family: "trebuchet ms";
+	color: #2f3b66;
+	padding: 10px 0px 10px 350px;
+	margin: 0;
+	background-color: #dddddd;
+}
+
+.sectionHeader > h2{
+	font-size: 80px;
+	padding: 0;
+	margin: 0;
+}
+
+.sectionHeader > p{
+	font-size: 20px;
+	padding: 0;
+	margin: 0;
+}
+
+.explore{
+	display: flex;
+}
+
+.explore > ul{
+	width: 24%;
+	height: 605px;
+	padding: 0 0 0 10px;
+	background-color: #dddddd;
+}
+
+.side-tabs{
+	float: right;
+	height: 60px;
+	width: 95%;
+	border-width: 3px;
+	border-style: double;
+	border-color: #ffc849;
+	background-color: #d45555;
+	text-align: right;
+	color: #ffffff;
+	font-size: 22px;
+	cursor: pointer;
+	margin-bottom: 3px;
+}
+
+.side-tabs:hover{
+	background-color: #ffffff;
+	color: #d45555;
+}
+
+.side-tabs.active{
+	background-color: #ffffff;
+	color: #d45555;
+	border-color: #ffc849 #ffffff #ffc849 #ffc849;
+}
+
+.subPage{
+	display: none;
+	height: 600px;
+	width: 76%;
+	padding-left: 40px;
+	position: static;
+	border-color: #ffc849 #ffc849 #ffc849 #ffffff;
+	border-style: double;
+	border-width: 3px;
+  float: left;
+	color: #d45555;
+}
+
+.subPage > h1{
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 40px;
+	margin: 10px;
+}
+
+.subPage > p{
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 25px;
+	margin: 10px 200px 10px 0px;
+}
+
+.subPage > a{
+	height: 60px;
+	width: 20%;
+	border-width: 2px;
+	border-style: inset;
+	border-color: #d45555;
+	background-color: #ffffff;
+	text-align: center;
+	color: #2f3b66;
+	font-size: 22px;
+	cursor: pointer;
+	margin: 10px 0px 5px 0px;
+}
+
+#random{
+	display: block;
+}
+
+.show{
+	display: block;
+	background-color: #ffffff;
+}
