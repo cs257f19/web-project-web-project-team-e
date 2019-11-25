@@ -105,7 +105,9 @@ def renderMinmaxPage():
     mimimum = getMinimumValueOfVariable(connection, category)
     maximum = getMaximumValueOfVariable(connection, category)
     minProj = minimum[0]
+    minValue = minimum[14]
     maxProj = maximum[0]
+    maxValue = maximum[14]
     return render_template('minmax.html', minproj = minproj, maxproj = maxproj, category = category)
 
 if __name__ == "__main__":
