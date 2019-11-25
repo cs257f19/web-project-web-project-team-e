@@ -136,8 +136,8 @@
       	<div class="explore">
       		<ul id="side-nav">
       			<button class="side-tabs active" onclick="showSection(event, 'counts')">Counts</button>
-      			<button class="side-tabs" onclick="showSection(event, 'proportions')">Proportion</button>
-      			<button class="side-tabs" onclick="showSection(event, 'proportion')">Averages</button>
+      			<button class="side-tabs" onclick="showSection(event, 'proportion')">Proportion</button>
+      			<button class="side-tabs" onclick="showSection(event, 'average')">Averages</button>
       		</ul>
 
       		<div class="subPage" id="counts">
@@ -164,7 +164,7 @@
 
       		</div>
 
-          <div class="subPage" id="minmax">
+          <div class="subPage" id="proportion">
       			<p>Choose an aspect of Kickstarter projects and see how it relates to its success rate.</p>
               <form action="/proportiongraph/" method="post">
                 <!--The box where you select what you want to compare-->
