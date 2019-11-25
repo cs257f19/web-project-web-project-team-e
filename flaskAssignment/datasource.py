@@ -4,6 +4,7 @@ import math
 import matplotlib
 from matplotlib import pyplot as plt
 import numpy as np
+import os
 
 '''
 AMY
@@ -386,6 +387,39 @@ class DataSource:
 		else:
 			return 'Please Enter a Valid Parameters'
 
+	def getDistinctXVariables(self, connection, nameOfVariable):
+		'''
+		Creates a list of distinct elements to be placed on the x-axis of a graph given a variable
+
+		PARAMETERS:
+			connection - the connection to the database
+			nameOfVariable - str of the variable for which we need the distinct elements
+			For example, nameOfVariable is 'country' and some of the distinct elements include 'US' and 'GB'
+
+		RETURNS:
+			a list of distinct str element names
+		'''
+
+		try:
+			cursor = connection.cursor()
+
+			# Getting all the distinct variables
+			# gets all the distnct x-values - for setting up x-axis
+			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
+			cursor.execute(xVariableQuery)
+
+			# Creating a list of all the distinct variables to feed into plt function
+			xVariables = []
+			for i in cursor.fetchall():
+				xVariables.append(i[0])
+
+			return xVariables
+
+		except Exception as e:
+			print ("Something went wrong when executing the query: ", e)
+			return connection.cursor()
+
+
 	#input a column name
 	def countProjectsGraph(self, connection, nameOfVariable):
 		'''
@@ -406,14 +440,16 @@ class DataSource:
 
 			#Getting all the distinct variables
 			#gets all the distnct x-values - for setting up x-axis
-			xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
-			cursor.execute(xVariableQuery)
+			#xVariableQuery = "SELECT DISTINCT " + str(nameOfVariable) + " FROM ksdata"
+			#cursor.execute(xVariableQuery)
 
 			#Creating a list of all the distinct variables to feed into plt function
-			xVariables = []
-			for i in cursor.fetchall():
-				xVariables.append(i[0])
-			print(xVariables)
+			#xVariables = []
+			#for i in cursor.fetchall():
+				#xVariables.append(i[0])
+
+
+			xVariables = self.getDistinctXVariables(connection, nameOfVariable)
 
 			#Creating a list of the counts for each x value
 			#Iterates through x variable list and gets the count, appends to a empty y list
@@ -422,7 +458,6 @@ class DataSource:
 				yVariableQuery = "SELECT COUNT(" + str(nameOfVariable) + ") FROM ksdata WHERE " + str(nameOfVariable) + " = '" + i +"'"
 				cursor.execute(yVariableQuery)
 				yVariables.append(cursor.fetchall()[0][0])
-			print(yVariables)
 
 			#Creating the graph labels and the graph itself
 			plt.title("Count Of Projects by " + str(nameOfVariable))
@@ -430,9 +465,14 @@ class DataSource:
 			plt.ylabel("COUNT")
 			plt.bar(xVariables, yVariables, align='center')
 			plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
+			fig.tight_layout()
 
 			#Saving the image in the same directory, there is no need to return anything
-			fig.savefig('static/plot.png')
+			strFile = "static/plot.png"
+			if os.path.isfile(strFile):
+				print("It is here")
+				os.remove(strFile)
+			fig.savefig('static/plot.png', dpi=199)
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -469,7 +509,8 @@ class DataSource:
 			xVariables = []
 			for i in cursor.fetchall():
 				xVariables.append(i[0])
-			print(xVariables)
+
+			#xVariables = self.getDistinctXVariables(connection, nameOfVariable)
 
 
 			yVariables = []
@@ -477,7 +518,6 @@ class DataSource:
 				average = self.getAverageOfConditionedVariable(connection, averagedVariable, nameOfVariable, i)
 				roundAverage = round(average,0)
 				yVariables.append(roundAverage)
-			print(yVariables)
 
 			#Creating the graph labels and the graph itself
 			plt.title("Count Of Project Average Backers by " + str(nameOfVariable))
@@ -485,9 +525,14 @@ class DataSource:
 			plt.ylabel("COUNT")
 			plt.bar(xVariables, yVariables, align='center')
 			plt.setp(plt.gca().get_xticklabels(), rotation=45, horizontalalignment='right')
+			fig.tight_layout()
 
-			#Saving the image in the same directory, there is no need to return anything
-			fig.savefig('static/plot.png')
+			# Saving the image in the same directory, there is no need to return anything
+			strFile = "static/plot.png"
+			if os.path.isfile(strFile):
+				print("It is here")
+				os.remove(strFile)
+			fig.savefig('static/plot.png', dpi=199)
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -518,6 +563,8 @@ class DataSource:
 			for i in cursor.fetchall():
 				xVariables.append(i[0])
 
+			# xVariables = self.getDistinctXVariables(connection, nameOfVariable)
+
 			ind = [x for x, _ in enumerate(xVariables)]
 
 			successesList = []
@@ -537,14 +584,20 @@ class DataSource:
 			plt.bar(ind, proportion_failures, width = 0.5, label = 'failures', color = '#e57373', bottom = proportion_successes)
 			plt.bar(ind, proportion_successes, width = 0.5, label = 'successes', color = '#b2ebf2')
 
+			# Creating the graph labels and the graph itself
 			plt.title("Proportion Of Project Successes and Failures by " + str(nameOfVariable))
 			plt.xticks(ind, xVariables)
 			plt.xlabel(str(nameOfVariable).upper())
 			plt.ylabel("PROPORTION")
-
-
 			plt.setp(plt.gca().get_xticklabels(), rotation = 45, horizontalalignment = 'right')
-			fig.savefig('static/plot.png')
+			fig.tight_layout()
+
+			# Saving the image in the same directory, there is no need to return anything
+			strFile = "static/plot.png"
+			if os.path.isfile(strFile):
+				print("It is here")
+				os.remove(strFile)
+			fig.savefig('static/plot.png', dpi=199)
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -600,11 +653,10 @@ def main():
 	ds = DataSource()
 	connection = ds.connect()
 
-	#ds.countProjectsGraph(connection, 'currency')
+	ds.countProjectsGraph(connection, 'currency')
 	#ds.proportionProjectsGraph(connection, 'currency')
 	#ds.averagedVariableGraph(connection, 'backers', 'main_category')
 	#ds.averagedVariableGraph(connection, 'usd_goal_real', 'main_category')
-
 
 	#print(str(ds.calculateProbabilityOfSuccess('Fashion', 'USD', 10000)))
 	#print(ds.getCountOfVariableFailure(connection, 'currency', 'JPY'))
