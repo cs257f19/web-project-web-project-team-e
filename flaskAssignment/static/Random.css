@@ -175,6 +175,10 @@ ul > a:hover{
 	margin: 10px 0px 5px 0px;
 }
 
+.subPage > a:hover{
+  background-color: #eeeeee;
+}
+
 #random{
 	display: block;
 }
