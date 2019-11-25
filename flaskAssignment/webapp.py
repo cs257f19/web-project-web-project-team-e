@@ -31,6 +31,9 @@ def renderAnalyzePage():
 def renderAboutPage():
     return render_template('AboutPage.html')
 
+@app.route('/explore/')
+def renderExplorePage():
+    return render_template('Explore.html')
 '''
 Renders the analyze page when the user directs to http://perlman.mathcs.carleton.edu:5222/create/
 **THIS HTML PAGE IS NOT RELEVANT TO THE SPECIFIC USER QUERY FOR THIS DELIVERABLE**
@@ -82,7 +85,15 @@ def displayProbabilityOfSuccess():
     return render_template('Results.html', category = category, currency = currency, goal = goal, probabilityOfSuccess = probabilityOfSuccess)
 
 
+'''
+Renders the various sites associated with explore in the same sort of function
+style as the results page above
+'''
 
+@app.route('/explore/random/', methods=['GET', 'POST'])
+def renderRandomPage():
+
+    return render_template('Random.html')
 
 
 
