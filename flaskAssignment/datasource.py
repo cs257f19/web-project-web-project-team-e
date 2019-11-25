@@ -569,6 +569,12 @@ class DataSource:
 			plt.setp(plt.gca().get_xticklabels(), rotation = 45, horizontalalignment = 'right')
 			fig.tight_layout()
 
+			#Creating a legend
+			ax = plt.subplot(111)
+			chartBox = ax.get_position()
+			ax.set_position([chartBox.x0, chartBox.y0, chartBox.width * 0.6, chartBox.height])
+			ax.legend(loc='upper center', bbox_to_anchor=(1.3, 0.8), shadow=True, ncol=1)
+
 			# Saving the image in the same directory, there is no need to return anything
 			strFile = "static/plot.svg"
 			if os.path.isfile(strFile):
