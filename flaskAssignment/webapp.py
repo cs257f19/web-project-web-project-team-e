@@ -121,7 +121,7 @@ def renderToptenPage():
         topList = topList + "Backers: " + str(topTen[i][1])
         topList = topList + "Goal: $" + str(topTen[i][2])
         topList = topList + "Pledged $" + str(topTen[i][3])
-    return render_template(category = category, topList = topList)
+    return render_template('Topten.html' category = category, topList = topList)
 
 
 if __name__ == "__main__":
