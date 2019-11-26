@@ -102,18 +102,18 @@ ul > a:hover{
 }
 
 #analyze {
-		background-image : url("analyze.png");
+		background-image : url("analyze.jpg");
 		background-position: top;
 }
 
 #create {
-		background-image : url("datapic.jpg");
+		background-image : url("create.jpg");
 		background-position: top;
 		background-color: #dddddd;
 }
 
 #explore {
-		background-image : url("explore.png");
+		background-image : url("explore.jpg");
 		background-position: top;
 		background-size: contain;
 }
