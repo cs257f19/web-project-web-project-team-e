@@ -52,7 +52,7 @@
 				and we will return the projects with the highest and lowest cash value
 				pledged for those choices. Obviously most categories have more than one
 			 	project that raised $0, so in that case one will be chosen at random.</p>
-				<form action="/minmax/" method="post">
+				<form action="/explore/minmax/" method="post">
 					<div>
 			      <label for="category">Category:</label>
 			      <select id="category" name="category">
@@ -78,9 +78,9 @@
 					<button type="submit">Find Min and Max</button>
 				</form>
         <h2>The {{category}} project with the lowest amount pledged was <i>{{minProj}}</i>
-          with ${{minValue}} USD.</h2>
+          with ${{minimum}} USD.</h2>
         <h2>Meanwhile, the {{category}} project with the highest amount pledged was
-          <i>{{maxProj}}</i> with ${{maxValue}} USD.</h2>
+          <i>{{maxProj}}</i> with ${{minimum}} USD.</h2>
 		</div>
 
 		<div class="subPage" id="proportion">
