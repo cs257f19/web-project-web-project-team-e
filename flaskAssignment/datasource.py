@@ -183,10 +183,10 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT Title FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' WHERE usd_pledged_real IS NOT NULL ORDER BY usd_pledged_real DESC LIMIT 1"
+			query = "SELECT Title FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' AND usd_pledged_real IS NOT NULL ORDER BY usd_pledged_real DESC LIMIT 1"
 			cursor.execute(query)
 			largestName = cursor.fetchall()[0][0]
-			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' WHERE usd_pledged_real IS NOT NULL ORDER BY usd_pledged_real DESC LIMIT 1"
+			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' AND usd_pledged_real IS NOT NULL ORDER BY usd_pledged_real DESC LIMIT 1"
 			cursor.execute(query)
 			largestValue = int(cursor.fetchall()[0][0])
 			return largestName, largestValue
