@@ -656,7 +656,7 @@ def main():
 	#print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
 	#print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
 	#print("The proportion of Music projects that were successful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
-	print(ds.mostSuccessfulProjects(connection,'category', 'Music'))
+	print(ds.mostSuccessfulProjects(connection, 'Music'))
 
 
 main()
