@@ -141,6 +141,7 @@ ul > a:hover{
 	border-width: 3px;
   float: left;
 	color: #d45555;
+  white-space: pre-line;
 }
 
 .subPage > h1{
