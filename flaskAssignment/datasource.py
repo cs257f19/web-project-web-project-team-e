@@ -594,22 +594,20 @@ class DataSource:
 			return connection.cursor()
 
 
-	def mostSuccessfulProjects(self, connection, listLength, nameOfVariable, variableCondition):
+	def mostSuccessfulProjects(self, connection, variableCondition):
 		'''
-        Returns a list of the given length of the most successful projects by success score
+        Returns a list of the given length of the 10 most successful projects by success score
 
         PARAMETERS:
         	connection - the connection to the database
-            listLength - int length of list the user wants
-			nameOfVariable - the str variable of the project we are creating a proportion for
-			variableCondition - a str attribute of the main variable (i.e category, country, currency)
+			variableCondition - a str attribute of the main category (i.e Dance, Art, Theatre)
 
         RETURN:
-            A list of the most successful projects with the given length
+            A list of the most successful projects
         '''
 		try:
 			cursor = connection.cursor()
-			query = "SELECT * FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(variableCondition) + "' ORDER BY success_score DESC LIMIT " + str(listLength)
+			query = "SELECT Title, backers, usd_goal_real, usd_pledged_real  FROM ksdata WHERE state = 'successful' AND main_category = '" + str(variableCondition) + "' ORDER BY success_score DESC LIMIT 10"
 			cursor.execute(query)
 			return cursor.fetchall()
 
@@ -658,7 +656,7 @@ def main():
 	#print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
 	#print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
 	#print("The proportion of Music projects that were successful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
-	#print(ds.mostSuccessfulProjects(connection, 3, 'category', 'Music'))
+	print(ds.mostSuccessfulProjects(connection, 'Music'))
 
 
 main()
