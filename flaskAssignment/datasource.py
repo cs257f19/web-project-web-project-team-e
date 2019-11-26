@@ -156,7 +156,7 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT MIN (usd_pledged_real) FROM ksdata WHERE Main_Category = ' + str(nameOfVariable) + '"
+			query = "SELECT TOP (1) * FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC"
 			cursor.execute(query)
 			smallestValue = cursor.fetchall()
 			return smallestValue
@@ -180,7 +180,7 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT MAX (usd_pledged_real) FROM ksdata WHERE Main_Category = ' + str(nameOfVariable) + '"
+			query = "SELECT TOP (1) * FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real asc"
 			cursor.execute(query)
 			largestValue = cursor.fetchall()
 			return largestValue
