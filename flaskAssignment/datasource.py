@@ -607,7 +607,7 @@ class DataSource:
         '''
 		try:
 			cursor = connection.cursor()
-			query = "SELECT Title, backers, usd_goal, usd_pledged_real  FROM ksdata WHERE state = 'successful' AND main_category = '" + str(variableCondition) + "' ORDER BY success_score DESC LIMIT 10"
+			query = "SELECT Title, backers, usd_goal_real, usd_pledged_real  FROM ksdata WHERE state = 'successful' AND main_category = '" + str(variableCondition) + "' ORDER BY success_score DESC LIMIT 10"
 			cursor.execute(query)
 			return cursor.fetchall()
 
@@ -656,7 +656,7 @@ def main():
 	#print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
 	#print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
 	#print("The proportion of Music projects that were successful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
-	#print(ds.mostSuccessfulProjects(connection,'category', 'Music'))
+	print(ds.mostSuccessfulProjects(connection,'category', 'Music'))
 
 
 main()
