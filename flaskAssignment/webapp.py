@@ -104,13 +104,9 @@ def renderMinmaxPage():
     category = request.form['category']
     ds = DataSource()
     connection = ds.connect()
-    minimum = ds.getMinimumValueOfVariable(connection, category)
-    maximum = ds.getMaximumValueOfVariable(connection, category)
-    minProj = minimum[1][0]
-    minValue = minimum[14][0]
-    maxProj = maximum[1][0]
-    maxValue = maximum[14][0]
-    return render_template('minmax.html', minproj = minproj, maxproj = maxproj, category = category)
+    minProj, minimum = ds.getMinimumValueOfVariable(connection, category)
+    maxProj, maximum = ds.getMaximumValueOfVariable(connection, category)
+    return render_template('minmax.html', minProj = minproj, maxProj = maxproj, category = category)
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
