@@ -161,8 +161,8 @@ class DataSource:
 			smallestName = cursor.fetchall()[0][0]
 			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
 			cursor.execute(query)
-			print(cursor.fetchall()[0][0])
 			smallestValue = float(cursor.fetchall()[0][0])
+			print(smallestValue)
 			return smallestName, smallestValue
 
 		except Exception as e:
