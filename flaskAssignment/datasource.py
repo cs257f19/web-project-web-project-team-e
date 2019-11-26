@@ -188,7 +188,7 @@ class DataSource:
 			largestName = cursor.fetchall()[0][0]
 			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC LIMIT 1"
 			cursor.execute(query)
-			largestValue = float(cursor.fetchall()[0][0])
+			largestValue = cursor.fetchall()[0][0]
 			return largestName, largestValue
 
 		except Exception as e:
@@ -594,21 +594,20 @@ class DataSource:
 			return connection.cursor()
 
 
-	def mostSuccessfulProjects(self, connection, nameOfVariable, variableCondition):
+	def mostSuccessfulProjects(self, connection, variableCondition):
 		'''
         Returns a list of the given length of the 10 most successful projects by success score
 
         PARAMETERS:
         	connection - the connection to the database
-			nameOfVariable - the str variable of the project we are creating a proportion for
-			variableCondition - a str attribute of the main variable (i.e category, country, currency)
+			variableCondition - a str attribute of the main category (i.e Dance, Art, Theatre)
 
         RETURN:
             A list of the most successful projects
         '''
 		try:
 			cursor = connection.cursor()
-			query = "SELECT Title, backers, usd_goal, usd_pledged_real  FROM ksdata WHERE state = 'successful' AND " + str(nameOfVariable) + " = '" + str(variableCondition) + "' ORDER BY success_score DESC LIMIT 10"
+			query = "SELECT Title, backers, usd_goal, usd_pledged_real  FROM ksdata WHERE state = 'successful' AND main_category = '" + str(variableCondition) + "' ORDER BY success_score DESC LIMIT 10"
 			cursor.execute(query)
 			return cursor.fetchall()
 
@@ -657,8 +656,7 @@ def main():
 	#print("The minimum value of the 'backers' is:" + str(ds.getMinimumValueOfVariable(connection,'backers')))
 	#print("The average days for a project is: " + str(ds.getAverageOfVariable(connection, 'total_days')))
 	#print("The proportion of Music projects that were successful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
-	print(ds.mostSuccessfulProjects(connection,'category', 'Music'))
+	#print(ds.mostSuccessfulProjects(connection,'category', 'Music'))
 
-	#print(ds.getMinimumValueOfVariable(connection, 'currency'))
 
 main()
