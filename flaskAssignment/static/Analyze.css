@@ -186,7 +186,7 @@ img {
 	margin: 10px 200px 10px 0px;
 }
 
-.subPage > a{
+.subPage > button{
 	height: 60px;
 	width: 20%;
 	border-width: 2px;
@@ -199,6 +199,7 @@ img {
 	cursor: pointer;
 	margin: 10px 0px 5px 0px;
 }
+
 
 #counts{
 	display: block;
