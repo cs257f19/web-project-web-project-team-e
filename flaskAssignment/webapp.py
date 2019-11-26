@@ -109,7 +109,7 @@ def renderMinmaxPage():
     return render_template('Minmax.html', minProj = minProj, maxProj = maxProj, minimum = minimum, maximum = maximum, category = category)
 
 @app.route('/explore/topten/', methods=['GET', 'POST'])
-def renderMinmaxPage():
+def renderToptenPage():
     category = request.form['category']
     ds = DataSource()
     connection = ds.connect()
