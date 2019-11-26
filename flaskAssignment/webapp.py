@@ -106,7 +106,7 @@ def renderMinmaxPage():
     connection = ds.connect()
     minProj, minimum = ds.getMinimumValueOfVariable(connection, category)
     maxProj, maximum = ds.getMaximumValueOfVariable(connection, category)
-    return render_template('Minmax.html', minProj = minProj, maxProj = maxProj, category = category)
+    return render_template('Minmax.html', minProj = minProj, maxProj = maxProj, minimum = minimum, maximum = maximum, category = category)
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
