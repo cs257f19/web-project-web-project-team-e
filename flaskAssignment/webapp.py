@@ -79,7 +79,7 @@ def displayProbabilityOfSuccess():
     category = request.form['category']
     currency = request.form['currency']
     goal = request.form['goal']
-    if goal == 0 or goal == '' or goal == None:
+    if goal == '0' or goal == '' or goal == None:
         goal = 1
     ds = DataSource()
     #note: connection is not passed because this function can be ran independently of the database
