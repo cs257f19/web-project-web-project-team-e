@@ -90,7 +90,6 @@ ul > a:hover{
 	padding-right: 30px;
 	height: 250px;
 	margin: 5px 2px;
-	background-color: #dddddd;
 	font-family: "trebuchet ms";
 	text-align: center;
 	color: #c44c44;
@@ -110,6 +109,7 @@ ul > a:hover{
 #create {
 		background-image : url("datapic.jpg");
 		background-position: top;
+		background-color: #dddddd;
 }
 
 #explore {

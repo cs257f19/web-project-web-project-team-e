@@ -10,14 +10,14 @@ app = flask.Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 '''
-Renders the homepage when the user connects to http://perlman.mathcs.carleton.edu:5222/
+Renders the homepage when the user connects to http://perlman.mathcs.carleton.edu:5134/
 '''
 @app.route('/')
 def renderHomepage():
     return render_template('Homepage.html')
 
 '''
-Renders the create page when the user directs to http://perlman.mathcs.carleton.edu:5222/create/
+Renders the create page when the user directs to http://perlman.mathcs.carleton.edu:5134/create/
 '''
 @app.route('/create/')
 def renderCreatePage():
@@ -35,7 +35,7 @@ def renderAboutPage():
 def renderExplorePage():
     return render_template('Explore.html')
 '''
-Renders the analyze page when the user directs to http://perlman.mathcs.carleton.edu:5222/create/
+Renders the analyze page when the user directs to http://perlman.mathcs.carleton.edu:5134/create/
 **THIS HTML PAGE IS NOT RELEVANT TO THE SPECIFIC USER QUERY FOR THIS DELIVERABLE**
 **DO NOT GRADE**
 '''
@@ -69,7 +69,7 @@ def displayAveragesGraph():
 
 
 '''
-Renders the results page when the user is directed to http://perlman.mathcs.carleton.edu:5222/results/
+Renders the results page when the user is directed to http://perlman.mathcs.carleton.edu:5134/results/
 Assigns variables 'category', 'currency', and 'goal' to their corresponding form submissions using 'request' from flask
 Creates a datasource object and calculates the probabilityOfSuccess based of the given variables
 'Results.html' is rendered using the form submissions and the probabilityOfSuccess variable
@@ -104,7 +104,7 @@ def renderMinmaxPage():
     category = request.form['category']
     ds = DataSource()
     connection = ds.connect()
-    mimimum = ds.getMinimumValueOfVariable(connection, category)
+    minimum = ds.getMinimumValueOfVariable(connection, category)
     maximum = ds.getMaximumValueOfVariable(connection, category)
     minProj = minimum[0]
     minValue = minimum[14]
