@@ -5,7 +5,7 @@
 <title>Will it Fund?|Explore</title>
 <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-<link rel = "stylesheet" type = "text/css" href ="{{ url_for('static', filename='Random.css') }}" />
+<link rel = "stylesheet" type = "text/css" href ="{{ url_for('static', filename='Explore.css') }}" />
 <script language="javascript"></script>
 </head>
 
@@ -33,9 +33,9 @@
 	</div>
 	<div class="explore">
 		<ul id="side-nav">
-			<button class="side-tabs active" onclick="showSection(event, 'random')">Random Project Generator</button>
+			<button class="side-tabs" onclick="showSection(event, 'random')">Random Project Generator</button>
 			<button class="side-tabs" onclick="showSection(event, 'minmax')">Min and Max Pledged</button>
-			<button class="side-tabs" onclick="showSection(event, 'proportion')">Top Ten</button>
+			<button class="side-tabs active" onclick="showSection(event, 'proportion')">Top Ten</button>
 		</ul>
 
 		<div class="subPage" id="random">
@@ -44,21 +44,49 @@
 				churn out a random Kickstarter project for you. It is obviously a very
 				simple feature, but seeing the real variety of the Kickstarter projects
 				out there is quite interesting.</p>
-			<a href="/explore/random/">Generate Another Project</a>
-      <h2>Your project is: <i>{{name}}</i>
-      <p></p>
+				<a href="/explore/random/">Generate Project</a>
 		</div>
 
-    <div class="subPage" id="minmax">
+		<div class="subPage" id="minmax">
 			<h1>Find the Min and Max</h1>
 			<p>With this feature, you can choose a project category and subcategory,
 				and we will return the projects with the highest and lowest cash value
 				raised for those choices. Obviously most categories have more than one
 			 	project that had raised $0, so in that case one will be chosen at random.</p>
-      <form action="/explore/minmax/" method="post">
+				<form action="/explore/minmax/" method="post">
+					<div>
+			      <label for="category">Category:</label>
+			      <select id="category" name="category">
+			  		<option value="Art">Art</option>
+			      <option value="Comics">Comics</option>
+			      <option value="Crafts">Crafts</option>
+			      <option value="Dance">Dance</option>
+			      <option value="Design">Design</option>
+			  		<option value="Fashion">Fashion</option>
+			  		<option value="Film & Video">Film & Video</option>
+			  		<option value="Food">Food</option>
+			  		<option value="Games">Games</option>
+			  		<option value="Journalism">Journalism</option>
+			  		<option value="Music">Music</option>
+			  		<option value="Photography">Photography</option>
+			  		<option value="Publishing">Publishing</option>
+			  		<option value="Technology">Technology</option>
+			  		<option value="Theater">Theater</option>
+			      </select>
+				  <!--End of form options-->
+			    </div>
+					<button type="submit">Find Min and Max</button>
+				</form>
+		</div>
+
+		<div class="subPage" id="proportion">
+			<p>On this page, simply choose a category and we will tell you which ten
+        projects were the most successful by our metrics.</p>
+      <form action="/explore/topten/" method="post">
         <div>
           <label for="category">Category:</label>
           <select id="category" name="category">
+          <option selected>{{category}}</option>
           <option value="Art">Art</option>
           <option value="Comics">Comics</option>
           <option value="Crafts">Crafts</option>
@@ -77,39 +105,15 @@
           </select>
         <!--End of form options-->
         </div>
-        <button type="submit">Find Min and Max</button>
+        <button type="submit">Find Top Ten</button>
       </form>
+      <h2>The top ten most successful {{category}} projects, along with the
+        number of backers they had, the cash goal, and the amount pledged, are:</h2>
+      <h2>{{topList}}</h2>
+		</div>
+  </div>
 
-      <div class="subPage" id="proportion">
-  			<p>On this page, simply choose a category and we will tell you which ten
-          projects were the most successful by our metrics.</p>
-        <form action="/explore/topten/" method="post">
-          <div>
-            <label for="category">Category:</label>
-            <select id="category" name="category">
-            <option value="Art">Art</option>
-            <option value="Comics">Comics</option>
-            <option value="Crafts">Crafts</option>
-            <option value="Dance">Dance</option>
-            <option value="Design">Design</option>
-            <option value="Fashion">Fashion</option>
-            <option value="Film & Video">Film & Video</option>
-            <option value="Food">Food</option>
-            <option value="Games">Games</option>
-            <option value="Journalism">Journalism</option>
-            <option value="Music">Music</option>
-            <option value="Photography">Photography</option>
-            <option value="Publishing">Publishing</option>
-            <option value="Technology">Technology</option>
-            <option value="Theater">Theater</option>
-            </select>
-          <!--End of form options-->
-          </div>
-          <button type="submit">Find Top Ten</button>
-        </form>
-  		</div>
-    </div>
-  	<script>
+	<script>
 	/** Based on a function made by w3schools.com
 		* On the click of a tab, all page sections are cleared and the selected
 		* section is "unhidden" and shown on the page

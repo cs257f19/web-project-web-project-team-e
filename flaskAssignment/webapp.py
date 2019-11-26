@@ -108,6 +108,22 @@ def renderMinmaxPage():
     maxProj, maximum = ds.getMaximumValueOfVariable(connection, category)
     return render_template('Minmax.html', minProj = minProj, maxProj = maxProj, minimum = minimum, maximum = maximum, category = category)
 
+@app.route('/explore/topten/', methods=['GET', 'POST'])
+def renderToptenPage():
+    category = request.form['category']
+    ds = DataSource()
+    connection = ds.connect()
+    topTen = ds.mostSuccessfulProjects(connection, category)
+    topList = ""
+    for i in range(10):
+        topList = topList + str(i + 1) + ". "
+        topList = topList + "Name: " + topTen[i][0]
+        topList = topList + "Backers: " + topTen[i][1]
+        topList = topList + "Goal: $" + topTen[i][2]
+        topList = topList + "Pledged $" + topTen[i][3]
+    return render_template(category = category, topList = topList)
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 3:
         print('Usage: {0} host port'.format(sys.argv[0]), file=sys.stderr)
