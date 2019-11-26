@@ -155,6 +155,7 @@ class DataSource:
 		'''
 
 		try:
+			print(nameOfVariable)
 			cursor = connection.cursor()
 			query = "SELECT Title FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
 			cursor.execute(query)
@@ -660,6 +661,5 @@ def main():
 	#print("The proportion of Music projects that were successful is: " + str(ds.getProportionOfSuccess(connection, 'main_category', 'Music')))
 	#print(ds.mostSuccessfulProjects(connection, 3, 'category', 'Music'))
 
-	print(ds.getMinimumValueOfVariable(connection, 'currency'))
 
 main()
