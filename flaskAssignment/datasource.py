@@ -188,7 +188,7 @@ class DataSource:
 			largestName = cursor.fetchall()[0][0]
 			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC LIMIT 1"
 			cursor.execute(query)
-			largestValue = cursor.fetchall()[0][0]
+			largestValue = cursor.fetchall()
 			return largestName, largestValue
 
 		except Exception as e:
