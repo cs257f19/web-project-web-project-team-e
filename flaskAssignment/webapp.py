@@ -106,9 +106,9 @@ def renderMinmaxPage():
     connection = ds.connect()
     minimum = ds.getMinimumValueOfVariable(connection, category)
     maximum = ds.getMaximumValueOfVariable(connection, category)
-    minProj = minimum[0][0]
+    minProj = minimum[1][0]
     minValue = minimum[14][0]
-    maxProj = maximum[0][0]
+    maxProj = maximum[1][0]
     maxValue = maximum[14][0]
     return render_template('minmax.html', minproj = minproj, maxproj = maxproj, category = category)
 
