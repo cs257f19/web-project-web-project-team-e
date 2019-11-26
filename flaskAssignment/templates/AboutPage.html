@@ -12,16 +12,16 @@ href ="{{ url_for('static', filename='AboutPage.css') }}" />
 <body>
 	<div class="header">
 
-		<h1><a href="http://perlman.mathcs.carleton.edu:5222/">WILL IT FUND?</a></h1>
+		<h1><a href="http://perlman.mathcs.carleton.edu:5134/">WILL IT FUND?</a></h1>
 		<h3>Kickstarting Your Kickstarter</h3>
 
     <div class="tabs">
       <ul id="nav">
-        <a href="http://perlman.mathcs.carleton.edu:5222/">Home</a>
-        <a href="http://perlman.mathcs.carleton.edu:5222/analyze/">Analyze the Data</a>
-        <a href="http://perlman.mathcs.carleton.edu:5222/create/">Create and Compare Your Kickstarter</a>
-        <a href="http://perlman.mathcs.carleton.edu:5222/explore/">Explore Curated Project Data</a>
-        <a href="http://perlman.mathcs.carleton.edu:5222/aboutpage/" id="current">About</a>
+        <a href="http://perlman.mathcs.carleton.edu:5134/">Home</a>
+        <a href="http://perlman.mathcs.carleton.edu:5134/analyze/">Analyze the Data</a>
+        <a href="http://perlman.mathcs.carleton.edu:5134/create/">Create and Compare Your Kickstarter</a>
+        <a href="http://perlman.mathcs.carleton.edu:5134/explore/">Explore Curated Project Data</a>
+        <a href="http://perlman.mathcs.carleton.edu:5134/aboutpage/" id="current">About</a>
       </ul>
     </div>
 		<!--menu-->
@@ -37,14 +37,14 @@ href ="{{ url_for('static', filename='AboutPage.css') }}" />
 	<p>The <a href="https://www.kaggle.com/kemical/kickstarter-projects">dataset</a>  we use contains over 300,000 Kickstarter projects dating up until 2018. The data is sorted into individual projects with a variety of attributes. These include things like the project name, the category (i.e. Film & Video, Music, Food), the start date and deadlines, the number of backers, and other important statistics. We have slighty modified the original dataset to make it easier to implement on the website.</p>
 
 	<p>The dataset is classified as Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0). We are able to copy and redistribute the material in any format, as well as remix, transform, and build upon the material under the following terms: we give appropriate credit, provide a link to the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">license</a>, and indicate if any changes were made.</p>
-	
+
 	<h1>About our Analysis</h1>
 	<a href="kickstarter.com"><img src="/static/rstudio.png" alt="R Studio logo" width="190" height="190" align = "right"></a>
 	<p>There are a couple of elements on our site that use either analysis conducted on R software or custom parameters we have created.</p>
-	
-	<p>Our <a href ="http://perlman.mathcs.carleton.edu:5222/create/">Create and Contrast</a> tab uses a binomial generalized linear model to conduct our linear regression and calculate a probability a project will be successful given certain variables. The three independent and significant variables we found were usd_goal, currency, and category. Some parameters that were significant were omitted due to their relation with other variables. For example, currency and country were both significant but directly related to each other, and thus only one could be used. We chose to include currency over country as it is more prominent on a project’s proposal. It is important to note that this model is not conclusive and by no means exact in predicting the probability of success. It is an estimate based on parameters given but does not take into account the quality of a project or the publicity that it might receive, for example. </p>
 
-	<p>Under our <a href ="http://perlman.mathcs.carleton.edu:5222/explore/">Explore</a> page, users can create their own lists of successful projects given certain parameters. To determine how successful a project is, we formulated success scores by transforming the number of backers with the natural logarithm and adding this to the proportion of USD pledged funds to USD goal funds. To account for projects, we also had to add one backer to every project so that the logarithm would be defined everywhere.
+	<p>Our <a href ="http://perlman.mathcs.carleton.edu:5134/create/">Create and Contrast</a> tab uses a binomial generalized linear model to conduct our linear regression and calculate a probability a project will be successful given certain variables. The three independent and significant variables we found were usd_goal, currency, and category. Some parameters that were significant were omitted due to their relation with other variables. For example, currency and country were both significant but directly related to each other, and thus only one could be used. We chose to include currency over country as it is more prominent on a project’s proposal. It is important to note that this model is not conclusive and by no means exact in predicting the probability of success. It is an estimate based on parameters given but does not take into account the quality of a project or the publicity that it might receive, for example. </p>
+
+	<p>Under our <a href ="http://perlman.mathcs.carleton.edu:5134/explore/">Explore</a> page, users can create their own lists of successful projects given certain parameters. To determine how successful a project is, we formulated success scores by transforming the number of backers with the natural logarithm and adding this to the proportion of USD pledged funds to USD goal funds. To account for projects, we also had to add one backer to every project so that the logarithm would be defined everywhere.
 	</p>
 	</article>
 
