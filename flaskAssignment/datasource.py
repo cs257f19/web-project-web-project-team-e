@@ -155,15 +155,14 @@ class DataSource:
 		'''
 
 		try:
-			print(nameOfVariable)
 			cursor = connection.cursor()
 			query = "SELECT Title FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
 			cursor.execute(query)
 			smallestName = cursor.fetchall()[0][0]
-			print(smallestName)
 			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
 			cursor.execute(query)
-			smallestValue = float(cursor.fetchall()[0])
+			print(cursor.fetchall()[0][0])
+			smallestValue = float(cursor.fetchall()[0][0])
 			return smallestName, smallestValue
 
 		except Exception as e:
@@ -190,7 +189,7 @@ class DataSource:
 			largestName = cursor.fetchall()[0][0]
 			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC LIMIT 1"
 			cursor.execute(query)
-			largestValue = float(cursor.fetchall()[0])
+			largestValue = float(cursor.fetchall()[0][0])
 			return largestName, largestValue
 
 		except Exception as e:
