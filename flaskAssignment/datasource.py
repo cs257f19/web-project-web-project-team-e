@@ -22,12 +22,12 @@ class DataSource:
 	'''
 
 	def __init__(self):
-		#self.user = 'nystromk'
-		#self.password = 'java692spam'
+		self.user = 'nystromk'
+		self.password = 'java692spam'
 		#self.user = 'santosb'
 		#self.password = 'book347winter'
-		self.user = 'loye'
-		self.password = 'tablet984spring'
+		#self.user = 'loye'
+		#self.password = 'tablet984spring'
 
 	def connect(self):
 		'''
@@ -156,11 +156,13 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT * FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
+			query = "SELECT Title FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
 			cursor.execute(query)
-			smallestValue = cursor.fetchall()
-			print (smallestValue)
-			return smallestValue
+			smallestName = cursor.fetchall()[0][0]
+			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
+			cursor.execute(query)
+			smallestValue = cursor.fetchall()[0][0]
+			return smallestName, smallestValue
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -181,10 +183,13 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT * FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC LIMIT 1"
+			query = "SELECT Title FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC LIMIT 1"
 			cursor.execute(query)
-			largestValue = cursor.fetchall()
-			return largestValue
+			largestName = cursor.fetchall()[0][0]
+			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC LIMIT 1"
+			cursor.execute(query)
+			largestValue = cursor.fetchall()[0][0]
+			return largestName, largestValue
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
