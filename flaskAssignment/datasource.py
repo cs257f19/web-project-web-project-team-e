@@ -162,7 +162,6 @@ class DataSource:
 			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
 			cursor.execute(query)
 			smallestValue = float(cursor.fetchall()[0][0])
-			print(smallestValue)
 			return smallestName, smallestValue
 
 		except Exception as e:
@@ -190,6 +189,7 @@ class DataSource:
 			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC LIMIT 1"
 			cursor.execute(query)
 			largestValue = float(cursor.fetchall()[0][0])
+			print(largestValue)
 			return largestName, largestValue
 
 		except Exception as e:
