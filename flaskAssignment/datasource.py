@@ -156,10 +156,13 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT Title, usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
+			query = "SELECT Title FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
+			cursor.execute(query)
+			smallestName = cursor.fetchall()
+			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
 			cursor.execute(query)
 			smallestValue = cursor.fetchall()
-			return smallestValue
+			return smallestName, smallestValue
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
@@ -180,10 +183,13 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT Title, usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC LIMIT 1"
+			query = "SELECT Title FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC LIMIT 1"
+			cursor.execute(query)
+			largestName = cursor.fetchall()
+			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC LIMIT 1"
 			cursor.execute(query)
 			largestValue = cursor.fetchall()
-			return largestValue
+			return largestName, largestValue
 
 		except Exception as e:
 			print ("Something went wrong when executing the query: ", e)
