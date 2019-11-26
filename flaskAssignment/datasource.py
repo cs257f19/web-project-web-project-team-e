@@ -1,3 +1,4 @@
+import psycopg2
 import getpass
 import math
 import matplotlib
