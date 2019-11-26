@@ -161,7 +161,7 @@ class DataSource:
 			smallestName = cursor.fetchall()[0][0]
 			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
 			cursor.execute(query)
-			smallestValue = float(cursor.fetchall()[0][0])
+			smallestValue = int(cursor.fetchall()[0][0])
 			return smallestName, smallestValue
 
 		except Exception as e:
@@ -183,12 +183,12 @@ class DataSource:
 
 		try:
 			cursor = connection.cursor()
-			query = "SELECT Title FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC LIMIT 1"
+			query = "SELECT Title FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' WHERE usd_pledged_real IS NOT NULL ORDER BY usd_pledged_real DESC LIMIT 1"
 			cursor.execute(query)
 			largestName = cursor.fetchall()[0][0]
-			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real DESC LIMIT 1"
+			query = "SELECT usd_pledged_real FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' WHERE usd_pledged_real IS NOT NULL ORDER BY usd_pledged_real DESC LIMIT 1"
 			cursor.execute(query)
-			largestValue = cursor.fetchall()
+			largestValue = int(cursor.fetchall()[0][0])
 			return largestName, largestValue
 
 		except Exception as e:
