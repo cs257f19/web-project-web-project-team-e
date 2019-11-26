@@ -155,7 +155,6 @@ class DataSource:
 		'''
 
 		try:
-			print (nameOfVariable)
 			cursor = connection.cursor()
 			query = "SELECT Title FROM ksdata WHERE Main_Category = '" + str(nameOfVariable) + "' ORDER BY usd_pledged_real ASC LIMIT 1"
 			cursor.execute(query)
