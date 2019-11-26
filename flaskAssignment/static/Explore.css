@@ -170,6 +170,28 @@ ul > a:hover{
 	margin: 10px 0px 5px 0px;
 }
 
+.subPage > a:hover{
+  background-color: #eeeeee;
+}
+
+.subPage > form > button{
+	height: 60px;
+	width: 20%;
+	border-width: 2px;
+	border-style: inset;
+	border-color: #d45555;
+	background-color: #ffffff;
+	text-align: center;
+	color: #2f3b66;
+	font-size: 22px;
+	cursor: pointer;
+	margin: 10px 0px 5px 0px;
+}
+
+.subPage > form > button:hover{
+  background-color: #eeeeee;
+}
+
 #random{
 	display: block;
 }
