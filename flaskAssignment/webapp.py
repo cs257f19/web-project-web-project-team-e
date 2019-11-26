@@ -118,9 +118,9 @@ def renderToptenPage():
     for i in range(10):
         topList = topList + str(i + 1) + ". "
         topList = topList + "Name: " + topTen[i][0]
-        topList = topList + "Backers: " + topTen[i][1]
-        topList = topList + "Goal: $" + topTen[i][2]
-        topList = topList + "Pledged $" + topTen[i][3]
+        topList = topList + "Backers: " + str(topTen[i][1])
+        topList = topList + "Goal: $" + str(topTen[i][2])
+        topList = topList + "Pledged $" + str(topTen[i][3])
     return render_template(category = category, topList = topList)
 
 
