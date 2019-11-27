@@ -22,10 +22,10 @@ class DataSource:
 	'''
 
 	def __init__(self):
-		self.user = 'nystromk'
-		self.password = 'java692spam'
-		#self.user = 'santosb'
-		#self.password = 'book347winter'
+		#self.user = 'nystromk'
+		#self.password = 'java692spam'
+		self.user = 'santosb'
+		self.password = 'book347winter'
 		#self.user = 'loye'
 		#self.password = 'tablet984spring'
 
