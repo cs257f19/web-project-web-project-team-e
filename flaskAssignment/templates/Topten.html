@@ -5,7 +5,7 @@
 <title>Will it Fund?|Explore</title>
 <link href="https://fonts.googleapis.com/css?family=Cardo:400,700|Oswald" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
-<link rel = "stylesheet" type = "text/css" href ="{{ url_for('static', filename='Minmax.css') }}" />
+<link rel = "stylesheet" type = "text/css" href ="{{ url_for('static', filename='Topten.css') }}" />
 <script language="javascript"></script>
 </head>
 
@@ -34,8 +34,8 @@
 	<div class="explore">
 		<ul id="side-nav">
 			<button class="side-tabs" onclick="showSection(event, 'random')">Random Project Generator</button>
-			<button class="side-tabs active" onclick="showSection(event, 'minmax')">Min and Max Pledged</button>
-			<button class="side-tabs" onclick="showSection(event, 'topten')">Top Ten</button>
+			<button class="side-tabs" onclick="showSection(event, 'minmax')">Min and Max Pledged</button>
+			<button class="side-tabs active" onclick="showSection(event, 'topten')">Top Ten</button>
 		</ul>
 
 		<div class="subPage" id="random">
@@ -44,23 +44,23 @@
 				churn out a random Kickstarter project for you. It is obviously a very
 				simple feature, but seeing the real variety of the Kickstarter projects
 				out there is quite interesting.</p>
-				<a href="/explore/random">Generate Project</a>
+				<a href="/explore/random/">Generate Project</a>
 		</div>
 
 		<div class="subPage" id="minmax">
+			<h1>Find the Min and Max</h1>
 			<p>With this feature, you can choose a project category and subcategory,
 				and we will return the projects with the highest and lowest cash value
-				pledged for those choices. Obviously most categories have more than one
-			 	project that raised $0, so in that case one will be chosen at random.</p>
+				raised for those choices. Obviously most categories have more than one
+			 	project that had raised $0, so in that case one will be chosen at random.</p>
 				<form action="/explore/minmax/" method="post">
 					<div>
 			      <label for="category">Category:</label>
 			      <select id="category" name="category">
-            <option selected>{{category}}</option>
 			  		<option value="Art">Art</option>
 			      <option value="Comics">Comics</option>
 			      <option value="Crafts">Crafts</option>
-            <option value="Dance">Dance</option>
+			      <option value="Dance">Dance</option>
 			      <option value="Design">Design</option>
 			  		<option value="Fashion">Fashion</option>
 			  		<option value="Film & Video">Film & Video</option>
@@ -77,19 +77,16 @@
 			    </div>
 					<button type="submit">Find Min and Max</button>
 				</form>
-        <h2>The {{category}} project with the lowest amount pledged was <i>{{minProj}}</i>
-          with ${{minimum}} USD.</h2>
-        <h2>Meanwhile, the {{category}} project with the highest amount pledged was
-          <i>{{maxProj}}</i> with ${{maximum}} USD.</h2>
 		</div>
 
-    <div class="subPage" id="topten">
+		<div class="subPage" id="topten">
 			<p>On this page, simply choose a category and we will tell you which ten
         projects were the most successful by our metrics.</p>
       <form action="/explore/topten/" method="post">
         <div>
           <label for="category">Category:</label>
           <select id="category" name="category">
+          <option selected>{{category}}</option>
           <option value="Art">Art</option>
           <option value="Comics">Comics</option>
           <option value="Crafts">Crafts</option>
@@ -110,8 +107,11 @@
         </div>
         <button type="submit">Find Top Ten</button>
       </form>
+      <h2>The top ten most successful {{category}} projects, along with the
+        number of backers they had, the cash goal, and the amount pledged, are:</h2>
+      <h2>{{topList}}</h2>
 		</div>
-	</div>
+  </div>
 
 	<script>
 	/** Based on a function made by w3schools.com

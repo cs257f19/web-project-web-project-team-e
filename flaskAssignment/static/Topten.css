@@ -192,10 +192,10 @@ ul > a:hover{
 }
 
 .subpage > h2{
-  white-space: pre-line;
+  white-space: pre;
 }
 
-#minmax{
+#topten{
 	display: block;
 }
 

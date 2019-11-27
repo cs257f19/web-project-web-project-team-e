@@ -79,7 +79,7 @@ def displayProbabilityOfSuccess():
     category = request.form['category']
     currency = request.form['currency']
     goal = request.form['goal']
-    if goal == 0 or goal == '' or goal == None:
+    if goal == '0' or goal == '' or goal == None:
         goal = 1
     ds = DataSource()
     #note: connection is not passed because this function can be ran independently of the database
@@ -104,13 +104,25 @@ def renderMinmaxPage():
     category = request.form['category']
     ds = DataSource()
     connection = ds.connect()
-    minimum = ds.getMinimumValueOfVariable(connection, category)
-    maximum = ds.getMaximumValueOfVariable(connection, category)
-    minProj = minimum[0]
-    minValue = minimum[14]
-    maxProj = maximum[0]
-    maxValue = maximum[14]
-    return render_template('minmax.html', minproj = minproj, maxproj = maxproj, category = category)
+    minProj, minimum = ds.getMinimumValueOfVariable(connection, category)
+    maxProj, maximum = ds.getMaximumValueOfVariable(connection, category)
+    return render_template('Minmax.html', minProj = minProj, maxProj = maxProj, minimum = minimum, maximum = maximum, category = category)
+
+@app.route('/explore/topten/', methods=['GET', 'POST'])
+def renderToptenPage():
+    category = request.form['category']
+    ds = DataSource()
+    connection = ds.connect()
+    topTen = ds.mostSuccessfulProjects(connection, category)
+    topList = ""
+    for i in range(10):
+        topList = topList + str(i + 1) + ". "
+        topList = topList + "Name: " + topTen[i][0] + " "
+        topList = topList + "Backers: " + str(int(topTen[i][1])) + " "
+        topList = topList + "Goal: $" + str(int(topTen[i][2])) + " "
+        topList = topList + "Pledged $" + str(int(topTen[i][3])) + "\r\n" + "        "
+    return render_template('Topten.html', category = category, topList = topList)
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
